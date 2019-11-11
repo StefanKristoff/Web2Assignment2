@@ -1,0 +1,18 @@
+/* Media query from lab 12-ex01 */
+/* subject to change depending on the preliminary design */
+
+/* mobile */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 20px;
+    grid-column-gap: 3%;
+    text-align: center;
+}
+
+/* desktop and tablet */
+@media only screen and (min-width: 680px){
+    .grid-container {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
