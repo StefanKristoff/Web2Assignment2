@@ -17,6 +17,13 @@ include('includes\header.inc.php');
         <section class='nested'>
             <div class='userInfo card'>
                 <h3>User Info</h3>
+                <p>He is tall and short...</p>
+                <p>Eyes blue...ish</p>
+                <div class='userNested'>
+                    <div>Picture </div>
+                    <div>Picture </div>
+                    <div>Picture</div>
+                </div>
             </div>
             <div class='searchBox card'>
                 <h3>Search box</h3>
@@ -24,9 +31,18 @@ include('includes\header.inc.php');
             </div>
             <div class='favImg card'>
                 <h3>Favorite Images</h3>
+                <div class='favNested'>
+                    <div>Picture</div>
+                    <div>Picture</div>
+                </div>
             </div>
             <div class='img card'>
                 <h3>Images You May Like</h3>
+                <div class='imgNested'>
+                    <div>Picture</div>
+                    <div>Picture</div>
+                    <div>Picture</div>
+                </div>
             </div>
         </section>
     </main>

@@ -13,4 +13,20 @@ div{
     padding: 10px;
     margin: 10px;
     border-radius: 5px;
+    
+}
+
+.userNested, .imgNested{
+    background-color: bisque;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 5px;
+    margin: 5px;
+}
+.favNested{
+    background-color: bisque;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 5px;
+    margin: 5px;
 }
