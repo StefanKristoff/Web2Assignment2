@@ -1,14 +1,84 @@
-/* Media query from lab 12-ex01 */
+:root {
+    --grid-gap: 20px;
+    --titles: #1f4e5f;
+    --accent: #01161e;
+    --background: #79A8A9;
+    --cards: #F4F7F7;
+    --boxes: #AACFD0;
+}
+
+/* Media query from lab 12-ex01  */
 /* subject to change depending on the preliminary design */
 
 /* mobile */
 .grid-container {
     display: grid;
     grid-template-columns: 1fr;
-    grid-row-gap: 20px;
+    grid-row-gap: var(--grid-gap);
     grid-column-gap: 3%;
     text-align: center;
 }
+
+header {
+    grid-column: 1 / 6;
+    background-color: var(--boxes);
+    color: var(--titles);
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 250%;
+    text-align: center;
+    box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.22);
+}
+
+h1, h2 {
+    color: var(--titles);
+}
+
+button {
+    border: none;
+    border: solid 1px var(--cards);
+    border-radius: 5px;
+    width: 100%;
+    height: 2em;
+}
+
+input {
+    border: none;
+    border: solid 1px var(--cards);
+    border-radius: 5px;
+    width: 100%;
+    height: 2em;
+}
+
+select {
+    border: none;
+    border: solid 1px var(--cards);
+    border-radius: 5px;
+    width: 100%;
+    height: 2em;
+}
+
+.card {
+    /* display: grid; */
+    padding: 10px;
+    /* margin-top: 5px; */
+    background-color: var(--cards);
+    color: black;
+    border-radius: 5px;
+    margin: 5px;
+    text-align: center;
+    box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.22);
+}
+
+picture img {
+    display: inline-block;
+    color: black;
+    border-radius: 5px;
+    margin: 4px;
+    text-align: center;
+    box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.22);
+}
+
 
 /* desktop and tablet */
 @media only screen and (min-width: 680px){
