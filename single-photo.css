@@ -2,10 +2,10 @@ html{
     box-sizing: border-box;
 }
 
-.container{
+.grid-container{
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: 20rem 25rem auto;
+    grid-template-columns: 1fr;
     color: #444;
 }
 .box {
@@ -16,14 +16,6 @@ html{
     font-size: 150%
 }
 
-.h{
-    grid-column: 1 / span 5;
-    grid-row: 1;
-    padding: 0px;
-}
-header{
-    text-align: center;
-}
 .singleView{
     display: grid;
     grid-template-columns: auto 1fr;
@@ -70,3 +62,4 @@ header{
     grid-column: span 1;
     grid-row: 1/ 2;
 }
+

@@ -5,7 +5,17 @@
 body {
     background-color: blue;
     margin: 10px;
+}
 
+/* Desktop */
+
+.main {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    background-color: white;
+    padding: 15px;
 }
 
 section {
@@ -16,6 +26,11 @@ section {
     grid-row: 2 / span 4;
     background-color: darkgrey;
     padding: 5px;
+}
+
+header {
+    grid-column: 1 / 3;
+    grid-row: 1 / 1;
 }
 
 .box {
@@ -66,29 +81,28 @@ section {
     /* background-color: #272c33; */
 }
 
-
 /* mobile */
+
 @media only screen and (max-width: 680px) {
+    main {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
     .a {
         grid-column: 1 / 3;
         grid-row: 2 / 3;
     }
-
     .b {
         grid-column: 1 / 3;
         grid-row: 3 / 4;
     }
-
     section {
         grid-template-rows: 200px 200px 200px;
         grid-column: 1 / 3;
         height: fit-content;
         grid-row: 4 / 6;
     }
-
-    .c,
-    .d,
-    .e {
+    .c, .d, .e {
         grid-column: 1 / 3;
         grid-row: auto;
     }

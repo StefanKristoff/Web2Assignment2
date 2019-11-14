@@ -1,19 +1,18 @@
+<?php
+include('includes\header.inc.php');
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>Single Photo</title>
-    <!-- <link rel="stylesheet" href="stylesheet.css"> -->
+    <link rel="stylesheet" href="stylesheet.css">
     <link rel="stylesheet" href="single-photo.css">
 </head>
 
 <body>
     <main class='grid-container'>
-        <div class="box h">
-            <header>
-                <h1>Header</h1>
-            </header>
-        </div>
+        <?php createHeader(); ?>
         <section class="box singleView">
             <div id="singlePic">
                 <img src="fake.jpg" width="300" height="300">
