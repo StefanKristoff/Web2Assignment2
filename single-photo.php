@@ -6,8 +6,8 @@ include('includes\header.inc.php');
 
 <head>
     <title>Single Photo</title>
-    <link rel="stylesheet" href="stylesheet.css">
-    <link rel="stylesheet" href="single-photo.css">
+    <link rel="stylesheet" href="css\stylesheet.css">
+    <link rel="stylesheet" href="css\single-photo.css">
 </head>
 
 <body>

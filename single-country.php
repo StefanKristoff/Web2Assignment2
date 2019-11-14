@@ -7,8 +7,8 @@ include('includes\header.inc.php');
 
 <head>
     <title>Single Country</title>
-    <link rel="stylesheet" href="stylesheet.css">
-    <link rel="stylesheet" href="country-stylesheet.css">
+    <link rel="stylesheet" href="css\stylesheet.css">
+    <link rel="stylesheet" href="css\country-stylesheet.css">
 </head>
 
 <body>

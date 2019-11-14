@@ -8,8 +8,8 @@ include('includes\header.inc.php');
     <meta charset="utf-8" />
     <title>About page</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,800" rel="stylesheet">
-    <link rel="stylesheet" href="stylesheet.css">
-    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="css\stylesheet.css">
+    <link rel="stylesheet" href="css\about.css">
 </head>
 
 <body>
