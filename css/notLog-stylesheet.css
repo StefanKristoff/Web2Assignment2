@@ -1,0 +1,16 @@
+/* #FF69B4 */
+/* .grid-container{
+    background-color: #FF69B4;
+} */
+
+.nested{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+div{
+    background-color: lightgray;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}

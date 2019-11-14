@@ -1,0 +1,33 @@
+.grid-container{
+    display: grid;
+    /* text-align: center; */
+}
+.nested{
+    display: grid;    
+    grid-template-columns: 20% 60% 20%;
+    text-align: center; 
+    border-radius: 5px;
+    padding: 2rem;
+}
+.innerNested{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-column: 2;
+    background-color: gray;
+    padding: 50px;
+
+}
+
+div{
+    padding: 10px;
+}
+input{
+    grid-column: 1 / span 2;
+
+}
+
+
+h3, img{
+    text-align: center;
+    grid-column: 2;
+}
