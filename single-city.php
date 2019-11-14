@@ -1,12 +1,42 @@
+<?php
+        
+        
+?>
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
+        <title>Single City</title>
+        <link rel="stylesheet" href="city-stylesheet.css">
     </head>
     <body>
-        <?php
-        
-        
-        ?>
+    <div class='grid-container'>
+            <header> 
+                <h1>Header</h1>
+                <h4></h4>
+            </header>
+
+            <main class='main'> 
+                <div class='box a'>
+                    <h3>City Filter</h3>
+                </div>
+                <div class='box b'>
+                    <h3>City List</h3>
+                </div>
+
+                <section>
+                    <div class='box c'>
+                        <h3>City Details</h3>
+                    </div>
+                    <div class='box d'>
+                        <h3>City Map</h3>
+                    </div>
+                    <div class='box e'>
+                        <h3>City Photos</h3>
+                    </div>
+                </section>
+                
+            </main>
+            
+        </div>
     </body>
 </html>
