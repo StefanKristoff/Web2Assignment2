@@ -14,7 +14,7 @@ include('includes\header.inc.php');
 
 <body>
     <main class="container">
-        <div class="grid-container">
+        <div class="main">
             <?php createHeader(); ?>
             <!-- Description of the Site -->
             <div class="aboutInfo">
