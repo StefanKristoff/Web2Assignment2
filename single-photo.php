@@ -28,12 +28,14 @@ include('includes\header.inc.php');
                     <label>Country, City:</label>
                     <span id="countryCity"></span>
 
+                    <div id="favoritesButton">
+                        <button id="favorites">Favorites</button>
+                    </div>
                     <div id="descriptionsTab">
                         <button class="itemTab" id="tabDescription">Description</button>
                         <button class="itemTab" id="tabDetails">Details</button>
                         <button class="itemTab" id="tabMap">Map</button>
                         <div class="tabBox" id="tabBoxDescription">
-                            <!-- <img src="fake.img" width="300" height="300" > -->
                         </div>
                     </div>
                 </div>
