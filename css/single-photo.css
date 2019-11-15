@@ -38,6 +38,12 @@ html{
     grid-row: 1 / 2;
     text-align: left;
 }
+#favoritesButton button {
+    margin: 10px 0px 10px 150px;
+    width: 200px;
+    position: absolute;
+    right: 50px;
+}
 .tabBox{
     grid-column: 1 / 4;
     grid-row: 2 / 3;
