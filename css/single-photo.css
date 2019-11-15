@@ -64,10 +64,6 @@ html{
 }
 
 @media only screen and (max-width: 680px) {
-    /* #singlePic, #singlePicInfo, #singlePicDetails, #descriptionsTab, .tabBox, .itemTab, #singlePicInfo {
-        grid-column: span 1;
-        
-    } */
 
     #singlePic, #singlePicInfo {
         grid-column: 1 / 3;
