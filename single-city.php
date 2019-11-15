@@ -1,5 +1,6 @@
 <?php
 include('includes\header.inc.php');
+include('includes\hamburger.inc.php');
 
 ?>
 <!DOCTYPE html>
@@ -15,7 +16,10 @@ include('includes\header.inc.php');
     <div class='grid-container'>
 
         <main class='main'>
-            <?php createHeader(); ?>
+            <?php 
+            createHeader(); 
+            createHamburger();
+            ?>
             <div class='box a card'>
                 <h3>City Filter</h3>
             </div>

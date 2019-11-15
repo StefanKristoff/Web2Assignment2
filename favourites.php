@@ -1,5 +1,6 @@
 <?php
 include('includes\header.inc.php');
+include('includes\hamburger.inc.php');
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +14,10 @@ include('includes\header.inc.php');
 
 <body>
     <main class='grid-container'>
-        <?php createHeader(); ?>
+        <?php 
+        createHeader(); 
+        createHamburger();
+        ?>
         <section class="favouriteImages">
             <?php
             for ($i = 0; $i < 10; $i++) {

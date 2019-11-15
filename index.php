@@ -1,5 +1,6 @@
 <?php
 include('includes\header.inc.php');
+include('includes\hamburger.inc.php');
 ?>
 
 
@@ -14,7 +15,10 @@ include('includes\header.inc.php');
 
 <body>
     <main class='grid-container'>
-        <?php createHeader(); ?>
+        <?php 
+        createHeader(); 
+        createHamburger();
+        ?>
         <section class='nested'>
             <h3>Hero Image</h3>
             <img src="" alt="">
