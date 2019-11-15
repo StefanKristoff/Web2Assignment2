@@ -1,6 +1,6 @@
-.grid-container{
+/* .grid-container{
     display: grid;
-}
+} */
 .nested{
     display: grid;    
     grid-template-columns: 20% 60% 20%;
@@ -12,7 +12,6 @@
     display: grid;
     grid-template-columns: 50% 50%;
     grid-column: 2;
-    background-color: gray;
     padding: 50px;
 
 }
@@ -25,15 +24,29 @@ input{
 
 }
 
+/* img{
+    grid-column: 1 / span 2;
+} */
 
-h3, img{
+.hero-img{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/pic2.jpg");
+    height: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+ 
+h3{
     text-align: center;
     grid-column: 2;
+    color: white;
+    font-size: 150%;
 }
 
 @media only screen and (max-width: 680px) {
 
-    h3, img {
+    h3{
         grid-column: 1 / 4;
         grid-row: auto;
     }

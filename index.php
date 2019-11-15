@@ -19,10 +19,11 @@ include('includes\hamburger.inc.php');
         createHeader(); 
         createHamburger();
         ?>
-        <section class='nested'>
-            <h3>Hero Image</h3>
-            <img src="" alt="">
+        
+        <section class='nested hero-img'>
+            <h3>WELCOME</h3>
             <div class='innerNested'>
+            
                 <div>
                     <button type='button'>Login</button>
                 </div>
