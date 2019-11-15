@@ -45,7 +45,6 @@ select {
 }
 
 .card {
-    /* display: grid; */
     padding: 10px;
     background-color: var(--cards);
     color: black;

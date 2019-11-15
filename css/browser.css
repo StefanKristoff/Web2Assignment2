@@ -26,7 +26,6 @@ header {
 }
 
 .resultrow {
-    /* display: inline-flex; */
     align-items: center;
     display: grid;
     grid-template-columns: auto 2fr auto auto;

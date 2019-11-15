@@ -1,6 +1,5 @@
 .grid-container{
     display: grid;
-    /* text-align: center; */
 }
 .nested{
     display: grid;    
