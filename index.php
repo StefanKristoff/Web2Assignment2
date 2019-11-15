@@ -9,7 +9,7 @@ include('includes\header.inc.php');
 <head>
     <title> Home Page Log In</title>
     <link rel="stylesheet" href="css\stylesheet.css">
-    <link rel="stylesheet" href="css\logIn-stylesheet.css">
+    <link rel="stylesheet" href="css\index.css">
 </head>
 
 <body>
