@@ -1,0 +1,14 @@
+.grid-container{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(10, 1fr);
+    color: #444;
+}
+
+header {
+    grid-column: 1 / 11;
+}
+
+.favouriteImages {
+    grid-column: 1 / 11;
+}
