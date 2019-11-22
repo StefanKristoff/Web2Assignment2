@@ -12,7 +12,7 @@ function getCountrySQL() {
 function getAllCountries($connection) {
   try {
     $sql = getCountrySQL() . " ORDER BY CountryName";
-    $result = runQuery($connection, getCountrySQL(), null);
+    $result = runQuery($connection, $sql, null);
     return $result;
   } catch (PDOException $e) {
     die($e->getMessage());
