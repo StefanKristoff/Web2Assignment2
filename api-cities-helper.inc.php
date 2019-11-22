@@ -2,7 +2,7 @@
 function getCitySQL()
 {
     $sql = 'SELECT CityCode, AsciiName, CountryCodeISO, Latitude, Longitude, Population, Elevation, TimeZone FROM cities';
-    $sql .= " ORDER BY CityCode";
+    $sql .= " ORDER BY AsciiName";
     return $sql;
 }
 
