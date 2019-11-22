@@ -38,7 +38,7 @@ function runQuery($connection, $sql, $parameters=array())     {
             throw new PDOException;
         }
     }
-    return json_encode($results);
+    return json_encode($results, JSON_PRETTY_PRINT+JSON_NUMERIC_CHECK);
 }   
 
 ?>
