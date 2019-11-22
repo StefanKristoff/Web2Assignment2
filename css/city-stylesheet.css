@@ -45,7 +45,6 @@ header {
     grid-row: 2 / span 1;
     overflow: auto;
     text-align: center;
-    /* background-color: #272c33; */
 }
 
 .b {
@@ -53,32 +52,26 @@ header {
     grid-row: 3 / span 3;
     text-align: center;
     overflow: auto;
-    /* background-color: #272c33; */
 }
 
 .c {
-    /* display: none; */
     grid-column: 1 / span 1;
     grid-row: 1 / span 2;
     overflow: auto;
     text-align: center;
-    /* background-color: #272c33; */
 }
 
 .d {
-    /* display: none; */
     grid-column: 1 / span 1;
     grid-row: 3 / span 2;
     overflow: auto;
     text-align: center;
-    /* background-color: #272c33; */
 }
 
 .e {
     grid-column: 2;
     grid-row: 1 / span 4;
     overflow: auto;
-    /* background-color: #272c33; */
 }
 
 /* mobile */

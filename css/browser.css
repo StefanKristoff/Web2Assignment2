@@ -26,7 +26,6 @@ header {
 }
 
 .resultrow {
-    /* display: inline-flex; */
     align-items: center;
     display: grid;
     grid-template-columns: auto 2fr auto auto;
@@ -36,4 +35,11 @@ header {
 
 .resultrow p {
     padding-left: 15px;
+}
+@media only screen and (max-width: 680px) {
+    header, .a, .b{
+        grid-column: 1/ 4;
+        grid-row: auto;
+
+    }
 }

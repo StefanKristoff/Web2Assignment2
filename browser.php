@@ -1,5 +1,6 @@
 <?php
 include('includes\header.inc.php');
+include('includes\hamburger.inc.php');
 
 function createResultRow($photo, $title) {
     echo "<div class='resultrow card'>";
@@ -21,7 +22,10 @@ function createResultRow($photo, $title) {
 
 <body>
     <main class='grid-container'>
-        <?php createHeader(); ?>
+        <?php 
+        createHeader(); 
+        createHamburger();
+        ?>
         <div class='box a card'>
             <h3>Country Filter</h3>
         </div>
@@ -32,12 +36,6 @@ function createResultRow($photo, $title) {
             <?= createResultRow("FakeImg.jpg", "Title3"); ?>
             <?= createResultRow("FakeImg.jpg", "Title4"); ?>
             <?= createResultRow("FakeImg.jpg", "Title5"); ?>
-            <!-- <div class="resultrow">
-                <img src='fakeimg.jpg' width='100px' height='100px'/>
-                <p>Title</p>
-                    <button>View</button>
-                    <button>Add to Favourites</button>
-            </div> -->
         </section>
 
     </main>

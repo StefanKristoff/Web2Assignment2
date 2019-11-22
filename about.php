@@ -1,5 +1,6 @@
 <?php
 include('includes\header.inc.php');
+include('includes\hamburger.inc.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,7 +16,9 @@ include('includes\header.inc.php');
 <body>
     <main class="container">
         <div class="main">
-            <?php createHeader(); ?>
+            <?php createHeader();
+            createHamburger();
+            ?>
             <!-- Description of the Site -->
             <div class="aboutInfo">
                 <h1>COMP_3512 Web Development II (Fall 2019)</h1>

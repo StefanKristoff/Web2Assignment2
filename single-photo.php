@@ -1,5 +1,6 @@
 <?php
 include('includes\header.inc.php');
+include('includes\hamburger.inc.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,7 +13,10 @@ include('includes\header.inc.php');
 
 <body>
     <main class='grid-container'>
-        <?php createHeader(); ?>
+        <?php 
+        createHeader(); 
+        createHamburger();
+        ?>
         <section class="box singleView">
             <div id="singlePic">
                 <img src="fake.jpg" width="300" height="300">
