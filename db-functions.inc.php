@@ -24,17 +24,21 @@ function runQuery($connection, $sql, $parameters=array())     {
         // Use a prepared statement if parameters 
         $statement = $connection->prepare($sql);
         $executedOk = $statement->execute($parameters);
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
         if (! $executedOk) {
             throw new PDOException;
         }
     } else {
         // Execute a normal query     
-        $statement = $connection->query($sql); 
+        // $statement = $connection->query($sql);
+        $statement = $connection->prepare($sql);
+        $statement->execute();
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
         if (!$statement) {
             throw new PDOException;
         }
     }
-    return $statement;
+    return json_encode($results);
 }   
 
 ?>
