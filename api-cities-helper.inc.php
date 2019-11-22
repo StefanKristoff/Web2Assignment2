@@ -2,14 +2,13 @@
 function getCitySQL()
 {
     $sql = 'SELECT CityCode, AsciiName, CountryCodeISO, Latitude, Longitude, Population, Elevation, TimeZone FROM cities';
-    $sql .= " ORDER BY AsciiName";
     return $sql;
 }
 
 function getAllCities($connection)
 {
     try {
-        $sql = getCitySQL();
+        $sql = getCitySQL() . " ORDER BY AsciiName";
         $result = runQuery($connection, $sql, null);
         return $result;
     } catch (PDOException $e) {
@@ -20,7 +19,7 @@ function getAllCities($connection)
 function getCitiesById($connection, $id)
 {
     try {
-        $sql = getCitySQL() . ' WHERE ISO=? ';
+        $sql = getCitySQL() . ' WHERE ISO=? ' . " ORDER BY AsciiName";
         $result = runQUery($connection, $sql, $id);
         return $result;
     } catch (PDOException $e) {
