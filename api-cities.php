@@ -5,8 +5,8 @@ require_once 'db-functions.inc.php';
 
 header('Content-Type: application/json');
 
-if (isset($_GET['CityCode'])) {
-        $cities = getCitiesById(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $_GET['CityCode']);
+if (isset($_GET['CountryCodeISO'])) {
+        $cities = getCitiesById(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $_GET['CountryCodeISO']);
     } else {
         $cities = getAllCities(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
 
