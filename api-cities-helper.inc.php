@@ -19,7 +19,7 @@ function getAllCities($connection)
 function getCitiesById($connection, $id)
 {
     try {
-        $sql = getCitySQL() . ' WHERE ISO=? ' . " ORDER BY AsciiName";
+        $sql = getCitySQL() . ' WHERE CountryCodeISO=? ' . " ORDER BY AsciiName";
         $result = runQUery($connection, $sql, $id);
         return $result;
     } catch (PDOException $e) {
