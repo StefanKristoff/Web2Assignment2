@@ -10,7 +10,7 @@ $dbparts = parse_url($url);
 $hostname = $dbparts['host'];
 $username = $dbparts['user'];
 $password = $dbparts['pass'];
-$database = $ltrim($dbparts['path'],'/');
+$database = ltrim($dbparts['path'],'/');
 
 // you may need to change these for your own environment
 define('DBCONNECTION', "mysql:host=$hostname;dbname=$database");
