@@ -14,8 +14,8 @@ $database = ltrim($dbparts['path'],'/');
 
 // you may need to change these for your own environment
 define('DBCONNECTION', "mysql:host=$hostname;dbname=$database");
-define('DBUSER', '$username');
-define('DBPASS', '$password');
+define('DBUSER', $username);
+define('DBPASS', $password);
 
 // auto load all classes so we don't have to explicitly include them
 spl_autoload_register(function ($class) {
