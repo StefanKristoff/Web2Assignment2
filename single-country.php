@@ -1,6 +1,6 @@
 <?php
-include('includes\header.inc.php');
-include('includes\hamburger.inc.php');
+include('includes/header.inc.php');
+include('includes/hamburger.inc.php');
 ?>
 
 <!DOCTYPE html>
@@ -10,6 +10,7 @@ include('includes\hamburger.inc.php');
     <title>Single Country</title>
     <link rel="stylesheet" href="css\stylesheet.css">
     <link rel="stylesheet" href="css\country-stylesheet.css">
+    <script src="single-country.js"></script>
 </head>
 
 <body>
