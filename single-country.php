@@ -26,6 +26,10 @@ include('includes/hamburger.inc.php');
             </div>
             <div class='box b card'>
                 <h3>Country List</h3>
+                <?php 
+                
+                ?>
+
                 <ul id="filteredCountry"></ul>
             </div>
 
