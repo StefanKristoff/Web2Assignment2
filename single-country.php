@@ -10,15 +10,15 @@ include('includes/hamburger.inc.php');
     <title>Single Country</title>
     <link rel="stylesheet" href="css\stylesheet.css">
     <link rel="stylesheet" href="css\country-stylesheet.css">
-    <script src="single-country.js"></script>
+    <script src="javascript/single-country.js"></script>
 </head>
 
 <body>
     <div class='grid-container'>
 
         <main class='main'>
-            <?php 
-            createHeader(); 
+            <?php
+            createHeader();
             createHamburger();
             ?>
             <div class='box a card'>
@@ -26,6 +26,7 @@ include('includes/hamburger.inc.php');
             </div>
             <div class='box b card'>
                 <h3>Country List</h3>
+                <ul id="filteredCountry"></ul>
             </div>
 
             <section>
