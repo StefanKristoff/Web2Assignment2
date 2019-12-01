@@ -10,15 +10,15 @@ include('includes/hamburger.inc.php');
     <title>Single City</title>
     <link rel="stylesheet" href="css\stylesheet.css">
     <link rel="stylesheet" href="css\city-stylesheet.css">
-    
+    <script src="javascript\single-city.js"></script>
 </head>
 
 <body>
     <div class='grid-container'>
 
         <main class='main'>
-            <?php 
-            createHeader(); 
+            <?php
+            createHeader();
             createHamburger();
             ?>
             <div class='box a card'>
@@ -26,11 +26,27 @@ include('includes/hamburger.inc.php');
             </div>
             <div class='box b card'>
                 <h3>City List</h3>
+                <ul class="filteredCity"></ul>
             </div>
 
             <section>
                 <div class='box c card'>
+                    <h2 id="cityName"></h2>
                     <h3>City Details</h3>
+                    <section>
+                        <div>
+                            <label>Population: </label>
+                            <span id="cityPopulation"></span>
+                        </div>
+                        <div>
+                            <label>Elevation: </label>
+                            <span id="cityElevation"></span>
+                        </div>
+                        <div>
+                            <label>Time Zone: </label>
+                            <span id="cityTimeZone"></span>
+                        </div>
+                    </section>
                 </div>
                 <div class='box d card'>
                     <h3>City Map</h3>
@@ -44,6 +60,6 @@ include('includes/hamburger.inc.php');
 
     </div>
 </body>
-<script> src="single-city.js"</script>
+
 
 </html>
