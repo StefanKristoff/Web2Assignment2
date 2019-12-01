@@ -30,7 +30,6 @@ function runQuery($connection, $sql, $parameters=array())     {
         }
     } else {
         // Execute a normal query     
-        // $statement = $connection->query($sql);
         $statement = $connection->prepare($sql);
         $statement->execute();
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
