@@ -9,3 +9,4 @@ function createHamburger()
     }
     echo "</div>";
 }
+?>
