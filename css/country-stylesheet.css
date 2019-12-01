@@ -72,7 +72,10 @@ section {
     grid-row: 1 / span 4;
     overflow: auto;
 }
-
+/* #filteredCountry{
+    height: 600px;
+    overflow-y: auto;
+} */
 
 /* mobile */
 @media only screen and (max-width: 680px) {
