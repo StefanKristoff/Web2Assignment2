@@ -17,10 +17,6 @@ include('includes\hamburger.inc.php');
 
 <body>
     <main class='grid-container'>
-        <?php
-        createHeader();
-        createHamburger();
-        ?>
 
         <section class='nested hero-img'>
             <h3>WELCOME</h3>
