@@ -1,6 +1,6 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'app\includes\header.inc.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'app\includes\hamburger.inc.php');
+require_once "includes\header.inc.php";
+require_once "includes\hamburger.inc.php";
 ?>
 
 
