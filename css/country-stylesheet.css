@@ -72,6 +72,9 @@ section {
     grid-row: 1 / span 4;
     overflow: auto;
 }
+li {
+    list-style-type: none;
+}
 /* #filteredCountry{
     height: 600px;
     overflow-y: auto;
