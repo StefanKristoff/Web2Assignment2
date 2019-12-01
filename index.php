@@ -1,7 +1,4 @@
 <?php
-// require_once "includes\header.inc.php";
-// require_once "includes\hamburger.inc.php";
-
 require_once "includes/header.inc.php";
 require_once "includes/hamburger.inc.php";
 ?>
@@ -14,8 +11,8 @@ require_once "includes/hamburger.inc.php";
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> Home Page Log In</title>
-    <link rel="stylesheet" href="css\stylesheet.css">
-    <link rel="stylesheet" href="css\index.css">
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
