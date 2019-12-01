@@ -8,8 +8,8 @@ include('includes/hamburger.inc.php');
 
 <head>
     <title>Single City</title>
-    <link rel="stylesheet" href="css/stylesheet.css">
-    <link rel="stylesheet" href="css/city-stylesheet.css">
+    <link rel="stylesheet" href="css\stylesheet.css">
+    <link rel="stylesheet" href="css\city-stylesheet.css">
 </head>
 
 <body>
