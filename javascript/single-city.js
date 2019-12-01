@@ -7,18 +7,25 @@ let citiesWithImages = retrieveCityWithImagesStorage();
 
 // Fetch from url and call function
 fetchCities();
+fetchCitiesWithImage();
 
 // Calls to create country list, create listener, etc
+setCityOnClickListener();
+setCityHasImagesListener();
+
+//More event listener
+document.querySelector("#resetCityFilter").addEventListener("click", resetCityFilters);
+document.querySelector("#citySearch").addEventListener("keyup", displayCityMatches);
 
 function updateCityStorage() {
     localStorage.setItem("cities", JSON.stringify(cities));
 }
 
 function retieveCityStorage(){
-    return JSON.parse(localStorage.getItem("cities")) || [];
+    return JSON.parse(localStorage.getItem(" ")) || [];
 }
 
-function updateCityWithStorage(){
+function updateCityWithImageStorage(){
     localStorage.setItem("citiesWithImages",  JSON.stringify(citiesWithImages));
 }
 function retrieveCityWithImagesStorage(){
@@ -42,6 +49,20 @@ function fetchCities(){
     }
 }
 
+function fetchCitiesWithImage(){
+    if(citiesWithImages.length < 1){
+        fetch(cityEndPoint)
+            .then(response => response.json())
+            .then(date => {
+                for (let c of data ){
+                    citiesWithImages.push(c)
+                }
+                updateCityWithImageStorage();
+            })
+            .catch(error => console.error(error))
+    }
+}
+
 function setCityOnClickListener() {
     const list = document.querySelector("#citylist");
     list.addEventListener("click", e => {
@@ -57,7 +78,7 @@ function populateCityList(countryName){
     let countrySelected = countries.find(c => c.name == countryName);
     selectedCountry = countryName;
 
-    const suggested = document.querySelector("#filteredCity");
+    const suggested = document.querySelector("#b");
 
     suggested.innerHTML = "";
 

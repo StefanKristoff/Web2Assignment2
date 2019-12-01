@@ -10,6 +10,7 @@ include('includes/hamburger.inc.php');
     <title>Single City</title>
     <link rel="stylesheet" href="css\stylesheet.css">
     <link rel="stylesheet" href="css\city-stylesheet.css">
+    
 </head>
 
 <body>
@@ -43,5 +44,6 @@ include('includes/hamburger.inc.php');
 
     </div>
 </body>
+<script> src="single-city.js"</script>
 
 </html>
