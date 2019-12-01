@@ -1,29 +1,41 @@
+<?php
+include('includes\header.inc.php');
+include('includes\hamburger.inc.php');
+?>
+
+
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sample LAMP Application</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
-  </head>
-  <body>
-  <section class="section">
-    <div class="container">
-      <h1 class="title">
-        Sample LAMP Application
-      </h1>
-      <hr>
-      <img src="image.jpg" />
-      <p class="subtitle">
-        Verify that <a href="tester.php">PHP is installed and works</a>
-      </p>      
-      <p class="subtitle">
-        See the <a href="companies.php">database at work in API</a>
-      </p>
-      <p class="subtitle">
-        See just <a href="companies.php?symbol=AMZN">a single JSON company</a>
-      </p>      
-    </div>
-  </section>
-  </body>
+    <title> Home Page Log In</title>
+    <link rel="stylesheet" href="css\stylesheet.css">
+    <link rel="stylesheet" href="css\index.css">
+</head>
+
+<body>
+    <main class='grid-container'>
+        <?php
+        createHeader();
+        createHamburger();
+        ?>
+
+        <section class='nested hero-img'>
+            <h3>WELCOME</h3>
+            <div class='innerNested'>
+
+                <div>
+                    <button type='button'>Login</button>
+                </div>
+                <div>
+                    <button type='button'>Join</button>
+                </div>
+                <input type="text" placeholder="SEARCH BOX FOR PHOTOS...">
+            </div>
+        </section>
+    </main>
+</body>
+
 </html>
