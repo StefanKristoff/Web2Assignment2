@@ -1,6 +1,6 @@
 <?php
-include('includes\header.inc.php');
-include('includes\hamburger.inc.php');
+require_once('includes\header.inc.php');
+require_once('includes\hamburger.inc.php');
 ?>
 
 
@@ -17,6 +17,10 @@ include('includes\hamburger.inc.php');
 
 <body>
     <main class='grid-container'>
+        <?php
+        createHeader();
+        createHamburger();
+        ?>
 
         <section class='nested hero-img'>
             <h3>WELCOME</h3>
