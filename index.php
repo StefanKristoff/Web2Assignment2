@@ -1,6 +1,6 @@
 <?php
-require_once "\app\includes\header.inc.php";
-require_once "\app\includes\hamburger.inc.php";
+require_once "/app/includes/header.inc.php";
+require_once "/app/includes/hamburger.inc.php";
 ?>
 
 
