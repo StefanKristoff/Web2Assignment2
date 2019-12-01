@@ -1,6 +1,6 @@
 <?php
-include('includes\header.inc.php');
-include('includes\hamburger.inc.php');
+require_once "includes/header.inc.php";
+require_once "includes/hamburger.inc.php";
 ?>
 
 
@@ -8,6 +8,8 @@ include('includes\hamburger.inc.php');
 <html>
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> Home Page Log In</title>
     <link rel="stylesheet" href="css\stylesheet.css">
     <link rel="stylesheet" href="css\index.css">
@@ -15,15 +17,15 @@ include('includes\hamburger.inc.php');
 
 <body>
     <main class='grid-container'>
-        <?php 
-        createHeader(); 
+        <?php
+        createHeader();
         createHamburger();
         ?>
-        
+
         <section class='nested hero-img'>
             <h3>WELCOME</h3>
             <div class='innerNested'>
-            
+
                 <div>
                     <button type='button'>Login</button>
                 </div>

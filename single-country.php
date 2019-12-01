@@ -1,6 +1,6 @@
 <?php
-include('includes\header.inc.php');
-include('includes\hamburger.inc.php');
+include('includes/header.inc.php');
+include('includes/hamburger.inc.php');
 ?>
 
 <!DOCTYPE html>
