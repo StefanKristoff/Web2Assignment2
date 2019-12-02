@@ -81,6 +81,7 @@ li {
 ul {
     overflow: scroll;
     height: 600px;
+    text-align: left;
 }
 
 /* mobile */
