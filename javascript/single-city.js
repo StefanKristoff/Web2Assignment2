@@ -79,13 +79,27 @@ function  populateCityDetails(cityName){
     const population = document.querySelector("#cityPopulation");
     const elevation = document.querySelector("#cityElevation");
     const timeZone = document.querySelector("#cityTimeZone");
-    
-    cityMap(citySelected.Latitude, citySelected.Longitude);
 
+    const populationLabel = document.querySelector(".popLabel");
+    const elevationLabel = document.querySelector(".eleLabel");
+    const timeZoneLabel = document.querySelector(".timeLabel");
+    cityMap(citySelected.Latitude, citySelected.Longitude);
+    // title the lables
+    populationLabel.innerHTML = "";
+    elevationLabel.innerHTML = "";
+    timeZoneLabel.innerHTML = "";
+
+    //The detailes
     h2.innerHTML = "";
     population.innerHTML = "";
     elevation.innerHTML = "";
     timeZone.innerHTML = "";
+
+
+    // printing out city details + labels
+    populationLabel.innerHTML = "Population: ";
+    elevationLabel.innerHTML = "Elevation: ";
+    timeZoneLabel.innerHTML = "Time Zone: ";
 
     h2.textContent = citySelected.AsciiName;
     population.textContent = citySelected.Population;

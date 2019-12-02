@@ -21,9 +21,17 @@ include('includes/hamburger.inc.php');
             createHeader();
             createHamburger();
             ?>
-            <div class='box a card'>
-                <h3>City Filter</h3>
+            <div class='box a card'> 
+            
+                    <h3>City Filter</h3>
+                    <p>
+                        <input type="text" id="citySearch" class="search" placeholder="Search Cities" list="filteredCity">
+                    </p>
+                    <button type="button" class="filterBtn" id="cityHasImages" list="filteredCity">Only have Images</button>
+                    <button type="button" class="filterBtn" id="resetCityFilter" list="filteredCity">Reset Filters</button>
+            
             </div>
+
             <div class='box b card'>
                 <h3>City List</h3>
                 <ul class="filteredCity"></ul>
@@ -32,18 +40,17 @@ include('includes/hamburger.inc.php');
             <section>
                 <div class='box c card'>
                     <h2 id="cityName"></h2>
-                    <h3>City Details</h3>
                     <section>
                         <div>
-                            <label>Population: </label>
+                            <label class="popLabel"> </label>
                             <span id="cityPopulation"></span>
                         </div>
                         <div>
-                            <label>Elevation: </label>
+                            <label class="eleLabel"> </label>
                             <span id="cityElevation"></span>
                         </div>
                         <div>
-                            <label>Time Zone: </label>
+                            <label class="timeLabel"> </label>
                             <span id="cityTimeZone"></span>
                         </div>
                     </section>
