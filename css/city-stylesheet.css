@@ -51,7 +51,8 @@ header {
     grid-column: 1 / span 1;
     grid-row: 3 / span 3;
     text-align: center;
-    overflow: auto;
+    overflow: scroll;
+    height: 600px;
 }
 
 .c {
@@ -73,6 +74,11 @@ header {
     grid-row: 1 / span 4;
     overflow: auto;
 }
+
+.filteredCity{
+    list-style-type: none;
+}
+
 
 /* mobile */
 
