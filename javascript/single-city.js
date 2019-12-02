@@ -161,14 +161,20 @@ console.log("hello World");
 //     document.querySelector("#filteredCity").innerHTML = "";
 // }
 
+// The url for the city data
 const cityEndpoint = 'http://localhost/web2Assignment2/api-cities.php'
 
+// Retrieve local Storage
 let cities = retrieveCityStorage();
 
+// Fetch from Url and call function
 fetchCities();
 
+// Calls to create city list, create listener, etc
 populateCity();
+setCityOnClickListener();
 
+// CITY Storage
 function updateCityStorage() {
     localStorage.setItem("cities", JSON.stringify(cities));
 }
@@ -211,12 +217,44 @@ function populateCity(){
     cities.forEach(city =>{
         var option = document.createElement('li');
         option.textContent = city.AsciiName;
-        console.log(option);
         suggestions.appendChild(option);
     })
 }
 
+function setCityOnClickListener(){
+    const list = document.querySelector(".b");
+    list.addEventListener("click", e => {
+        console.log("HEy");
+        if (e.target && e.target.nodeName.toLowerCase() == 'li'){
+            console.log(e.target.textContent);
+            populateCityDetails(e.target.textContent);
+            populateCityDetails(e.target.textContent);
+        }
+    })
+}
 
+function  populateCityDetails(cityName){
+    let citySelected = cities.find(c => c.AsciiName == cityName);
+    const h2 = document.querySelector("#cityName");
+    const population = document.querySelector("#cityPopulation");
+    const elevation = document.querySelector("#cityElevation");
+    const timeZone = document.querySelector("#cityTimeZone");
+    
+    cityMap(citySelected.Latitude, citySelected.Longitude);
 
+    h2.innerHTML = "";
+    population.innerHTML = "";
+    elevation.innerHTML = "";
+    timeZone.innerHTML = "";
+
+    h2.textContent = citySelected.AsciiName;
+    population.textContent = citySelected.Population;
+    elevation.textContent = citySelected.Elevation;
+    timeZone.textContent = citySelected.TimeZone;
+
+}
+function cityMap(lat, long){
+    
+}
 
 })
