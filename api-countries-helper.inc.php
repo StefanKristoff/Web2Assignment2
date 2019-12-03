@@ -30,6 +30,17 @@ function getCountriesById($connection, $id) {
 
 }
 
+function getCountryWithImages($connection){
+  try{
+      $sql = getCountrySQL() . ' INNER JOIN imagedetails ON countries.CityCode = imagedetails.CityCode GROUP BY countries.CountryName';
+      $result = runQuery($connection, $sql, null);
+      return $result;
+
+  }catch(PDOException $e){
+      die($e->getMessage());
+  }
+}
+
 
 
 ?>

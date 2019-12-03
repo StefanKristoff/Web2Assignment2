@@ -11,5 +11,5 @@ if (isset($_GET['iso'])) {
     $countries = getAllCountries(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
 }
 
-echo $countries;
+echo json_encode($countries, JSON_PRETTY_PRINT+JSON_NUMERIC_CHECK);
 ?>

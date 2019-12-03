@@ -11,5 +11,5 @@ if (isset($_GET['CountryCodeISO'])) {
         $cities = getAllCities(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
 
 }
-echo $cities;
+echo json_encode($cities, JSON_PRETTY_PRINT+JSON_NUMERIC_CHECK);
 ?>

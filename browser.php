@@ -1,17 +1,27 @@
 <?php
 include('includes/header.inc.php');
 include('includes/hamburger.inc.php');
+include('includes/browser.inc.php');
 
-// Does this function go into the an include-php file?
-function createResultRow($photo, $title) {
-    echo "<div class='resultrow card'>";
-    echo "<img src='$photo' width='100px' height='100px'/>";
-    echo "<p>$title</p>";
-    echo "<button>View</button>";
-    echo "<button>Add to Favourites</button>";
-    echo "</div>";
+function createCityFilterMode(){
+    echo "<select name='cityImg' id='cityImg' placeHolder='Filter By...'>";
+        echo "<option value=''>Filter By... </option>";
+
+        $cityImg = getCityWithImages(setConnectionInfo(DBCONNECTION,DBUSER,DBPASS));
+        $countryImg = getCountryWithImages(setConnectionInfo((DBCONNECTION,DBUSER,DBPASS));
+
+                
+
+    
+    echo '</select>';
+
+    
 }
+
+
 ?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -29,6 +39,7 @@ function createResultRow($photo, $title) {
         ?>
         <div class='box a card'>
             <h3>Photo Filter</h3>
+            <?= createCityFilterMode()?>
         </div>
 
         <section class="box b card">

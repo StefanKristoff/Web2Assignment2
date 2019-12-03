@@ -26,4 +26,16 @@ function getCitiesById($connection, $id)
         die($e->getMessage());
     }
 }
+
+function getCityWithImages($connection){
+    try{
+        $sql = getCitySQL() . ' INNER JOIN imagedetails ON cities.CityCode = imagedetails.CityCode GROUP BY cities.AsciiName';
+        $result = runQuery($connection, $sql, null);
+        return $result;
+
+    }catch(PDOException $e){
+        die($e->getMessage());
+    }
+}
+
 ?>
