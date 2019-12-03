@@ -2,6 +2,7 @@
 include('includes/header.inc.php');
 include('includes/hamburger.inc.php');
 
+// Does this function go into the an include-php file?
 function createResultRow($photo, $title) {
     echo "<div class='resultrow card'>";
     echo "<img src='$photo' width='100px' height='100px'/>";
@@ -27,7 +28,7 @@ function createResultRow($photo, $title) {
         createHamburger();
         ?>
         <div class='box a card'>
-            <h3>Country Filter</h3>
+            <h3>Photo Filter</h3>
         </div>
 
         <section class="box b card">
