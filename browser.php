@@ -9,9 +9,8 @@ function createCityFilterMode(){
     echo "<form method='get' action='browser.php'>";
         echo "<select name='cityImg' id='cityImg' placeHolder='Filter By...'>";
             echo "<option value=''>Filter By... </option>";
-
-            // echo "<option value=''>Country </option>";
-            // echo "<option value=''>City</option>"; 
+            echo "<option value=''>Country </option>";
+            echo "<option value=''>City</option>"; 
         echo "</select>"; 
         echo "<input type='submit' name='submit' value='Search'>";  
     echo "</form>";
@@ -29,7 +28,6 @@ function countryImageList(){
         echo "<option value''> {$co['CountryName']} </option>";
     }
 }
-
 ?>
 
 

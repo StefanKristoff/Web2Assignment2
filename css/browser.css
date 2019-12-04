@@ -36,6 +36,15 @@ header {
 .resultrow p {
     padding-left: 15px;
 }
+
+.cityWithImg, .countryWithImg{
+    text-align: left;
+    font-size: 80%;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+}
+
 @media only screen and (max-width: 680px) {
     header, .a, .b{
         grid-column: 1/ 4;
