@@ -1,10 +1,13 @@
 <?php
 
+require_once 'config.inc.php';
+
+
 /*
   This function returns a connection object to a database
 */
 function setConnectionInfo( $connString, $user, $password ) {
-    $pdo = new PDO($connString,$user,$password);
+    $pdo = new PDO($connString, $user, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $pdo;      
 }

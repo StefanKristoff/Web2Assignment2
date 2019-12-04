@@ -1,23 +1,34 @@
 <?php
 include('includes/header.inc.php');
 include('includes/hamburger.inc.php');
-include('includes/browser.inc.php');
+require_once 'includes/browser.inc.php';
+require_once 'config.inc.php';
+
 
 function createCityFilterMode(){
-    echo "<select name='cityImg' id='cityImg' placeHolder='Filter By...'>";
-        echo "<option value=''>Filter By... </option>";
+    echo "<form method='get' action='browser.php'>";
+        echo "<select name='cityImg' id='cityImg' placeHolder='Filter By...'>";
+            echo "<option value=''>Filter By... </option>";
 
-        $cityImg = getCityWithImages(setConnectionInfo(DBCONNECTION,DBUSER,DBPASS));
-        $countryImg = getCountryWithImages(setConnectionInfo((DBCONNECTION,DBUSER,DBPASS));
-
-                
-
-    
-    echo '</select>';
-
-    
+            // echo "<option value=''>Country </option>";
+            // echo "<option value=''>City</option>"; 
+        echo "</select>"; 
+        echo "<input type='submit' name='submit' value='Search'>";  
+    echo "</form>";
 }
+function cityImageList(){
+    $cityImg = getCityWithImages(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
+    foreach($cityImg as $ci){
+        echo "<option value''> {$ci['AsciiName']} </option>";
+    }
+}
+function countryImageList(){
+    $countryImg = getCountryWithImages(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
 
+    foreach($countryImg as $co){
+        echo "<option value''> {$co['CountryName']} </option>";
+    }
+}
 
 ?>
 
@@ -40,6 +51,16 @@ function createCityFilterMode(){
         <div class='box a card'>
             <h3>Photo Filter</h3>
             <?= createCityFilterMode()?>
+            <div class='cityWithImg'>
+                <ul>
+                    <?= cityImageList()?>
+                </ul>
+            </div>
+            <div class='countryWithImg'>
+                <ul>
+                    <?= countryImageList()?>
+                </ul>
+            </div>
         </div>
 
         <section class="box b card">

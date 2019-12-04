@@ -1,4 +1,10 @@
 <?php
+require_once 'api-cities-helper.inc.php';
+require_once 'api-countries-helper.inc.php';
+require_once 'config.inc.php';
+
+
+//dont know if this will work???
 
 
 
@@ -12,5 +18,13 @@ function createResultRow($photo, $title) {
     echo "</div>";
 }
 
+
+
+// $cityImg = getCityWithImages(setConnectionInfo(DBCONNECTION,DBUSER,DBPASS));
+// $countryImg = getCountryWithImages(setConnectionInfo(DBCONNECTION,DBUSER,DBPASS));
+
+// foreach($cityImg as $ci){
+    
+// }
 
 ?>

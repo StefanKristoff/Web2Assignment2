@@ -1,7 +1,10 @@
 <?php
+require_once 'db-functions.inc.php';
+require_once 'config.inc.php';
+
 
 function getCountrySQL() {
-   $sql = 'SELECT ISO, ISONumeric, CountryName, Capital, CityCode, Area, Population, Continent, TopLevelDomain, CurrencyCode, CurrencyName, PhoneCountryCode, Languages, Neighbours, CountryDescription FROM countries';
+   $sql = 'SELECT ISO, ISONumeric, CountryName, Capital, countries.CityCode, Area, Population, Continent, TopLevelDomain, CurrencyCode, CurrencyName, PhoneCountryCode, Languages, Neighbours, CountryDescription FROM countries';
    
    return $sql;
 }
@@ -32,7 +35,7 @@ function getCountriesById($connection, $id) {
 
 function getCountryWithImages($connection){
   try{
-      $sql = getCountrySQL() . ' INNER JOIN imagedetails ON countries.CityCode = imagedetails.CityCode GROUP BY countries.CountryName';
+      $sql = getCountrySQL() . ' INNER JOIN imagedetails ON countries.ISO = imagedetails.CountryCodeISO GROUP BY CountryName';
       $result = runQuery($connection, $sql, null);
       return $result;
 

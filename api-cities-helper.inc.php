@@ -1,7 +1,10 @@
 <?php
+require_once 'db-functions.inc.php';
+require_once 'config.inc.php';
+
 function getCitySQL()
 {
-    $sql = 'SELECT CityCode, AsciiName, CountryCodeISO, Latitude, Longitude, Population, Elevation, TimeZone FROM cities';
+    $sql = 'SELECT cities.CityCode, AsciiName, cities.CountryCodeISO, cities.Latitude, cities.Longitude, Population, Elevation, TimeZone FROM cities';
     return $sql;
 }
 
