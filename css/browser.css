@@ -42,8 +42,32 @@ header {
     font-size: 80%;
     background-color: black;
     color: white;
-    text-decoration: none;
+    
+    overflow: scroll;
+    height: 250px;
+
+    border-radius: 5px;
+    padding: 2px;
+    margin: 5px;
 }
+.cityWithImg ul li, .countryWithImg ul li{
+    list-style: none;    
+}
+.cityWithImg li:hover, .countryWithImg li:hover{
+    background-color: aquamarine;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+}
+/* hides the list of country and city that have images until the user
+chooses which oone to pick */
+/* .cityWithImg{
+    display: none;
+} */
+
+/* .countryWithImg{
+    display: none;
+} */
 
 @media only screen and (max-width: 680px) {
     header, .a, .b{
