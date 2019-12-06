@@ -83,6 +83,8 @@ function getCountryImg($connection, $countryCode){
         die($e->getMessage());
     }
 }
+
+//DO I EVEN NEED THIS?????? WE'LL SEE
 function getImageByName($connection, $name){
     try{
         $sql = getImage() . " WHERE i.Title = '$name'";

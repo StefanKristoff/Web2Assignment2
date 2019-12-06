@@ -16,7 +16,7 @@ function createResultRow($photo, $title) {
     echo "<div class='resultrow card'>";
     echo "<img src='images/case-travel-master/images/medium800/$photo' width='100px' height='100px'/>";
     echo "<p>$title</p>";
-    echo "<button>View</button>";
+    echo "<a href='single-photo.php'> <button>View</button> </a>";
     echo "<button>Add to Favourites</button>";
     echo "</div>";
 }
@@ -42,7 +42,9 @@ function createFilters(){
             }
         echo "</select>"; 
         echo "<input type='text' value='' name='ImgName' placeHolder='Seach Image by name'>";
-        echo "<input type='submit' name='submit'>";
+        // echo "<input type='submit' name='submit'>";
+        echo "<button type='submit' name='submit' value=''>Filter</button>";
+        echo "<button type='submit' name='Clear' value=''>Clear Filter</button>";
     echo "</form>";
 }
 

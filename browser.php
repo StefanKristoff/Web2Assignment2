@@ -9,21 +9,27 @@ $pdo = setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS);
 // printImage($images);
 
 
+
 if(isset($_GET['cities']) && $_GET['cities'] != ''){
-    $cityCode = $_GET['cities'];
-    echo $cityCode;  
+    $cityCode = $_GET['cities']; 
     $cityImages = getCityImg($pdo, $cityCode);
     $images = $cityImages;
 }else if(isset($_GET['countries']) && $_GET['countries'] != ''){
     $countryISO = $_GET['countries'];
-    echo $countryISO;
     $countryImage = getCountryImg($pdo, $countryISO);
     $images = $countryImage;
 }else if(isset($_GET['ImgName']) && $_GET['ImgName'] != ''){
     $name = $_GET['ImgName'];
-    echo $name;
-    // $ImageName = getImageByName($pdo, $name);
-    // $images = $ImageName;
+    $tempArray = [];
+
+    foreach($images as $image){
+        $imgFound = $image['Title'];
+        if (strpos(strtoupper($imgFound), strtoupper($name)) !== false){
+            $tempArray[] = $image;
+        }
+    }
+    $images = $tempArray;
+
 }
 else{
     foreach($images as $image){
