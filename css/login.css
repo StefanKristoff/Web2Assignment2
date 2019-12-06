@@ -1,0 +1,9 @@
+.loginform {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-gap: --var(grid-gap);
+}
+
+label {
+    text-align: right;
+}
