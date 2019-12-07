@@ -1,6 +1,11 @@
 html{
     box-sizing: border-box;
 }
+body{
+    background-image: url("../images/pic2.jpg");
+    background-repeat: none;
+    background-size: contain;
+}
 header {
     grid-column: 1 / 4;
     grid-row: 1 / 1;
@@ -13,7 +18,7 @@ header {
     color: #444;
 }
 .box {
-    background-color: slateblue;
+    background: rgba(255, 255, 255, .5);
     color: black;
     border-radius: 5px;
     padding: 20px;
@@ -35,7 +40,6 @@ header {
 #singlePic{
     grid-column: 1 / 2;
     margin-right: var(--grid-gap);
-    background-color: lightcoral;
 }
 #singlePicDetails{
     grid-column: 1 / 3;
@@ -53,9 +57,12 @@ header {
     grid-row: 2 / 3;
     height: 200px;
     width: inherit;
-    background-color: green;
+    background-color: White;
     color: black;
-    text-align: center;
+    text-align: left;
+    
+    overflow: auto;
+    padding: 10px;
 }
 #descriptionsTab{
     border-radius: 5px;
@@ -71,6 +78,7 @@ header {
     height: fit-content;
     grid-column: span 1;
     grid-row: 1/ 2;
+    overflow: auto;
 }
 
 @media only screen and (max-width: 680px) {

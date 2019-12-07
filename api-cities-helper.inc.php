@@ -8,7 +8,7 @@ function getCitySQL()
     return $sql;
 }
 function allImageSQL(){
-    $sql = 'SELECT ImageID, CityCode, CountryCodeISO, Path, Title
+    $sql = 'SELECT ImageID, CityCode, CountryCodeISO, Path, Title, Description, Latitude, Longitude
             FROM imagedetails';
     return $sql;
 }
@@ -63,6 +63,7 @@ function getImage(){
     return $sql;
 }
 
+//--------------------------------------------------------------------- FOR THE BROWSER PAGE ----------------------------------------------------------------
 
 // Fucntions that are Grabbing images with similar CityCode or CountryISO 
 function getCityImg($connection, $cityCode){
@@ -88,6 +89,17 @@ function getCountryImg($connection, $countryCode){
 function getImageByName($connection, $name){
     try{
         $sql = getImage() . " WHERE i.Title = '$name'";
+        $result = runQuery($connection, $sql, null);
+        return $result;
+    }catch(PDOException $e){
+        die($e->getMessage());
+    }
+}
+
+// function that gets a single photo using the image Id passed from the browser page
+function getImageByID($connection, $id){
+    try{
+        $sql = getImage() . " WHERE ImageID = '$id'";
         $result = runQuery($connection, $sql, null);
         return $result;
     }catch(PDOException $e){
