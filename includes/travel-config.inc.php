@@ -4,18 +4,10 @@
 error_reporting(E_ALL);
 ini_set('display_errors','1');
 
-$url = getenv('JAWSDB_URL');
-$dbparts = parse_url($url);
-
-$hostname = $dbparts['host'];
-$username = $dbparts['user'];
-$password = $dbparts['pass'];
-$database = ltrim($dbparts['path'],'/');
-
 // you may need to change these for your own environment
-define('DBCONNECTION', "mysql:host=$hostname;dbname=$database");
-define('DBUSER', $username);
-define('DBPASS', $password);
+define('DBCONNECTION', getenv('MYSQL_DSN'));
+define('DBUSER', getenv('MYSQL_USER'));
+define('DBPASS', getenv('MYSQL_PASSWORD'));
 
 // auto load all classes so we don't have to explicitly include them
 spl_autoload_register(function ($class) {

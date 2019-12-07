@@ -1,24 +1,25 @@
 <?php
 include('includes/header.inc.php');
 include('includes/hamburger.inc.php');
-
 ?>
+
 <!DOCTYPE html>
 <html>
 
 <head>
+    <meta charset="utf-8">
     <title>Single City</title>
     <link rel="stylesheet" href="css\stylesheet.css">
     <link rel="stylesheet" href="css\city-stylesheet.css">
-    
+    <script src="javascript/single-city.js"></script>
 </head>
 
 <body>
     <div class='grid-container'>
 
         <main class='main'>
-            <?php 
-            createHeader(); 
+            <?php
+            createHeader();
             createHamburger();
             ?>
             <div class='box a card'>
@@ -44,6 +45,8 @@ include('includes/hamburger.inc.php');
 
     </div>
 </body>
-<script> src="single-city.js"</script>
+<script>
+    src = "single-city.js"
+</script>
 
 </html>

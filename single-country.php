@@ -7,6 +7,7 @@ include('includes/hamburger.inc.php');
 <html>
 
 <head>
+    <meta charset="utf-8">
     <title>Single Country</title>
     <link rel="stylesheet" href="css\stylesheet.css">
     <link rel="stylesheet" href="css\country-stylesheet.css">
@@ -26,8 +27,8 @@ include('includes/hamburger.inc.php');
             </div>
             <div class='box b card'>
                 <h3>Country List</h3>
-                <?php 
-                
+                <?php
+
                 ?>
 
                 <ul id="filteredCountry"></ul>

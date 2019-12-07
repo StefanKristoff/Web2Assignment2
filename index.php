@@ -1,10 +1,10 @@
+<!DOCTYPE html>
 <?php
 require_once "includes/header.inc.php";
 require_once "includes/hamburger.inc.php";
 ?>
 
 
-<!DOCTYPE html>
 <html>
 
 <head>
@@ -13,6 +13,7 @@ require_once "includes/hamburger.inc.php";
     <title> Home Page Log In</title>
     <link rel="stylesheet" href="css\stylesheet.css">
     <link rel="stylesheet" href="css\index.css">
+    <script rel="text/javascript" src="javascript\indexthing.js"></script>
 </head>
 
 <body>

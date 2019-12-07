@@ -1,7 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
     // URL for the API containing country information
-    const countryAPI = 'http://localhost/Web2Assignment2/api-countries.php';
+    console.log("Enter page");
+    // const countryAPI = 'http://localhost/Web2Assignment2/api-countries.php';
+    const countryAPI = 'https://uplifted-scout-261201.appspot.com/api-countries.php';
+    console.log("Hi");
 
+    localStorage.removeItem('countries');
     //Retrieve local storage
     let countries = retrieveCountryStorage();
 
@@ -18,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
             fetch(search)
                 .then(response => response.json())
                 .then(data => {
+                    console.log(data);
                     for (let c of data) {
                         countries.push(c);
                     }
