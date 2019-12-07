@@ -9,6 +9,19 @@ header {
     grid-column: 1 / 11;
 }
 
+.hamburgerNav{
+    grid-column: 1 / span 11;
+    grid-row: 2;
+    background-color: black;
+}
+.hamburgerNav a{
+    display: block;
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
 .favouriteImages {
     grid-column: 1 / 11;
 }

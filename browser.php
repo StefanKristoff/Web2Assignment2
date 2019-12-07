@@ -1,16 +1,56 @@
 <?php
 include('includes/header.inc.php');
 include('includes/hamburger.inc.php');
+require_once 'includes/browser.inc.php';
+require_once 'config.inc.php';
 
-function createResultRow($photo, $title) {
-    echo "<div class='resultrow card'>";
-    echo "<img src='$photo' width='100px' height='100px'/>";
-    echo "<p>$title</p>";
-    echo "<button>View</button>";
-    echo "<button>Add to Favourites</button>";
-    echo "</div>";
+$images = getAllImage(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
+$pdo = setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS);
+// printImage($images);
+
+
+
+if(isset($_GET['cities']) && $_GET['cities'] != ''){
+    $cityCode = $_GET['cities']; 
+    $cityImages = getCityImg($pdo, $cityCode);
+    $images = $cityImages;
+}else if(isset($_GET['countries']) && $_GET['countries'] != ''){
+    $countryISO = $_GET['countries'];
+    $countryImage = getCountryImg($pdo, $countryISO);
+    $images = $countryImage;
+}else if(isset($_GET['ImgName']) && $_GET['ImgName'] != ''){
+    $name = $_GET['ImgName'];
+    $tempArray = [];
+
+    foreach($images as $image){
+        $imgFound = $image['Title'];
+        if (strpos(strtoupper($imgFound), strtoupper($name)) !== false){
+            $tempArray[] = $image;
+        }
+    }
+    $images = $tempArray;
+
 }
+else{
+    foreach($images as $image){
+        $img = $image['Path'];
+        $imgTitle = $image['Title'];
+    }
+}
+
+function showImages($images){
+
+    foreach($images as $image ){
+            $img = $image['Path'];
+            $imgTitle = $image['Title'];
+            createResultRow($img, $imgTitle);
+        }
+
+}
+
 ?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -27,15 +67,14 @@ function createResultRow($photo, $title) {
         createHamburger();
         ?>
         <div class='box a card'>
-            <h3>Country Filter</h3>
+            <h3>Photo Filter</h3>
+            <?= createFilters()?>
         </div>
 
         <section class="box b card">
-            <?= createResultRow("FakeImg.jpg", "Title1"); ?>
-            <?= createResultRow("FakeImg.jpg", "Title2"); ?>
-            <?= createResultRow("FakeImg.jpg", "Title3"); ?>
-            <?= createResultRow("FakeImg.jpg", "Title4"); ?>
-            <?= createResultRow("FakeImg.jpg", "Title5"); ?>
+            <?php
+                showImages($images); 
+            ?>
         </section>
 
     </main>

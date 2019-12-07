@@ -10,27 +10,50 @@ include('includes/hamburger.inc.php');
     <title>Single City</title>
     <link rel="stylesheet" href="css\stylesheet.css">
     <link rel="stylesheet" href="css\city-stylesheet.css">
-    
+    <script src="javascript\single-city.js"></script>
 </head>
 
 <body>
     <div class='grid-container'>
 
         <main class='main'>
-            <?php 
-            createHeader(); 
+            <?php
+            createHeader();
             createHamburger();
             ?>
-            <div class='box a card'>
-                <h3>City Filter</h3>
+            <div class='box a card'> 
+            
+                    <h3>City Filter</h3>
+                    <p>
+                        <input type="text" id="citySearch" class="search" placeholder="Search Cities" list="filteredCity">
+                    </p>
+                    <button type="button" class="filterBtn" id="cityHasImages" list="filteredCity">Only have Images</button>
+                    <button type="button" class="filterBtn" id="resetCityFilter" list="filteredCity">Reset Filters</button>
+            
             </div>
+
             <div class='box b card'>
                 <h3>City List</h3>
+                <ul class="filteredCity"></ul>
             </div>
 
             <section>
                 <div class='box c card'>
-                    <h3>City Details</h3>
+                    <h2 id="cityName"></h2>
+                    <section>
+                        <div>
+                            <label class="popLabel"> </label>
+                            <span id="cityPopulation"></span>
+                        </div>
+                        <div>
+                            <label class="eleLabel"> </label>
+                            <span id="cityElevation"></span>
+                        </div>
+                        <div>
+                            <label class="timeLabel"> </label>
+                            <span id="cityTimeZone"></span>
+                        </div>
+                    </section>
                 </div>
                 <div class='box d card'>
                     <h3>City Map</h3>
@@ -44,6 +67,6 @@ include('includes/hamburger.inc.php');
 
     </div>
 </body>
-<script> src="single-city.js"</script>
+
 
 </html>

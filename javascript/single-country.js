@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //Calls the function to create list
     populateCountry();
+    
     //Get countries
     function fetchCountries() {
         let search = countryAPI;
@@ -21,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     for (let c of data) {
                         countries.push(c);
                     }
+                    sortCountryArray();
                     populateCountry();
                     updateCountryStorage();
                 })
@@ -37,26 +39,24 @@ document.addEventListener("DOMContentLoaded", function () {
         return JSON.parse(localStorage.getItem("countries")) || [];
     }
 
-    //Fill country list, sorted
+    //Fill country list
     function populateCountry() {
         const suggestions = document.querySelector("#filteredCountry");
         suggestions.innerHTML = "";
         console.log(countries);
-        countries.sort((a, b) => {
-            if (a.name < b.name) {
-                return -1;
-            } else if (a.name > b.name) {
-                return 1;
-            }
-            else {
-                return 0;
-            }
-        });
-
         countries.forEach(country => {
             let option = document.createElement('li');
             option.textContent = country.CountryName;
             suggestions.appendChild(option);
+        })
+    }
+
+    //Sort Country Array
+    function sortCountryArray() {
+        countries.sort((c1, c2) => {
+            if (c1.name < c2.name) { return -1; }
+            if (c1.name > c2.name) { return 1; }
+            return 0;
         })
     }
 }); 
