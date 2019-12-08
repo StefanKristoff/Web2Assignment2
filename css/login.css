@@ -1,9 +1,47 @@
-.loginform {
+.hamburgerNav{
+    margin: 1rem 0 1rem 0;
+}
+
+.grid-container{
     display: grid;
-    grid-template-columns: max-content max-content;
-    grid-gap: --var(grid-gap);
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+header{
+    grid-column: 1 / 4;
+}
+
+.loginform {
+    grid-column: 2;
+}
+
+.formitem {
+    display: flex;
 }
 
 label {
-    text-align: right;
+    width: 100px;
+    /* grid-column: 1 / 2; */
+}
+
+div{
+    padding: 10px;
+}
+input{
+    /* grid-column: 2 / 3; */
+
+}
+
+h3{
+    text-align: center;
+    grid-column: 1 / 4;
+    font-size: 150%;
+}
+
+@media only screen and (max-width: 680px) {
+
+    h3{
+        grid-column: 1 / 4;
+        grid-row: auto;
+    }
 }
