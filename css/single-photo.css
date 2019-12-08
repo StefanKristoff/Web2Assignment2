@@ -55,7 +55,7 @@ header {
 .tabBox{
     grid-column: 1 / 4;
     grid-row: 2 / 3;
-    height: 200px;
+    height: 250px;
     width: inherit;
     background-color: White;
     color: black;
@@ -80,6 +80,21 @@ header {
     grid-row: 1/ 2;
     overflow: auto;
 }
+
+/* Somthing NEW for sinbgle tabs in single photes for the map, details and description of the photo */
+/* #tabBoxDescription{
+    display: none;
+}
+#tabBoxDetails{
+    display: none;
+}
+#tabBoxMap{
+    display: none;
+
+} */
+
+
+
 
 @media only screen and (max-width: 680px) {
 

@@ -63,7 +63,7 @@ foreach($info as $i){
                     </br></br>
                     <span id="username">User Name:</span>
                     </br></br>
-                    <span id="countryCity"><?= $CountryName . " , " . $cityName?></span>
+                    <span id="countryCity"><?= $CountryName . ", " . $cityName?></span>
                     <?php
                         
                     ?>
@@ -73,14 +73,13 @@ foreach($info as $i){
                         <button class="itemTab" id="tabDetails">Details</button>
                         <button class="itemTab" id="tabMap">Map</button>
                         <div class="tabBox" id="tabBoxDescription">
-                            <h3>Description: </h3>
                             <?= $Description?>
                         </div>
                         <div class="tabBox" id="tabBoxDetails">
-                            
+                            <p>Hello</p>
                         </div>
                         <div class="tabBox" id="tabBoxMap">
-                            
+                            <p>World</p>
                         </div>
                         
                     </div>
