@@ -4,22 +4,25 @@ require_once 'api-countries-helper.inc.php';
 require_once 'config.inc.php';
 
 
-// function printCityImages(){
-//     $cityImg = compareCityImg(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS),$_POST['cities']);
-//     foreach($cityImg as $image){
-//         echo "<img src=/images/case-travel-master/images/medium800/{$image['Path']}>";
-//         // echo '<a class="ui small image" href="single-painting.php?id='.$r['PaintingID'].'"><img src="images/art/works/square-medium/' . $r['ImageFileName'].'.jpg"></a>';
-//     }
+// session_start();
+// if(isset($_GET['pass'])){
+//     $passing = $_GET['name'];
+//     echo $passing;
 // }
-
-function createResultRow($photo, $title) {
+function createResultRow($photo, $title, $imgID) {
     echo "<div class='resultrow card'>";
     echo "<img src='images/case-travel-master/images/medium800/$photo' width='100px' height='100px'/>";
     echo "<p>$title</p>";
-    echo "<a href='single-photo.php'> <button>View</button> </a>";
-    echo "<button>Add to Favourites</button>";
-    echo "</div>";
+
+    $str = "name={$imgID}";
+    
+        echo "<a href='single-photo.php?$str'> <button>View</button> </a>";
+        echo "<button>Add to Favourites</button>";
+    echo "<p>Image ID: {$imgID}</p>";
+    echo "</div>";    
 }
+
+
 
 function createFilters(){
     echo "<form method='get' action='browser.php'>";

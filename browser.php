@@ -4,9 +4,10 @@ include('includes/hamburger.inc.php');
 require_once 'includes/browser.inc.php';
 require_once 'config.inc.php';
 
+
+
 $images = getAllImage(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
 $pdo = setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS);
-// printImage($images);
 
 
 
@@ -41,13 +42,15 @@ else{
 function showImages($images){
 
     foreach($images as $image ){
+
             $img = $image['Path'];
             $imgTitle = $image['Title'];
-            createResultRow($img, $imgTitle);
+            $imgID = $image['ImageID'];
+            
+            createResultRow($img, $imgTitle, $imgID);
         }
 
 }
-
 ?>
 
 
