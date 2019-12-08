@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //Calls the function to create list
     populateCountry();
-    
+
     //Get countries
     function fetchCountries() {
         let search = countryAPI;
@@ -25,11 +25,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     sortCountryArray();
                     populateCountry();
                     updateCountryStorage();
+                    stringifyArray();
                 })
                 .catch(error => console.error(error))
         }
     }
 
+    function stringifyArray(){
+        JSON.stringify(countries);
+    }
     //Update Local storage function for countries
     function updateCountryStorage() {
         localStorage.setItem("countries", JSON.stringify(countries));
@@ -46,7 +50,12 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(countries);
         countries.forEach(country => {
             let option = document.createElement('li');
-            option.textContent = country.CountryName;
+            let link = document.createElement('a');
+
+            link.textContent = country.CountryName;
+            link.href = "http://localhost/Web2Assignment2/single-country.php?iso=" + country.ISO;
+
+            option.appendChild(link);
             suggestions.appendChild(option);
         })
     }
