@@ -1,6 +1,7 @@
 <?php
 include('includes/header.inc.php');
 include('includes/hamburger.inc.php');
+include('includes/loggedinsession.inc.php');
 ?>
 
 <!DOCTYPE html>
