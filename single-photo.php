@@ -47,11 +47,7 @@ foreach($info as $i){
 
 
 
-
-
 ?>
-
-
 <!DOCTYPE html>
 <html>
 
@@ -69,8 +65,8 @@ foreach($info as $i){
         createHamburger();
         ?>
         <section class="box singleView">
-            <div id="singlePic">
-                <img src="images/case-travel-master/images/medium800/<?= $img?>" >
+            <div id="singlePic" >
+                <img id="<?= $id?>" src="images/case-travel-master/images/medium800/<?= $img?>">
             </div>
             <div id="singlePicInfo">
                 <div id="singlePicDetails">
@@ -144,7 +140,11 @@ foreach($info as $i){
                             </div>
                         </div>
                         <div class="tabBox" id="tabBoxMap">
-                            <p>World</p>
+                            <section id="mapSection">
+                                <div id='gMap'>
+                                    
+                                </div>
+                            </section>
                         </div>
                         
                     </div>
@@ -154,11 +154,8 @@ foreach($info as $i){
             </div>
         </section>
     </main>
-
-    <?php
-
-
-    ?>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN-iHgrz6nMd7h7OzV3Y5XCHLm7e1doP0&callback=initMap"
+        async defer></script>
 </body>
 
 </html>
