@@ -7,17 +7,29 @@ require_once "includes/userlogin-helper.inc.php";
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $first = "";
+    $last = "";
+    $country = "";
+    $city = "";
+    $email = "";
+    $password = "";
+    $confirm = "";
+
     $user = getUserLoginByUser(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $_POST['email']);
 
     if ($user) {
-        if (password_verify($_POST['password'], $user[0]['Password']) && $_POST['email'] == $user[0]['UserName']) {
-            print_r("Success");
-            $_SESSION["userid"] = $user[0]['UserName'];
-            $_SESSION["active"] = true;
-            header("location: index-logged-in.php");
-        }
+        $error = "Email already exists";
+        $first = $_POST['first'];
+        $last = $_POST['last'];
+        $country = $_POST['country'];
+        $city = $_POST['city'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $confirm = $_POST['confirmpassword'];
+
     } else {
-        $error = "Email or Password are incorrect";
+        // insert into db stuff here
+        header("location: index-logged-in.php");
     }
 }
 
@@ -49,37 +61,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form class='loginform' action='signup.php' method='post' id='signupform'>
             <div class='formitem'>
                 <label>First Name:</label>
-                <input type="text" name='first' required />
+                <input type="text" name='first' value="<?php echo $first; ?>" required />
             </div>
             <div class='formitem'>
                 <label>Last Name:</label>
-                <input type="text" name='last' required />
+                <input type="text" name='last' value="<?php echo $last; ?>" required />
             </div>
             <div class='formitem'>
                 <label>Country:</label>
-                <input type="text" id="countrySearch" class="search" placeholder="Search Countries" list="filteredCountry" required />
+                <input type="text" id="countrySearch" name="country" class="search" placeholder="Search Countries" list="filteredCountry" value="<?php echo $country; ?>" required />
                 <datalist id="filteredCountry">
                     <!-- Filled with countries to select from -->
                 </datalist>
             </div>
             <div class='formitem'>
                 <label>City:</label>
-                <input type="text" name='city' id="citySearch" class="search" placeholder="Search Cities" list="filteredCity" required />
+                <input type="text" name='city' name="city" id="citySearch" class="search" placeholder="Search Cities" list="filteredCity" value="<?php echo $city; ?>" required />
                 <datalist id="filteredCity">
                     <!-- Filled with cities to select from -->
                 </datalist>
             </div>
             <div class='formitem'>
                 <label>Email:</label>
-                <input type="email" name='email' required />
+                <input type="email" name='email' value="<?php echo $email; ?>" required />
             </div>
             <div class='formitem'>
                 <label>Password:</label>
-                <input type="password" id="password" name='password' required />
+                <input type="password" id="password" name='password' value="<?php echo $password; ?>" required />
             </div>
             <div class='formitem'>
                 <label>Confirm Password:</label>
-                <input type="password" id="confirmPassword" name='confirmpassword' required />
+                <input type="password" id="confirmPassword" name='confirmpassword' value="<?php echo $confirm; ?>" required />
             </div>
             <button type="submit" id="submitbtn" form='signupform' value='Signup'>Signup</button>
         </form>

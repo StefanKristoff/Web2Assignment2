@@ -33,5 +33,8 @@ function getUserLoginByUser($connection, $user) {
 
 }
 
+// function insertUserLogin($connection, $user, $pass, $datejoin) {
+
+// }
 
 ?>

@@ -24,10 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
         item.value = country.CountryName;
         filteredCountry.appendChild(item);
     });
-    // let self = this;
-    // document.querySelector('#countrySearch').addEventListener("keyup", function() {
-    //     displayMatches.call(self);
-    // });
 
     //Update Local storage function for countries
     function updateCountryStorage() {
