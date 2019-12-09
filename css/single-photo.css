@@ -22,8 +22,10 @@ header {
     color: black;
     border-radius: 5px;
     padding: 20px;
-    font-size: 150%
+    font-size: 150%;
 }
+
+
 
 .singleView{
     display: grid;
@@ -92,6 +94,16 @@ header {
     display: none;
 
 } */
+#exifCredit{
+    text-align: left;
+}
+label{
+    font: bold;
+}
+#spanColor, #colorContainer{
+    padding: 5px;
+    border-radius: 5px;
+}
 
 
 

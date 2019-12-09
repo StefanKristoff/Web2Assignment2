@@ -1,9 +1,20 @@
+// var map;
+
+// function initMap() {
+//     map = new google.maps.Map(document.getElementById('gMap'), {
+//         center: {
+//             lat: 41.8474,
+//             lng: 12.4839
+//         },
+//         zoom: 11
+//     });
+// }
 document.addEventListener("DOMContentLoaded", function(){
     console.log("hello World");
 
     //call funcitons
     hideAllTabs();
-    eventListenerForBoxTabs();
+    boxTabEventListener();
 
     function hideAllTabs() {       
         let tabBoxDescription = document.querySelector("#tabBoxDescription");
@@ -15,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function(){
         tabBoxMap.style.display = "none";
     }
 
-    function eventListenerForBoxTabs(){
+    function boxTabEventListener(){
         document.querySelector('#tabDescription').addEventListener('click', function(){
             if(tabBoxDescription.style.display == 'none'){
                 tabBoxDescription.style.display = "block";
