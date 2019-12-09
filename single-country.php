@@ -42,8 +42,8 @@ $lang = getLang(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
                     <input type="text" class="search" placeholder="Search Countries" list="filterList">
                     <dataList id="filterList"></dataList>
 
-                    <select name="Continents">
-                        <option value="0">Selecct Continent</option>
+                    <select id="Continents">
+                        <option value="0">Select Continent</option>
                         <option value="AF">Africa</option>
                         <option value="AN">Antarctica</option>
                         <option value="AS">Asia</option>
@@ -52,6 +52,12 @@ $lang = getLang(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
                         <option value="OC">Oceania</option>
                         <option value="SA">South America</option>
                     </select>
+
+                    <input type="button" class="searchImg" value="Countries w/ images" list="countryPic">
+                    <datalist id="countryPic"></datalist>
+
+                    <input type="reset" class="resetButton" value="ResetCountries">
+                    <datalist id="resetCountry"></datalist>
                 </fieldset>
             </div>
             <div class='box b card'>
@@ -62,7 +68,7 @@ $lang = getLang(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
             <section>
                 <div class='box c card'>
                     <h3>Country Details</h3>
-                    <ul>
+                    <ul id="countryDetails">
                         <?php
                         if ($iso != '') {
                             foreach ($sCountry as $s) {
@@ -103,7 +109,7 @@ $lang = getLang(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
                 </div>
                 <div class='box d card'>
                     <h3>City List</h3>
-                    <ul>
+                    <ul id="cityList">
                         <?php
                         if ($iso != '') {
                             foreach ($sCity as $c) {
