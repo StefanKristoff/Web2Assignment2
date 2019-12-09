@@ -38,6 +38,21 @@ $lang = getLang(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
             ?>
             <div class='box a card'>
                 <h3>Country Filter</h3>
+                <fieldset>
+                    <input type="text" class="search" placeholder="Search Countries" list="filterList">
+                    <dataList id="filterList"></dataList>
+
+                    <select name="Continents">
+                        <option value="0">Selecct Continent</option>
+                        <option value="AF">Africa</option>
+                        <option value="AN">Antarctica</option>
+                        <option value="AS">Asia</option>
+                        <option value="EU">Europe</option>
+                        <option value="NA">North America</option>
+                        <option value="OC">Oceania</option>
+                        <option value="SA">South America</option>
+                    </select>
+                </fieldset>
             </div>
             <div class='box b card'>
                 <h3>Country List</h3>
@@ -60,12 +75,22 @@ $lang = getLang(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
                                 <li>Domain: <?php echo $s["TopLevelDomain"] ?></li>
 
                                 <li>Languages: <?php
-                                                        echo $s["Languages"];
-                                                        // foreach ($lang as $l) {
-                                                        //     if ($l["iso"] == $s["Languages"]) {
-                                                        //         echo $l["name"];
-                                                        //     }
-                                                        // }
+                                                        foreach ($lang as $l) {
+                                                            $split = $s["Languages"];
+                                                            $array1 = explode(",", $split);
+                                                            foreach ($array1 as $arr) {
+                                                                if (strlen($arr) > 3) {
+                                                                    $array2 = substr($arr, 0, -3);
+                                                                } else {
+                                                                    $array2 = $arr;
+                                                                }
+                                                                if ($array2 == $l["iso"]) {
+                                                                    echo $l["name"];
+                                                                    echo ", ";
+                                                                }
+                                                            }
+                                                        }
+
                                                         ?></li>
 
                                 <li>Neighbours: <?php echo $s["Neighbours"] ?></li>
@@ -81,7 +106,6 @@ $lang = getLang(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
                     <ul>
                         <?php
                         if ($iso != '') {
-
                             foreach ($sCity as $c) {
                                 ?>
                                 <li><?php echo $c["AsciiName"] ?></li>
@@ -97,11 +121,7 @@ $lang = getLang(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
                         <?php
                         foreach ($img as $i) {
                             ?>
-                            <img src="images/case-travel-master/images/medium800/<?=$i['Path']?>" alt="<?=$i['Title']?>" height="100px" width="100px">
-
-
-
-
+                            <img src="images/case-travel-master/images/medium800/<?= $i['Path'] ?>" alt="<?= $i['Title'] ?>" height="100px" width="100px">
                         <?php
                         }
                         ?>

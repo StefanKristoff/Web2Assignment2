@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    function stringifyArray(){
+    function stringifyArray() {
         JSON.stringify(countries);
     }
     //Update Local storage function for countries
@@ -68,4 +68,35 @@ document.addEventListener("DOMContentLoaded", function () {
             return 0;
         })
     }
+
+    const searchBox = document.querySelector('.search');
+    const suggestions = document.querySelector('#filterList');
+    const list = document.querySelector('#filteredCountry');
+    
+    //Filters through the countries
+    searchBox.addEventListener('keyup', countryFilter);
+    function countryFilter() {
+        if (this.value.length >= 0) {
+            list.innerHTML = "";
+            suggestions.value = "";
+            const matches = find(this.value, countries);
+            matches.forEach(pic => {
+                let newList = document.createElement('li');
+                let link1 = document.createElement('a');
+                link1.textContent = pic.CountryName;
+                link1.href = "http://localhost/Web2Assignment2/single-country.php?iso=" + pic.ISO;
+                newList.appendChild(link1);
+                list.appendChild(newList);
+            })
+        }
+    }
+    //A function that takes in what the user types along with the array of countries and finds a match.
+    function find(matches, country) {
+        return country.filter(obj => {
+            const countryRegex = new RegExp(matches, 'gi');
+            return obj.CountryName.match(countryRegex);
+        })
+    }
+
+    
 }); 
