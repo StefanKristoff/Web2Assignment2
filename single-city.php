@@ -22,15 +22,15 @@ include('includes/hamburger.inc.php');
             createHeader();
             createHamburger();
             ?>
-            <div class='box a card'> 
-            
-                    <h3>City Filter</h3>
-                    <p>
-                        <input type="text" id="citySearch" class="search" placeholder="Search Cities" list="filteredCity">
-                    </p>
-                    <button type="button" class="filterBtn" id="cityHasImages" list="filteredCity">Only have Images</button>
-                    <button type="button" class="filterBtn" id="resetCityFilter" list="filteredCity">Reset Filters</button>
-            
+            <div class='box a card'>
+
+                <h3>City Filter</h3>
+                <p>
+                    <input type="text" id="citySearch" class="search" placeholder="Search Cities" list="filteredCity">
+                </p>
+                <button type="button" class="filterBtn" id="cityHasImages" list="filteredCity">Only have Images</button>
+                <button type="button" class="filterBtn" id="resetCityFilter" list="filteredCity">Reset Filters</button>
+
             </div>
 
             <div class='box b card'>

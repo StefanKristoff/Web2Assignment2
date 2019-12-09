@@ -3,16 +3,18 @@ require_once 'db-functions.inc.php';
 require_once 'config.inc.php';
 
 
-function getUserSQL() {
-   $sql = 'SELECT UserID, FirstName, LastName, Address, City, Region, Country, Postal, Phone, Email, Privacy FROM users';
-   
-   return $sql;
+function getUserSQL()
+{
+  $sql = 'SELECT UserID, FirstName, LastName, Address, City, Region, Country, Postal, Phone, Email, Privacy FROM users';
+
+  return $sql;
 }
 
 /*
   You will likely need to implement functions such as these ...
 */
-function getAllUsers($connection) {
+function getAllUsers($connection)
+{
   try {
     $sql = getUserSQL();
     $result = runQuery($connection, $sql, null);
@@ -22,7 +24,8 @@ function getAllUsers($connection) {
   }
 }
 
-function getUserById($connection, $id) {
+function getUserById($connection, $id)
+{
   try {
     $sql = getUserSQL() . ' WHERE UserID=? ';
     $result = runQuery($connection, $sql, $id);
@@ -30,11 +33,11 @@ function getUserById($connection, $id) {
   } catch (PDOException $e) {
     die($e->getMessage());
   }
-
 }
 
 
-function getUserByEmail($connection, $email) {
+function getUserByEmail($connection, $email)
+{
   try {
     $sql = getUserSQL() . ' WHERE Email=? ';
     $result = runQuery($connection, $sql, $email);
@@ -42,8 +45,18 @@ function getUserByEmail($connection, $email) {
   } catch (PDOException $e) {
     die($e->getMessage());
   }
-
 }
 
+function insertUserLogin($connection, $userid, $first, $last, $address, $city, $country, )
+{
+    try {
+        $connection->beginTransaction();
 
-?>
+        $sql = "INSERT INTO users (UserID, FirstName, LastName, Address, City, Region, Country, Postal, Phone, Email, Privacy) VALUES (?,?,?,?)";
+        $statement = $connection->prepare($sql);
+        $statement->execute(array($user, $pass, $datejoin, $datejoin));
+        $connection->commit();
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
+}

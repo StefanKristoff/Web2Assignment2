@@ -3,17 +3,19 @@ require_once 'config.inc.php';
 require_once "includes/header.inc.php";
 require_once "includes/hamburger.inc.php";
 require_once "includes/userlogin-helper.inc.php";
+require_once "includes/userlogin-helper.inc.php";
+require_once "db-functions.inc.php";
 
 session_start();
+$first = "";
+$last = "";
+$country = "";
+$city = "";
+$email = "";
+$password = "";
+$confirm = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $first = "";
-    $last = "";
-    $country = "";
-    $city = "";
-    $email = "";
-    $password = "";
-    $confirm = "";
 
     $user = getUserLoginByUser(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $_POST['email']);
 
@@ -26,9 +28,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = $_POST['email'];
         $password = $_POST['password'];
         $confirm = $_POST['confirmpassword'];
-
     } else {
         // insert into db stuff here
+        insertUserLogin(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $_POST['email'], password_hash($_POST['password'], PASSWORD_BCRYPT, ['cost' => 12]), date('Y-m-d H:i:s'));
         header("location: index-logged-in.php");
     }
 }
