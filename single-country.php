@@ -38,6 +38,27 @@ $lang = getLang(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
             ?>
             <div class='box a card'>
                 <h3>Country Filter</h3>
+                <fieldset>
+                    <input type="text" class="search" placeholder="Search Countries" list="filterList">
+                    <dataList id="filterList"></dataList>
+
+                    <select id="Continents">
+                        <option value="0">Select Continent</option>
+                        <option value="AF">Africa</option>
+                        <option value="AN">Antarctica</option>
+                        <option value="AS">Asia</option>
+                        <option value="EU">Europe</option>
+                        <option value="NA">North America</option>
+                        <option value="OC">Oceania</option>
+                        <option value="SA">South America</option>
+                    </select>
+
+                    <input type="button" class="searchImg" value="Countries w/ images" list="countryPic">
+                    <datalist id="countryPic"></datalist>
+
+                    <input type="reset" class="resetButton" value="ResetCountries">
+                    <datalist id="resetCountry"></datalist>
+                </fieldset>
             </div>
             <div class='box b card'>
                 <h3>Country List</h3>
@@ -47,7 +68,7 @@ $lang = getLang(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
             <section>
                 <div class='box c card'>
                     <h3>Country Details</h3>
-                    <ul>
+                    <ul id="countryDetails">
                         <?php
                         if ($iso != '') {
                             foreach ($sCountry as $s) {
@@ -60,12 +81,22 @@ $lang = getLang(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
                                 <li>Domain: <?php echo $s["TopLevelDomain"] ?></li>
 
                                 <li>Languages: <?php
-                                                        echo $s["Languages"];
-                                                        // foreach ($lang as $l) {
-                                                        //     if ($l["iso"] == $s["Languages"]) {
-                                                        //         echo $l["name"];
-                                                        //     }
-                                                        // }
+                                                        foreach ($lang as $l) {
+                                                            $split = $s["Languages"];
+                                                            $array1 = explode(",", $split);
+                                                            foreach ($array1 as $arr) {
+                                                                if (strlen($arr) > 3) {
+                                                                    $array2 = substr($arr, 0, -3);
+                                                                } else {
+                                                                    $array2 = $arr;
+                                                                }
+                                                                if ($array2 == $l["iso"]) {
+                                                                    echo $l["name"];
+                                                                    echo ", ";
+                                                                }
+                                                            }
+                                                        }
+
                                                         ?></li>
 
                                 <li>Neighbours: <?php echo $s["Neighbours"] ?></li>
@@ -78,10 +109,9 @@ $lang = getLang(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
                 </div>
                 <div class='box d card'>
                     <h3>City List</h3>
-                    <ul>
+                    <ul id="cityList">
                         <?php
                         if ($iso != '') {
-
                             foreach ($sCity as $c) {
                                 ?>
                                 <li><?php echo $c["AsciiName"] ?></li>
@@ -97,11 +127,7 @@ $lang = getLang(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
                         <?php
                         foreach ($img as $i) {
                             ?>
-                            <img src="images/case-travel-master/images/medium800/<?=$i['Path']?>" alt="<?=$i['Title']?>" height="100px" width="100px">
-
-
-
-
+                            <img src="images/case-travel-master/images/medium800/<?= $i['Path'] ?>" alt="<?= $i['Title'] ?>" height="100px" width="100px">
                         <?php
                         }
                         ?>
