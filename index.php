@@ -10,7 +10,7 @@ require_once "includes/hamburger.inc.php";
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> Home Page Log In</title>
+    <title>Main</title>
     <link rel="stylesheet" href="css\stylesheet.css">
     <link rel="stylesheet" href="css\index.css">
     <script rel="text/javascript" src="javascript\index.js"></script>
@@ -31,7 +31,7 @@ require_once "includes/hamburger.inc.php";
                     <a class="btn" href="http://localhost/Web2Assignment2/login.php"><button type='button'>Login</button></a>
                 </div>
                 <div>
-                    <button type='button'>Join</button>
+                    <a class="btn" href="http://localhost/Web2Assignment2/signup.php"><button type='button'>Join</button></a>
                 </div>
                 <input type="text" placeholder="SEARCH BOX FOR PHOTOS...">
             </div>

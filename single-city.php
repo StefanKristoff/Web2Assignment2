@@ -10,7 +10,8 @@ include('includes/hamburger.inc.php');
     <title>Single City</title>
     <link rel="stylesheet" href="css\stylesheet.css">
     <link rel="stylesheet" href="css\city-stylesheet.css">
-    <script src="javascript\single-city.js"></script>
+    <script type="module" src="javascript\get-countries.js"></script>
+    <script type="module" src="javascript\single-city.js"></script>
 </head>
 
 <body>
