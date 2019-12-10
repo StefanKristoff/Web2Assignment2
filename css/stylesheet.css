@@ -6,6 +6,11 @@
     --cards: #F4F7F7;
     --boxes: #AACFD0;
 }
+/* body {
+    background-image: url("../images/pic2.jpg");
+    background-repeat: none;
+    background-size: contain;
+} */
 
 header {
     background-color: var(--boxes);
