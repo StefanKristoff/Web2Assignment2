@@ -7,5 +7,7 @@ session_start();
 $_SESSION['active'] = false;
 unset($_SESSION['userid']);
 unset($_SESSION['active']);
+unset($_SESSION['add']);
+// session_write_close();
 header("Location: index.php");
 // }
