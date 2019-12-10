@@ -4,6 +4,7 @@ require_once 'api-cities-helper.inc.php';
 require_once 'api-countries-helper.inc.php';
 require_once 'config.inc.php';
 
+// check to see if the FAVORITE buttion is pushed and if so add the id of that image into the session
 if (isset($_POST['favorite'])){
     $ID = $_POST['imgId'];
     if(isset($_SESSION['add'])){

@@ -76,6 +76,7 @@ function showImages($images){
 
         <section class="box b card">
             <?php
+            // print the images in rows
                 showImages($images); 
             ?>
         </section>

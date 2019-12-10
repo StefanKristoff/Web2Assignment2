@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('includes/header.inc.php');
 include('includes/hamburger.inc.php');
 require_once 'api-cities-helper.inc.php';
@@ -7,7 +8,7 @@ require_once 'config.inc.php';
 $pdo = setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS);
 $info = [];
 $imagelist = [];
-session_start();
+
 if(isset($_SESSION['add'])){
     $ids = $_SESSION['add'];
     //removing duplicates id's from array
@@ -24,9 +25,9 @@ if(isset($_POST['remove'])){
 }
 if(isset($_GET['removeBtn']) && $_GET['removeBtn'] !== null){ // got this from https://stackoverflow.com/questions/2231332/how-to-remove-a-variable-from-a-php-session-array
     unset($_GET['removeBtn']);
-    $key = array_search($_GET['imgId'], $_SESSION['add']);
+    $key = array_search($_GET['imgId'], $_SESSION['add']);//checks to see of the Id exists in session add, if it oes it stores it in the varable key
     
-    if($key!==false){
+    if($key!==false){ // as long as the key isnt false, it removes the found id and re-pushes the new array back to the oridinal array to update it
         unset($_SESSION['add'][$key]);
         $_SESSION['add'] = array_values($_SESSION['add']);
     }
@@ -63,8 +64,10 @@ function errorMessage(){
             </form>
             <?php
             if($imagelist == null){
+                // print error message
                 errorMessage();
             }else{
+                // loop to find image information
                 foreach($imagelist as $img) {
                     foreach($img as $i) {
                         $imgId = $i['ImageID'];
