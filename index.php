@@ -119,7 +119,10 @@ if (!$active) {
                 </div>
                 <div class='searchBox card'>
                     <h3>Search box</h3>
-                    <input type="text" placeholder="SEARCH BOX FOR PHOTOS...">
+                    <form method="get" action='browser.php'>
+                        <input type="text" value='' name="ImgName" placeholder="SEARCH BOX FOR PHOTOS...">
+                        <button type='submit' name='submit' value=''>FIND</button>
+                    </form>
                 </div>
                 <div class='favImg card'>
                     <h3>Favorite Images</h3>

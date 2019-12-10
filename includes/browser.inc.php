@@ -1,9 +1,9 @@
 <?php
+session_start();
 require_once 'api-cities-helper.inc.php';
 require_once 'api-countries-helper.inc.php';
 require_once 'config.inc.php';
 
-session_start();
 if (isset($_POST['favorite'])){
     $ID = $_POST['imgId'];
     if(isset($_SESSION['add'])){
@@ -16,10 +16,7 @@ if (isset($_POST['favorite'])){
     $_SESSION['add'] = $addFav;
 }
 
-
-
-
-
+// creating the list of Images in the broswer page
 function createResultRow($photo, $title, $imgID) {
     echo "<div class='resultrow card'>";
     echo "<img src='images/case-travel-master/images/medium800/$photo' width='100px' height='100px'/>";
@@ -52,7 +49,7 @@ function createFilters(){
             echo "<option value=''>Country</option>";
             $countryImg = getCountryWithImages(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
 
-            foreach($countryImg as $co){
+            foreach($countryImg as $co){ 
                 echo "<option value='{$co['ISO']}'> {$co['CountryName']} </option>";
             }
         echo "</select>"; 

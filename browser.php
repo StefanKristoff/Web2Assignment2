@@ -20,15 +20,15 @@ if(isset($_GET['cities']) && $_GET['cities'] != ''){// getting image by City nam
     $images = $countryImage;
 }else if(isset($_GET['ImgName']) && $_GET['ImgName'] != ''){ // getting image from the name inputted from the search box 
     $name = $_GET['ImgName'];
-    $tempArray = [];
+    $tempArray = []; // a temporary array to hold the the matched the image title
 
     foreach($images as $image){
         $imgFound = $image['Title'];
-        if (strpos(strtoupper($imgFound), strtoupper($name)) !== false){
+        if (strpos(strtoupper($imgFound), strtoupper($name)) !== false){// FINDING A WORD MATCH FROM ALL IMAGE TITLES 
             $tempArray[] = $image;
         }
     }
-    $images = $tempArray;
+    $images = $tempArray; 
 
 }
 else{
@@ -38,6 +38,7 @@ else{
     }
 }
 
+// getting the images one by one getting JPG, Title, and ImageID
 function showImages($images){
 
     foreach($images as $image ){
@@ -45,7 +46,7 @@ function showImages($images){
             $img = $image['Path'];
             $imgTitle = $image['Title'];
             $imgID = $image['ImageID'];
-            
+            // passing it to a function in the browser.inc.php for formatting
             createResultRow($img, $imgTitle, $imgID);
         }
 

@@ -32,7 +32,7 @@ header{
 div{
     padding: 10px;
 }
-input{
+form{
     grid-column: 1 / span 2;
 
 }
