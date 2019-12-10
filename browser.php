@@ -10,15 +10,15 @@ $images = getAllImage(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
 $pdo = setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS);
 
 
-if(isset($_GET['cities']) && $_GET['cities'] != ''){
+if(isset($_GET['cities']) && $_GET['cities'] != ''){// getting image by City name 
     $cityCode = $_GET['cities']; 
     $cityImages = getCityImg($pdo, $cityCode);
     $images = $cityImages;
-}else if(isset($_GET['countries']) && $_GET['countries'] != ''){
+}else if(isset($_GET['countries']) && $_GET['countries'] != ''){ // getting image by counntry name
     $countryISO = $_GET['countries'];
     $countryImage = getCountryImg($pdo, $countryISO);
     $images = $countryImage;
-}else if(isset($_GET['ImgName']) && $_GET['ImgName'] != ''){
+}else if(isset($_GET['ImgName']) && $_GET['ImgName'] != ''){ // getting image from the name inputted from the search box 
     $name = $_GET['ImgName'];
     $tempArray = [];
 

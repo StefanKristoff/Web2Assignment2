@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('includes/header.inc.php');
 include('includes/hamburger.inc.php');
 require_once 'api-cities-helper.inc.php';
@@ -11,9 +12,11 @@ $info;
 //getting the image id from the image that is passed from broswer
 $id = $_GET['id'];
 
+// getting the image from the Sql according to the imageID passed
 $singleImage = getImageByID($pdo, $id);
 $info = $singleImage;
 
+//looping to get all the nessesary information
 foreach($info as $i){
     $img = $i['Path'];
     $latitude = $i['Latitude'];
@@ -36,8 +39,8 @@ foreach($info as $i){
 
 }
 
-session_start();
-if (isset($_POST['singlefavorite'])){
+// Session to add the image to the favorites page
+if (isset($_POST['singlefavorite'])){ //chedk 
     $singleID = $_POST['Id'];
     if(isset($_SESSION['add'])){
         $addSingleFav = $_SESSION['add'];
@@ -86,12 +89,16 @@ if (isset($_POST['singlefavorite'])){
                     <span id="countryCity"><?= $CountryName . ", " . $cityName?></span>
 
                     <div id="descriptionsTab">
+                        <!-- Buttons for image description, details and the map -->
                         <button class="itemTab" id="tabDescription">Descripttion</button>
                         <button class="itemTab" id="tabDetails">Details</button>
                         <button class="itemTab" id="tabMap">Map</button>
-                        <div class="tabBox" id="tabBoxDescription">
+                        <!-- THE DESCRIPTION BOX -->
+                        <div class="tabBox" id="tabBoxDescription"> 
                             <?= $Description?>
                         </div>
+
+                        <!-- THE DETAILS BOX -->
                         <div class="tabBox" id="tabBoxDetails">
                              <div class="card">
                                 <label>Model: </label>
@@ -145,6 +152,8 @@ if (isset($_POST['singlefavorite'])){
                                 ?>
                             </div>
                         </div>
+
+                        <!-- THE MAP BOX -->
                         <div class="tabBox" id="tabBoxMap">
                             <div id='map'></div>
                         </div>
@@ -158,17 +167,20 @@ if (isset($_POST['singlefavorite'])){
     </main>
 
     <script>
+        // Script in creating the map
         var map;
-        let Nlat = parseFloat("<?= $latitude?>");
-        let Nlong = parseFloat("<?= $longitude?>");
+        let Nlat = parseFloat("<?= $latitude?>"); //passing the latitude from php into JS
+        let Nlong = parseFloat("<?= $longitude?>");//passing the longitude from php into JS
         console.log(Nlat, Nlong);
         function initMap() {
+            // Using Nlat and Nlong for the coordinates for both map location and  marker
             map = new google.maps.Map(document.getElementById("map"), {
             center: {lat: Nlat, lng: Nlong},
             mapTypeId: 'satellite',
             zoom: 18
             });
 
+            // Creating the marker
             var marker = new google.maps.Marker({
                 position:{lat: Nlat, lng: Nlong},
                 map:map
