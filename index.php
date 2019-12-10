@@ -1,42 +1,113 @@
 <?php
 require_once "includes/header.inc.php";
 require_once "includes/hamburger.inc.php";
+
+session_start();
+$active = false;
+$userEmail = null;
+if (isset($_SESSION['active'])) {
+    $active = $_SESSION['active'];
+    if (isset($_SESSION['userid'])) {
+        $userEmail = $_SESSION['userid'];
+    }
+}
 ?>
 
 
 <!DOCTYPE html>
 <html>
+<?php
+if (!$active) {
+    ?>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Main</title>
-    <link rel="stylesheet" href="css\stylesheet.css">
-    <link rel="stylesheet" href="css\index.css">
-    <script rel="text/javascript" src="javascript\index.js"></script>
-</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<body>
-    <main class='grid-container'>
-        <?php
-        createHeader();
-        createHamburger();
-        ?>
 
-        <section class='nested hero-img'>
-            <h3>WELCOME</h3>
-            <div class='innerNested'>
 
-                <div>
-                    <a class="btn" href="http://localhost/Web2Assignment2/login.php"><button type='button'>Login</button></a>
+        <title>Main</title>
+        <link rel="stylesheet" href="css\stylesheet.css">
+        <link rel="stylesheet" href="css\index.css">
+        <script rel="text/javascript" src="javascript\index.js"></script>
+    </head>
+
+    <body>
+        <main class='grid-container'>
+            <?php
+                createHeader();
+                createHamburger();
+                ?>
+
+
+            <section class='nested hero-img'>
+                <h3>WELCOME</h3>
+                <div class='innerNested'>
+
+                    <div>
+                        <a class="btn" href="http://localhost/Web2Assignment2/login.php"><button type='button'>Login</button></a>
+                    </div>
+                    <div>
+                        <a class="btn" href="http://localhost/Web2Assignment2/signup.php"><button type='button'>Join</button></a>
+                    </div>
+                    <input type="text" placeholder="SEARCH BOX FOR PHOTOS...">
                 </div>
-                <div>
-                    <a class="btn" href="http://localhost/Web2Assignment2/signup.php"><button type='button'>Join</button></a>
+            </section>
+
+        </main>
+    </body>
+    <?php
+    } else {
+
+    ?>
+
+    <head>
+        <title> Home Page Log In</title>
+        <link rel="stylesheet" href="css\stylesheet.css">
+        <link rel="stylesheet" href="css\logged-in.css">
+    </head>
+
+    <body>
+        <main class='grid-container'>
+            <?php
+                createHeader();
+                createHamburger();
+                ?>
+            <section class='nested'>
+                <div class='userInfo card'>
+                    <h3>User Info</h3>
+                    <p>He is tall and short...</p>
+                    <p>Eyes blue...ish</p>
+                    <div class='userNested'>
+                        <div>Picture </div>
+                        <div>Picture </div>
+                        <div>Picture</div>
+                    </div>
                 </div>
-                <input type="text" placeholder="SEARCH BOX FOR PHOTOS...">
-            </div>
-        </section>
-    </main>
-</body>
+                <div class='searchBox card'>
+                    <h3>Search box</h3>
+                    <input type="text" placeholder="SEARCH BOX FOR PHOTOS...">
+                </div>
+                <div class='favImg card'>
+                    <h3>Favorite Images</h3>
+                    <div class='favNested'>
+                        <div>Picture</div>
+                        <div>Picture</div>
+                    </div>
+                </div>
+                <div class='img card'>
+                    <h3>Images You May Like</h3>
+                    <div class='imgNested'>
+                        <div>Picture</div>
+                        <div>Picture</div>
+                        <div>Picture</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </body>
+<?php
+}
+?>
 
 </html>

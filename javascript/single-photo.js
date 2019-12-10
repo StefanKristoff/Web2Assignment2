@@ -1,9 +1,13 @@
+
 document.addEventListener("DOMContentLoaded", function(){
     console.log("hello World");
 
-    //call funcitons
+    // let imgId = document.getElementsByTagName('img')[0].getAttribute('id');
+    // console.log(imgId);
+    
     hideAllTabs();
-    eventListenerForBoxTabs();
+    boxTabEventListener();
+    
 
     function hideAllTabs() {       
         let tabBoxDescription = document.querySelector("#tabBoxDescription");
@@ -15,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function(){
         tabBoxMap.style.display = "none";
     }
 
-    function eventListenerForBoxTabs(){
+    function boxTabEventListener(){
         document.querySelector('#tabDescription').addEventListener('click', function(){
             if(tabBoxDescription.style.display == 'none'){
                 tabBoxDescription.style.display = "block";
@@ -49,6 +53,5 @@ document.addEventListener("DOMContentLoaded", function(){
             }
         })
     }
-
 
 })

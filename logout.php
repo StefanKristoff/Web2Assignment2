@@ -5,7 +5,7 @@ session_start();
 
 if(session_destroy()) {
     $_SESSION['active'] = false;
-    header("Location: login.php");
+    header("Location: index.php");
 }
 
 ?>

@@ -8,6 +8,7 @@ header {
 .aboutInfo {
     grid-column: 2;
     text-align: center;
+    background: rgba(255, 255, 255, .5);
 }
 
 @media only screen and (max-width: 680px) {
@@ -15,5 +16,6 @@ header {
     .aboutInfo {
         grid-column: 1 / 4;
         grid-row: auto;
+        background: rgba(255, 255, 255, .5);
     }
 }
