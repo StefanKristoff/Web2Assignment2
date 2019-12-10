@@ -69,10 +69,15 @@ if (!$active) {
     $recommended = [];
     
     if (isset($_SESSION['add'])) {
-        print_r($_SESSION['add']);
+        // print_r($_SESSION['add']);
         $ids = $_SESSION['add'];
         //removing duplicates id's from array
         $clean = array_unique($ids);
+    } else {
+        $_SESSION['add'] = [];
+        $ids = $_SESSION['add'];
+        $clean = array_unique($ids);
+    }
         foreach ($clean as $id) {
             $singleImage = getImageByIDCodes(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $id);
             //Basic format is >>> array_push(array_name, value1, value2...)
@@ -83,7 +88,7 @@ if (!$active) {
 
         require_once 'includes/index.inc.php';
         $recommended = createRecommendedImages($imagelist, $clean);
-    }
+    // }
 
     $user = getUserDataByEmail(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $userEmail);
     ?>
