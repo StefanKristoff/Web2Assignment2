@@ -7,10 +7,25 @@ session_start();
 if (isset($_POST['favorite'])){
     $ID = $_POST['imgId'];
     echo $ID;
-    $_SESSION['favImgID'] = $ID;
-}else{
-    echo "NOT WORKING";
-}  
+    if(isset($_SESSION['add'])){
+        $addFav = $_SESSION['add'];
+    }else{
+        $addFav = [];
+    }
+    // add img to favorites
+    $addFav[] = $ID;
+
+    $_SESSION['add'] = $addFav;
+    // header("Location: favourites.php");
+}
+
+
+// }else{
+//     echo "NOT WORKING";
+// }
+
+
+
 
 function createResultRow($photo, $title, $imgID) {
     echo "<div class='resultrow card'>";
