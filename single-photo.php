@@ -11,12 +11,6 @@ $info;
 //getting the image id from the image that is passed from broswer
 $id = $_GET['name'];
 
-if($id == ''){
-    
-}else{
-
-}
-
 $singleImage = getImageByID($pdo, $id);
 $info = $singleImage;
 
@@ -30,7 +24,6 @@ foreach($info as $i){
     $CountryName = $i['CountryName'];
 
     //for details part
-    
     $creator = $i['ActualCreator'];
     $creatorURL = $i['CreatorURL'];
     $sourceURL = $i['SourceURL'];
@@ -38,8 +31,6 @@ foreach($info as $i){
     if($sourceURL == ''){
         $sourceURL = 'NONE';
     }
-    // $colors = $i['Colors'];
-    // $exif = $i['Exif'];
     $colors = json_decode($i['Colors'], true);
     $exif = json_decode($i['Exif'], true);
 
@@ -140,11 +131,7 @@ foreach($info as $i){
                             </div>
                         </div>
                         <div class="tabBox" id="tabBoxMap">
-                            <section id="mapSection">
-                                <div id='gMap'>
-                                    
-                                </div>
-                            </section>
+                            <div id='map'></div>
                         </div>
                         
                     </div>
@@ -154,8 +141,27 @@ foreach($info as $i){
             </div>
         </section>
     </main>
+
+    <script>
+        var map;
+        let Nlat = parseFloat("<?= $latitude?>");
+        let Nlong = parseFloat("<?= $longitude?>");
+        console.log(Nlat, Nlong);
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+            center: {lat: Nlat, lng: Nlong},
+            mapTypeId: 'satellite',
+            zoom: 18
+            });
+
+            var marker = new google.maps.Marker({
+                position:{lat: Nlat, lng: Nlong},
+                map:map
+            });
+        }
+    </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN-iHgrz6nMd7h7OzV3Y5XCHLm7e1doP0&callback=initMap"
-        async defer></script>
+    async defer ></script>
 </body>
 
 </html>
