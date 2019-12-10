@@ -3,9 +3,9 @@
 
 session_start();
 
-if(session_destroy()) {
-    $_SESSION['active'] = false;
-    header("Location: index.php");
-}
-
-?>
+// if(session_destroy()) {
+$_SESSION['active'] = false;
+unset($_SESSION['userid']);
+unset($_SESSION['active']);
+header("Location: index.php");
+// }
