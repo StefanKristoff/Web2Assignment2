@@ -10,8 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = getUserLoginByUser(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $_POST['email']);
 
     if ($user) {
-        if (password_verify($_POST['password'], $user[0]['Password']) && $_POST['email'] == $user[0]['UserName']) {
-            print_r("Success");
+        if (password_verify($_POST['password'], $user[0]['Password']) && strtolower($_POST['email']) == strtolower($user[0]['UserName'])) {
             $_SESSION["userid"] = $user[0]['UserName'];
             $_SESSION["active"] = true;
             header("location: index-logged-in.php");
@@ -47,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form class='loginform' action='login.php' method='post' id='loginform'>
             <div class='formitem'>
                 <label>Email:</label>
-                <input type="email" name='email'/>
+                <input type="email" name='email' />
             </div>
             <div class='formitem'>
                 <label>Password:</label>
