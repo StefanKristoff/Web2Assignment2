@@ -18,6 +18,7 @@ if (isset($_SESSION['active'])) {
 <html>
 <?php
 if (!$active) {
+    // LOGGED OUT
     ?>
 
     <head>
@@ -56,9 +57,16 @@ if (!$active) {
 
         </main>
     </body>
-    <?php
-    } else {
+<?php
+} else {
+    // LOGGED IN
+    require_once 'db-functions.inc.php';
+    require_once 'config.inc.php';
+    require_once 'includes/user-helper.inc.php';
+    $user = getUserDataByEmail(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $userEmail);
+    // $images = getAllImage(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
 
+    $images = get
     ?>
 
     <head>
@@ -76,8 +84,10 @@ if (!$active) {
             <section class='nested'>
                 <div class='userInfo card'>
                     <h3>User Info</h3>
-                    <p>He is tall and short...</p>
-                    <p>Eyes blue...ish</p>
+                    <ul>
+                        <li><?php echo $user[0]['FirstName'] . " " . $user[0]['LastName']; ?></li>
+                        <li><?php echo $user[0]['City'] . ", " . $user[0]['Country']; ?></li>
+                    </ul>
                     <div class='userNested'>
                         <div>Picture </div>
                         <div>Picture </div>
