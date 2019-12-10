@@ -92,7 +92,11 @@ if (!$active) {
                     <div>
                         <a class="btn" href="http://localhost/Web2Assignment2/signup.php"><button type='button'>Join</button></a>
                     </div>
-                    <input type="text" placeholder="SEARCH BOX FOR PHOTOS...">
+                    <form method="get" action='browser.php'>
+                        <input type="text" value='' name="ImgName" placeholder="SEARCH BOX FOR PHOTOS...">
+                        <button type='submit' name='submit' value=''>FIND</button>
+                    </form>
+                    
                 </div>
             </section>
 
