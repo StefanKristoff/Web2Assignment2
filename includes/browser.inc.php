@@ -6,7 +6,6 @@ require_once 'config.inc.php';
 session_start();
 if (isset($_POST['favorite'])){
     $ID = $_POST['imgId'];
-    echo $ID;
     if(isset($_SESSION['add'])){
         $addFav = $_SESSION['add'];
     }else{

@@ -22,13 +22,17 @@ if(isset($_SESSION['add'])){
 if(isset($_POST['remove'])){
     unset($_SESSION['add']);
 }
-elseif(isset($_GET['removeBtn'])){ // got this from https://stackoverflow.com/questions/2231332/how-to-remove-a-variable-from-a-php-session-array
-    $key = array_search($_GET['removeBtn'], $_SESSION['add']);
-
+if(isset($_GET['removeBtn'])){ // got this from https://stackoverflow.com/questions/2231332/how-to-remove-a-variable-from-a-php-session-array
+    unset($_GET['removeBtn']);
+    $key = array_search($_GET['imgId'], $_SESSION['add']);
+    
     if($key!==false){
         unset($_SESSION['add'][$key]);
         $_SESSION['add'] = array_values($_SESSION['add']);
+        unset($_GET['imgId']);
     }
+
+    
     // $_SESSION['add'] =  $_GET['removeBtn'];
     // unset($_SESSION['add']);
 }
@@ -77,8 +81,10 @@ function errorMessage(){
                             <figcaption> <?= strtoupper($titleWant); ?></figcaption>
                             <!-- Link favorite photos to single photo, passing ImageID to s -->
                             <a href='single-photo.php?id=<?= $imgId ?>'> <img height='250px' width='270px' src='images\case-travel-master\images\medium800\<?= strtolower($jpgWant); ?>'> </a>
-                            <form method="get">
-                                <button type='submit' name="removeBtn" value="<?= $imgId ?>">Remove</button>
+                            <form method="get" action="favourites.php">
+                                <input type='hidden' id='imgId' name='imgId' value='<?= $imgId ?>'>
+                                <input type='submit' name='removeBtn' value='Remove'>
+                                <!-- <button type='submit' name="removeBtn" value="<?= $imgId ?>">Remove</button> -->
                             </form>
                         </figure>
                         
