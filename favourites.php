@@ -1,6 +1,12 @@
 <?php
 include('includes/header.inc.php');
 include('includes/hamburger.inc.php');
+
+
+function showFavorits(){
+    
+}
+
 ?>
 
 <!DOCTYPE html>

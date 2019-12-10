@@ -3,27 +3,40 @@ require_once 'api-cities-helper.inc.php';
 require_once 'api-countries-helper.inc.php';
 require_once 'config.inc.php';
 
+session_start();
+if (isset($_POST['favorite'])){
+    $ID = $_POST['imgId'];
+    echo $ID;
+    $_SESSION['favImgID'] = $ID;
+}else{
+    echo "NOT WORKING";
+}  
 
-// session_start();
-// if(isset($_GET['pass'])){
-//     $passing = $_GET['name'];
-//     echo $passing;
-// }
 function createResultRow($photo, $title, $imgID) {
     echo "<div class='resultrow card'>";
     echo "<img src='images/case-travel-master/images/medium800/$photo' width='100px' height='100px'/>";
     echo "<p>$title</p>";
 
-    $str = "name={$imgID}";
+    $str = "id={$imgID}";
     
         echo "<a href='single-photo.php?$str'> <button>View</button> </a>";
-        echo "<button>Add to Favourites</button>";
-    echo "<p>Image ID: {$imgID}</p>";
-    echo "</div>";    
+        echo "<form method='post'>";
+            echo "<input type='hidden' id='imgId' name='imgId' value='$imgID'>";
+            echo "<input type='submit' getId='$imgID' name='favorite' value='favorite'>";
+        echo "</form>";
+    echo "</div>";  
 }
 
 
 
+
+
+
+
+
+
+
+// creating the Filters for the browser/search photo page
 function createFilters(){
     echo "<form method='get' action='browser.php'>";
         echo "<select name='cities' id='cities' placeHolder='Filter By...'>";
@@ -45,7 +58,6 @@ function createFilters(){
             }
         echo "</select>"; 
         echo "<input type='text' value='' name='ImgName' placeHolder='Seach Image by name'>";
-        // echo "<input type='submit' name='submit'>";
         echo "<button type='submit' name='submit' value=''>Filter</button>";
         echo "<button type='submit' name='Clear' value=''>Clear Filter</button>";
     echo "</form>";
