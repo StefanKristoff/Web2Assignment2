@@ -39,7 +39,6 @@ foreach($info as $i){
 session_start();
 if (isset($_POST['singlefavorite'])){
     $singleID = $_POST['Id'];
-    echo $singleID;
     if(isset($_SESSION['add'])){
         $addSingleFav = $_SESSION['add'];
     }else{
