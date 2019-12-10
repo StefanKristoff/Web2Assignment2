@@ -14,15 +14,9 @@ if (isset($_POST['favorite'])){
     }
     // add img to favorites
     $addFav[] = $ID;
-
     $_SESSION['add'] = $addFav;
-    // header("Location: favourites.php");
 }
 
-
-// }else{
-//     echo "NOT WORKING";
-// }
 
 
 

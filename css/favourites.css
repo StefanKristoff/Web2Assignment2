@@ -1,8 +1,9 @@
 .grid-container{
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: repeat(10, 1fr);
-    color: #444;
+    grid-template-columns: repeat(4, 1fr);
+    /* color: #444; */
+    color: black;
 }
 
 header {
@@ -24,4 +25,16 @@ header {
 }
 .favouriteImages {
     grid-column: 1 / 11;
+}
+.favCard{
+    display: inline-block;
+    /* background: rgba(255, 255, 255, .5); */
+    background-color: lightgray;
+    text-align: center;
+    position: center;
+    padding: 5px;
+    border-radius: 5px;
+}
+img:hover{
+    opacity: 0.5;
 }

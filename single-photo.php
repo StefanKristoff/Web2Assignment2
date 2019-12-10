@@ -36,7 +36,19 @@ foreach($info as $i){
 
 }
 
-
+session_start();
+if (isset($_POST['singlefavorite'])){
+    $singleID = $_POST['Id'];
+    echo $singleID;
+    if(isset($_SESSION['add'])){
+        $addSingleFav = $_SESSION['add'];
+    }else{
+        $addSingleFav = [];
+    }
+    // add img to favorites
+    $addSingleFav[] = $singleID;
+    $_SESSION['add'] = $addSingleFav;
+}
 
 ?>
 <!DOCTYPE html>
@@ -62,7 +74,11 @@ foreach($info as $i){
             <div id="singlePicInfo">
                 <div id="singlePicDetails">
                     <div id="favoritesButton">
-                        <button id="favorites">Add to Favorites</button>
+                        <!-- <button id="favorites">Add to Favorites</button> -->
+                        <form method='post'>
+                            <input type='hidden' id='Id' name='Id' value='<?= $id?>'>
+                            <input type='submit' getId='<?= $id?>' name='singlefavorite' value='Add to Favorites'>
+                        </form>
                     </div>
                     <span id="photoTitle">Photo Title: <?= $Title?></span>
                     </br></br>
