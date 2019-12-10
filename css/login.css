@@ -1,6 +1,13 @@
 .hamburgerNav{
     margin: 1rem 0 1rem 0;
 }
+body{
+    height: 100%;
+    background-image: url("../images/pic2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 .grid-container{
     display: grid;
@@ -13,6 +20,9 @@ header{
 
 .loginform {
     grid-column: 2;
+    background: rgba(255, 255, 255, .5);
+    padding: 1rem;
+    border-radius: 10px;
 }
 
 .formitem {

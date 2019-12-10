@@ -6,7 +6,6 @@ require_once 'config.inc.php';
 session_start();
 if (isset($_POST['favorite'])){
     $ID = $_POST['imgId'];
-    echo $ID;
     if(isset($_SESSION['add'])){
         $addFav = $_SESSION['add'];
     }else{
@@ -36,15 +35,6 @@ function createResultRow($photo, $title, $imgID) {
     echo "</div>";  
 }
 
-
-
-
-
-
-
-
-
-
 // creating the Filters for the browser/search photo page
 function createFilters(){
     echo "<form method='get' action='browser.php'>";
@@ -68,7 +58,7 @@ function createFilters(){
         echo "</select>"; 
         echo "<input type='text' value='' name='ImgName' placeHolder='Seach Image by name'>";
         echo "<button type='submit' name='submit' value=''>Filter</button>";
-        echo "<button type='submit' name='Clear' value=''>Clear Filter</button>";
+        echo "<button type='clear' name='Clear' value=''>Clear Filter</button>";
     echo "</form>";
 }
 

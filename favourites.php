@@ -22,19 +22,21 @@ if(isset($_SESSION['add'])){
 if(isset($_POST['remove'])){
     unset($_SESSION['add']);
 }
-elseif(isset($_GET['removeBtn'])){ // got this from https://stackoverflow.com/questions/2231332/how-to-remove-a-variable-from-a-php-session-array
-    $key = array_search($_GET['removeBtn'], $_SESSION['add']);
-
+if(isset($_GET['removeBtn']) && $_GET['removeBtn'] !== null){ // got this from https://stackoverflow.com/questions/2231332/how-to-remove-a-variable-from-a-php-session-array
+    unset($_GET['removeBtn']);
+    $key = array_search($_GET['imgId'], $_SESSION['add']);
+    
     if($key!==false){
         unset($_SESSION['add'][$key]);
         $_SESSION['add'] = array_values($_SESSION['add']);
     }
-    // $_SESSION['add'] =  $_GET['removeBtn'];
-    // unset($_SESSION['add']);
 }
 
+//printing error message when There is nor favorites added.
 function errorMessage(){
-
+    echo "<div id='errorMesage'>";
+        echo "NO FAVORITES FOUND!";
+    echo "</div>";
 }
 
 
@@ -61,14 +63,10 @@ function errorMessage(){
             </form>
             <?php
             if($imagelist == null){
-                echo "NO IMAGES FAVORITED";
+                errorMessage();
             }else{
-                // print_r($clean);
-                // print_r(sizeof($clean));
                 foreach($imagelist as $img) {
-                    // print_r($img[0]['ImageID']);
                     foreach($img as $i) {
-                        // print_r($i['ImageID']);
                         $imgId = $i['ImageID'];
                         $jpgWant = $i['Path'];
                         $titleWant = $i['Title'];
@@ -77,8 +75,9 @@ function errorMessage(){
                             <figcaption> <?= strtoupper($titleWant); ?></figcaption>
                             <!-- Link favorite photos to single photo, passing ImageID to s -->
                             <a href='single-photo.php?id=<?= $imgId ?>'> <img height='250px' width='270px' src='images\case-travel-master\images\medium800\<?= strtolower($jpgWant); ?>'> </a>
-                            <form method="get">
-                                <button type='submit' name="removeBtn" value="<?= $imgId ?>">Remove</button>
+                            <form method="get" action="favourites.php">
+                                <input type='hidden' id='imgId' name='imgId' value='<?= $imgId ?>'>
+                                <input type='submit' name='removeBtn' value='Remove'>
                             </form>
                         </figure>
                         

@@ -2,8 +2,14 @@
     display: grid;
     grid-gap: 10px;
     grid-template-columns: repeat(4, 1fr);
-    /* color: #444; */
     color: black;
+}
+body{
+    height: 100%;
+    background-image: url("../images/pic2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 header {
@@ -28,8 +34,7 @@ header {
 }
 .favCard{
     display: inline-block;
-    /* background: rgba(255, 255, 255, .5); */
-    background-color: lightgray;
+    background: rgba(255, 255, 255, .5);
     text-align: center;
     position: center;
     padding: 5px;
@@ -38,3 +43,14 @@ header {
 img:hover{
     opacity: 0.5;
 }
+
+#errorMesage{
+    text-align: center;
+    background: rgba(255, 255, 255, .5);
+    font-size: 150%;
+    font-style: oblique;
+    padding: 10px;
+    margin: 1rem;
+    border-radius: 1rem;
+}
+
