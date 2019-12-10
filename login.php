@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($_POST['password'], $user[0]['Password']) && strtolower($_POST['email']) == strtolower($user[0]['UserName'])) {
             $_SESSION["userid"] = $user[0]['UserName'];
             $_SESSION["active"] = true;
-            header("location: index-logged-in.php");
+            header("location: index.php");
         }
     } else {
         $error = "Email or Password are incorrect";

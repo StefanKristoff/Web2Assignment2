@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $_SESSION["userid"] = $_POST['email'];
         $_SESSION["active"] = true;
-        header("location: index-logged-in.php");
+        header("location: index.php");
     }
 }
 
