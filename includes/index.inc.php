@@ -29,29 +29,29 @@ function createRecommendedImages($imagelist, $clean)
     $selectedFilter = "";
 
     // Selects the city
-    if ($cityCount[$mostCity] >= $countryCount[$mostCountry] && $cityCount[$mostCity] >= $userCount[$mostUser]) {
-        $selectedFilter = $mostCity;
-        unset($mostCity); // Reduce memory usage, remove when done with it.
-        unset($cityCount);
-        $recommended = citySelectedFilter($selectedFilter, $recommended, $clean);
+    if (isset($cityCount[$mostCity])) {
+        if ($cityCount[$mostCity] >= $countryCount[$mostCountry] && $cityCount[$mostCity] >= $userCount[$mostUser]) {
+            $selectedFilter = $mostCity;
+            unset($mostCity); // Reduce memory usage, remove when done with it.
+            unset($cityCount);
+            $recommended = citySelectedFilter($selectedFilter, $recommended, $clean);
 
-        // Selects the Country
-    } else if ($countryCount[$mostCountry] >= $cityCount[$mostCity] && $countryCount[$mostCountry] >= $userCount[$mostUser]) {
-        $selectedFilter = $mostCountry;
-        unset($mostCountry);
-        unset($countryCount);
-        $recommended = countrySelectedFilter($selectedFilter, $recommended, $clean);
+            // Selects the Country
+        } else if ($countryCount[$mostCountry] >= $cityCount[$mostCity] && $countryCount[$mostCountry] >= $userCount[$mostUser]) {
+            $selectedFilter = $mostCountry;
+            unset($mostCountry);
+            unset($countryCount);
+            $recommended = countrySelectedFilter($selectedFilter, $recommended, $clean);
 
-        // Selects the user
-    } else {
-        $selectedFilter = $mostUser;
-        unset($mostUser);
-        unset($userCount);
-        $recommended = userSelectedFilter($selectedFilter, $recommended, $clean);
+            // Selects the user
+        } else {
+            $selectedFilter = $mostUser;
+            unset($mostUser);
+            unset($userCount);
+            $recommended = userSelectedFilter($selectedFilter, $recommended, $clean);
+        }
     }
-
-    // Fill the rest of the array or remove some, if not exactly 12 photos
-    $recommended = fixTooManyTooLittlePhotos($recommended);
+    $recommended = fixTooManyTooLittlePhotos($recommended, $imagelist);
 
     return $recommended;
 }
@@ -91,18 +91,38 @@ function userSelectedFilter($selectedFilter, $recommended, $clean)
     return $recommended;
 }
 
-function fixTooManyTooLittlePhotos($recommended)
+function fixTooManyTooLittlePhotos($recommended, $imagelist)
 {
     if (count($recommended) < 12) {
         $singleImage = getAllImage(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
         //Basic format is >>> array_push(array_name, value1, value2...)
         $i = 1;
         while (count($recommended) < 12) {
+            // $new = $singleImage[max(array_keys($singleImage)) - $i];
+            $new = array_rand($singleImage);
+            $new = $singleImage[$new];
+            // print_r($singleImage);
+            // print_r($new);
+            // array_push($recommended, $singleImage[max(array_keys($singleImage)) - $i]);
+            foreach ($recommended as $key => $value) {
+                if ($value['ImageID'] == $new['ImageID']) {
+                    print_r('Value: ' . $value['ImageID']);
+                    print_r('New: ' . $new['ImageID']);
+                    unset($recommended[$key]);
+                }
+                foreach ($imagelist as $i) {
+                    if ($i['ImageID'] == $new['ImageID']) {
+                        // unset($recommended[$key]);
+                        $new = array_rand($singleImage);
+                        $new = $singleImage[$new];
+                    }
+                }
+            }
 
-            array_push($recommended, $singleImage[max(array_keys($singleImage)) - $i]);
+            array_push($recommended, $new);
             $i++;
         }
-    } else if (count($recommended > 12)) {
+    } else if (count($recommended) > 12) {
         array_splice($recommended, count($recommended) - (count($recommended) - 12), count($recommended) - 12);
     }
     return $recommended;
