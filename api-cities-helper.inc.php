@@ -56,12 +56,21 @@ function getAllImage($connection){
 function getImage(){
     $sql =  "SELECT ImageID, Title, Description, i.Latitude, i.Longitude,
     AsciiName, CountryName, ContinentCode, Path, Exif, ActualCreator,
-    CreatorURL, SourceURL, Colors
+    CreatorURL, SourceURL, UserID, Colors
         FROM imagedetails as i
         INNER JOIN cities as city ON i.CityCode = city.CityCode
         INNER JOIN countries as c ON i.CountryCodeISO = c.ISO";
     return $sql;
 }
+
+function getImageDetail(){
+    $sql =  "SELECT ImageID, Title, Description, i.Latitude, i.Longitude,
+    CityCode, CountryCodeISO, ContinentCode, Path, Exif, ActualCreator,
+    CreatorURL, SourceURL, UserID, Colors
+        FROM imagedetails as i";
+    return $sql;
+}
+
 
 //--------------------------------------------------------------------- FOR THE BROWSER PAGE ----------------------------------------------------------------
 
@@ -85,6 +94,16 @@ function getCountryImg($connection, $countryCode){
     }
 }
 
+function getUserImg($connection, $userID){
+    try{
+        $sql = getImage() . " WHERE i.UserID = '$userID'";
+        $result = runQuery($connection, $sql, null);
+        return $result;
+    }catch(PDOException $e){
+        die($e->getMessage());
+    }
+}
+
 //DO I EVEN NEED THIS?????? WE'LL SEE
 function getImageByName($connection, $name){
     try{
@@ -100,6 +119,17 @@ function getImageByName($connection, $name){
 function getImageByID($connection, $id){
     try{
         $sql = getImage() . " WHERE ImageID = '$id'";
+        $result = runQuery($connection, $sql, null);
+        return $result;
+    }catch(PDOException $e){
+        die($e->getMessage());
+    }
+}
+
+// function that gets a single photo using the image Id passed from the browser page. Uses city & country code. not names.
+function getImageByIDCodes($connection, $id){
+    try{
+        $sql = getImageDetail() . " WHERE ImageID = '$id'";
         $result = runQuery($connection, $sql, null);
         return $result;
     }catch(PDOException $e){

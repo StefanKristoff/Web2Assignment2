@@ -63,10 +63,29 @@ if (!$active) {
     require_once 'db-functions.inc.php';
     require_once 'config.inc.php';
     require_once 'includes/user-helper.inc.php';
-    $user = getUserDataByEmail(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $userEmail);
-    // $images = getAllImage(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
+    require_once 'api-cities-helper.inc.php';
 
-    $images = get
+    $imagelist = [];
+    $recommended = [];
+    
+    if (isset($_SESSION['add'])) {
+        print_r($_SESSION['add']);
+        $ids = $_SESSION['add'];
+        //removing duplicates id's from array
+        $clean = array_unique($ids);
+        foreach ($clean as $id) {
+            $singleImage = getImageByIDCodes(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $id);
+            //Basic format is >>> array_push(array_name, value1, value2...)
+            foreach ($singleImage as $i) {
+                array_push($imagelist, $i);
+            }
+        }
+
+        require_once 'includes/index.inc.php';
+        $recommended = createRecommendedImages($imagelist, $clean);
+    }
+
+    $user = getUserDataByEmail(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $userEmail);
     ?>
 
     <head>
@@ -101,16 +120,32 @@ if (!$active) {
                 <div class='favImg card'>
                     <h3>Favorite Images</h3>
                     <div class='favNested'>
-                        <div>Picture</div>
-                        <div>Picture</div>
+                        <?php
+                            foreach ($imagelist as $i) {
+                                $imgId = $i['ImageID'];
+                                $jpg = $i['Path'];
+                                // $title = $i['Title'];
+                                ?>
+                            <div><a href='single-photo.php?id=<?= $imgId ?>'> <img height='150px' width='150px' src='images\case-travel-master\images\square150\<?= strtolower($jpg); ?>'> </a></div>
+                        <?php
+                            }
+                            ?>
                     </div>
                 </div>
                 <div class='img card'>
                     <h3>Images You May Like</h3>
                     <div class='imgNested'>
-                        <div>Picture</div>
-                        <div>Picture</div>
-                        <div>Picture</div>
+                        <?php
+
+                            foreach ($recommended as $i) {
+                                $imgId = $i['ImageID'];
+                                $jpg = $i['Path'];
+                                ?>
+
+                            <div><a href='single-photo.php?id=<?= $imgId ?>'> <img height='150px' width='150px' src='images\case-travel-master\images\square150\<?= strtolower($jpg); ?>'> </a></div>
+                        <?php
+                            }
+                            ?>
                     </div>
                 </div>
             </section>
