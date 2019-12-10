@@ -10,7 +10,6 @@ $images = getAllImage(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
 $pdo = setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS);
 
 
-
 if(isset($_GET['cities']) && $_GET['cities'] != ''){
     $cityCode = $_GET['cities']; 
     $cityImages = getCityImg($pdo, $cityCode);

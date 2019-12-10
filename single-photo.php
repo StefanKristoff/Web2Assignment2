@@ -9,7 +9,7 @@ $info;
 
 
 //getting the image id from the image that is passed from broswer
-$id = $_GET['name'];
+$id = $_GET['id'];
 
 $singleImage = getImageByID($pdo, $id);
 $info = $singleImage;
