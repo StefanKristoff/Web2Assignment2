@@ -5,6 +5,12 @@ require_once 'db-functions.inc.php';
 
 header('Content-Type: application/json');
 
-$images = getImages(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
+if(isset($_GET['ImageID'])){
+    $images = getImageById(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $_GET['ImageID']);
+}else{
+    $images = getImages(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
+}
+
+// $images = getImages(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
 echo json_encode($images, JSON_PRETTY_PRINT+JSON_NUMERIC_CHECK);
 ?>

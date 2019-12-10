@@ -18,5 +18,14 @@ function getImages($connection)
         die($e->getMessage());
     }
 }
+function getImageById($connection, $id){
+    try{
+        $sql = getImageSQL() . ' WHERE ImageID=?' . " ORDER BY ImageID";
+        $result = runQuery($connection, $sql, $id);
+        return $result;
+    }catch(PDOException $e){
+        die($e->getMessage());
+    }
+}
 
 ?>
