@@ -67,9 +67,9 @@ if (!$active) {
 
     $imagelist = [];
     $recommended = [];
-    
+    $uploaded = [];
+
     if (isset($_SESSION['add'])) {
-        // print_r($_SESSION['add']);
         $ids = $_SESSION['add'];
         //removing duplicates id's from array
         $clean = array_unique($ids);
@@ -78,16 +78,29 @@ if (!$active) {
         $ids = $_SESSION['add'];
         $clean = array_unique($ids);
     }
-        foreach ($clean as $id) {
-            $singleImage = getImageByIDCodes(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $id);
-            //Basic format is >>> array_push(array_name, value1, value2...)
-            foreach ($singleImage as $i) {
-                array_push($imagelist, $i);
+    foreach ($clean as $id) {
+        $singleImage = getImageByIDCodes(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $id);
+        //Basic format is >>> array_push(array_name, value1, value2...)
+        foreach ($singleImage as $i) {
+            array_push($imagelist, $i);
+        }
+    }
+
+    require_once 'includes/index.inc.php';
+    $recommended = createRecommendedImages($imagelist, $clean);
+
+    if (isset($_SESSION['userid'])) {
+        require_once 'includes/user-helper.inc.php';
+        $user = getUserDataByEmail(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $_SESSION['userid']);
+        $allimg = getUserImg(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $user[0]['UserID']);
+
+        foreach ($allimg as $img) {
+            if ($img['UserID'] == 0) { } else if ($img['UserID'] == $user[0]['UserID']) {
+                array_push($uploaded, $img);
             }
         }
+    }
 
-        require_once 'includes/index.inc.php';
-        $recommended = createRecommendedImages($imagelist, $clean);
     // }
 
     $user = getUserDataByEmail(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $userEmail);
@@ -113,9 +126,22 @@ if (!$active) {
                         <li><?php echo $user[0]['City'] . ", " . $user[0]['Country']; ?></li>
                     </ul>
                     <div class='userNested'>
-                        <div>Picture </div>
-                        <div>Picture </div>
-                        <div>Picture</div>
+                        <?php
+                            if (count($uploaded) > 0) {
+                                foreach ($uploaded as $u) {
+                                    $imgId = $u['ImageID'];
+                                    $jpg = $u['Path'];
+                                    // $title = $u['Title'];
+                                    ?>
+                                <div><a href='single-photo.php?id=<?= $imgId ?>'> <img height='150px' width='150px' src='images\case-travel-master\images\square150\<?= strtolower($jpg); ?>'> </a></div>
+                        <?php
+                                }
+                            } else {
+                                ?>
+                                <p>No Uploaded Photos Found.</p>
+                            <?php
+                            }
+                            ?>
                     </div>
                 </div>
                 <div class='searchBox card'>
@@ -126,6 +152,7 @@ if (!$active) {
                     <h3>Favorite Images</h3>
                     <div class='favNested'>
                         <?php
+                        if (count($imagelist) > 0) {
                             foreach ($imagelist as $i) {
                                 $imgId = $i['ImageID'];
                                 $jpg = $i['Path'];
@@ -134,7 +161,12 @@ if (!$active) {
                             <div><a href='single-photo.php?id=<?= $imgId ?>'> <img height='150px' width='150px' src='images\case-travel-master\images\square150\<?= strtolower($jpg); ?>'> </a></div>
                         <?php
                             }
+                        } else {
                             ?>
+                            <p>No Favourited Photos Found.</p>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
                 <div class='img card'>
