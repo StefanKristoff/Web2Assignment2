@@ -11,6 +11,47 @@ if (isset($_SESSION['active'])) {
         $userEmail = $_SESSION['userid'];
     }
 }
+
+
+function createUploadedImages($uploaded)
+{
+    if (count($uploaded) > 0) {
+        foreach ($uploaded as $u) {
+            $imgId = $u['ImageID'];
+            $jpg = strtolower($u['Path']);
+            // $title = $u['Title'];
+            // $string = "<div><a href='single-photo.php?id=$imgId'> <img height='150px' width='150px' src='images\case-travel-master\images\square150\". $jpg ."'></a></div>";
+            echo "<div><a href='single-photo.php?id={$imgId}'> <img height='150px' width='150px' src='images\case-travel-master\images\square150\\$jpg'></a></div>";
+            // echo $string;
+        }
+    } else {
+        echo '<p>No Uploaded Photos Found.</p>';
+    }
+}
+
+function createFavouritedImages($imagelist)
+{
+    if (count($imagelist) > 0) {
+        foreach ($imagelist as $i) {
+            $imgId = $i['ImageID'];
+            $jpg = strtolower($i['Path']);
+            // $title = $i['Title'];
+            echo "<div><a href='single-photo.php?id={$imgId}'> <img height='150px' width='150px' src='images\case-travel-master\images\square150\\$jpg'> </a></div>";
+        }
+    } else {
+        echo "<p>No Favourited Photos Found.</p>";
+    }
+}
+
+
+function drawRecommendedPhotos($recommended) {
+    foreach ($recommended as $i) {
+        $imgId = $i['ImageID'];
+        $jpg = strtolower($i['Path']);
+
+        echo "<div><a href='single-photo.php?id={$imgId}'> <img height='150px' width='150px' src='images\case-travel-master\images\square150\\{$jpg}'> </a></div>";
+    }
+}
 ?>
 
 
@@ -127,20 +168,7 @@ if (!$active) {
                     </ul>
                     <div class='userNested'>
                         <?php
-                            if (count($uploaded) > 0) {
-                                foreach ($uploaded as $u) {
-                                    $imgId = $u['ImageID'];
-                                    $jpg = $u['Path'];
-                                    // $title = $u['Title'];
-                                    ?>
-                                <div><a href='single-photo.php?id=<?= $imgId ?>'> <img height='150px' width='150px' src='images\case-travel-master\images\square150\<?= strtolower($jpg); ?>'> </a></div>
-                        <?php
-                                }
-                            } else {
-                                ?>
-                                <p>No Uploaded Photos Found.</p>
-                            <?php
-                            }
+                            createUploadedImages($uploaded);
                             ?>
                     </div>
                 </div>
@@ -152,20 +180,7 @@ if (!$active) {
                     <h3>Favorite Images</h3>
                     <div class='favNested'>
                         <?php
-                        if (count($imagelist) > 0) {
-                            foreach ($imagelist as $i) {
-                                $imgId = $i['ImageID'];
-                                $jpg = $i['Path'];
-                                // $title = $i['Title'];
-                                ?>
-                            <div><a href='single-photo.php?id=<?= $imgId ?>'> <img height='150px' width='150px' src='images\case-travel-master\images\square150\<?= strtolower($jpg); ?>'> </a></div>
-                        <?php
-                            }
-                        } else {
-                            ?>
-                            <p>No Favourited Photos Found.</p>
-                        <?php
-                        }
+                        createFavouritedImages($imagelist);
                         ?>
                     </div>
                 </div>
@@ -173,16 +188,8 @@ if (!$active) {
                     <h3>Images You May Like</h3>
                     <div class='imgNested'>
                         <?php
-
-                            foreach ($recommended as $i) {
-                                $imgId = $i['ImageID'];
-                                $jpg = $i['Path'];
-                                ?>
-
-                            <div><a href='single-photo.php?id=<?= $imgId ?>'> <img height='150px' width='150px' src='images\case-travel-master\images\square150\<?= strtolower($jpg); ?>'> </a></div>
-                        <?php
-                            }
-                            ?>
+                        drawRecommendedPhotos($recommended);
+                        ?>
                     </div>
                 </div>
             </section>
