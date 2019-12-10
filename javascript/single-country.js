@@ -154,60 +154,29 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     //filters through countries with images
-    // NOT DONE
     const countryImgSug = document.querySelector('#countryPic');
     const searchImg = document.querySelector('.searchImg');
     const filterCountryImg = document.querySelector('#filteredCountry');
     searchImg.addEventListener('click', function countryImgFilters() {
         filterCountryImg.innerHTML = "";
         countryImgSug.innerHTML = "";
-        let imgCountry = [];
-
-
         let countriesWithImages = countries.filter(c => {
             for (let i of images) {
                 if (c.ISO.toLowerCase() == i.CountryCodeISO.toLowerCase()) {
-                    // console.log(c.ISO);
-                    // console.log(i.CountryCodeISO);
-                    // imgCountry.push(c.CountryName);
                     return c;
                 }
             }
         });
         console.log(countriesWithImages);
-        
-        // for (let i of images) {
-        //     console.log(i.CountryCodeISO);
-        // }
-        // for (let i of images) {
-            // for (let c of countries) {
-        //         // console.log(c.CountryName);
-                // if (c.ISO.toLowerCase() === i.CountryCodeISO.toLowerCase()) {
-                    // imgCountry.push(c.CountryName);
-                    // if (imgCountry.length < 1) {
-                    //     imgCountry = c.CountryName;
-                    //     // console.log(c.CountryName);
-                    // }
 
-                    // for (let img of imgCountry) {
-                    //     if (c.CountryName != img) {
-                    //         imgCountry = c.CountryName;
-                    //         // console.log(img);
-                    //     }
-                    // }
-
-                // }
-            // }
-        // }
-
-        // console.log(imgCountry);
-
-        // let countryWithImg = document.createElement("li");
-        // let link4 = document.createElement('a');
-        // link4.textContent = c.CountryName;
-        // link4.href = "http://localhost/Web2Assignment2/single-country.php?iso=" + c.ISO;
-        // countryWithImg.appendChild(link4);
-        // filterCountryImg.appendChild(countryWithImg);
+        for(let c of countriesWithImages){
+            let countryWithImg = document.createElement("li");
+            let link4 = document.createElement('a');
+            link4.textContent = c.CountryName;
+            link4.href = "http://localhost/Web2Assignment2/single-country.php?iso=" + c.ISO;
+            countryWithImg.appendChild(link4);
+            filterCountryImg.appendChild(countryWithImg);
+        }
     });
 
     // country reset Button, resets the list of countries when clicked
@@ -216,11 +185,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const resetCountry = document.querySelector('#filteredCountry');
     const resetCity = document.querySelector('#countryDetails');
     const resetList = document.querySelector('#cityList');
+    const resetPic = document.querySelector('#pictureList');
     resetButton.addEventListener('click', function () {
         resetCountry.innerHTML = "";
         resetDataId.innerHTML = "";
         resetCity.textContent = "";
         resetList.textContent = "";
+        resetPic.textContent = "";
 
         for (let c of countries) {
             let resetList = document.createElement("li");

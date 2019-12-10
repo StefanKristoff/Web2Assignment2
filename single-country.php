@@ -21,11 +21,12 @@ if (isset($_GET['iso'])) {
     $iso = $_GET["iso"];
     $sCountry = getCountriesById(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $_GET['iso']);
     $sCity = getCitiesById(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $_GET['iso']);
+    $img = getCountryImg(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $_GET['iso']);
 } else {
     $iso = '';
 }
-$img = getAllImage(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
 $lang = getLang(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
+$allCountry = getAllCountries(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
 ?>
 
 <body>
@@ -56,7 +57,7 @@ $lang = getLang(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
                     <input type="button" class="searchImg" value="Countries w/ images" list="countryPic">
                     <datalist id="countryPic"></datalist>
 
-                    <input type="reset" class="resetButton" value="ResetCountries">
+                    <input type="reset" class="resetButton" value="Reset">
                     <datalist id="resetCountry"></datalist>
                 </fieldset>
             </div>
@@ -99,7 +100,19 @@ $lang = getLang(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
 
                                                         ?></li>
 
-                                <li>Neighbours: <?php echo $s["Neighbours"] ?></li>
+                                <li>Neighbours: <?php
+                                                        $neigh = $s["Neighbours"];
+                                                        $neighArr = explode(",", $neigh);
+                                                        foreach ($allCountry as $a) {
+                                                            foreach ($neighArr as $n) {
+                                                                if ($n == $a["ISO"]) {
+                                                                    echo $a["CountryName"];
+                                                                    echo ", ";
+                                                                }
+                                                            }
+                                                        }
+
+                                                        ?></li>
                                 <li>Description: <?php echo $s["CountryDescription"] ?></li>
                         <?php
                             }
@@ -114,7 +127,7 @@ $lang = getLang(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
                         if ($iso != '') {
                             foreach ($sCity as $c) {
                                 ?>
-                                <li><?php echo $c["AsciiName"] ?></li>
+                                <li><a href="http://localhost/Web2Assignment2/single-city.php?<?= $c["CityCode"] ?>"><?php echo $c["AsciiName"] ?></a></li>
                         <?php
                             }
                         }
@@ -123,12 +136,14 @@ $lang = getLang(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
                 </div>
                 <div class='box e card'>
                     <h3>Country Photos</h3>
-                    <ul>
+                    <ul id="pictureList">
                         <?php
-                        foreach ($img as $i) {
-                            ?>
-                            <img src="images/case-travel-master/images/medium800/<?= $i['Path'] ?>" alt="<?= $i['Title'] ?>" height="100px" width="100px">
+                        if ($iso != '') {
+                            foreach ($img as $i) {
+                                ?>
+                                <img src="images/case-travel-master/images/medium800/<?= $i['Path'] ?>" alt="<?= $i['Title'] ?>" height="100px" width="100px">
                         <?php
+                            }
                         }
                         ?>
                     </ul>
