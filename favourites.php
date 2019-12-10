@@ -5,20 +5,24 @@ require_once 'api-cities-helper.inc.php';
 require_once 'config.inc.php';
 
 $pdo = setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS);
-$info = [];
 session_start();
 if(isset($_SESSION['add'])){
     $ids = $_SESSION['add'];
     foreach($ids as $id){
         $singleImage = getImageByID($pdo, $id);
-        $index= $singleImage;
+        foreach($singleImage as $e){
+            $path = $e['Path'];
+            echo $path;
+        }
+        
+        $info[] = $path;
     }
 }
 if(isset($_POST['remove'])){
     unset($_SESSION['add']);
 }
-$info[] = $index;
-print($info);
+
+print_r($info);
 
 
 // for ($i = 0; $i < sizeof($info); $i++) {
@@ -28,11 +32,11 @@ print($info);
 //     echo "</br>";
 // }
 
-    foreach($info as $e){
-        // print_r($e);
-        $img = $e['Path'];
-        echo $img;
-    }
+    // foreach($info as $e => $value){
+    //     // print_r($e);
+    //     $img = $e['Path'];
+    //     echo $img;
+    // }
 
 
 ?>
