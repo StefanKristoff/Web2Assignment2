@@ -3,7 +3,7 @@ include('includes/header.inc.php');
 include('includes/hamburger.inc.php');
 include('includes/loggedinsession.inc.php');
 ?>
-
+<!--  DONT EDIT THIS FILE DONT EDIT THIS FILE!!!!!!!!!!!!!!!!!! IF YOU NEED TO EDIT HOME PAGE, EDIT IN THE INDEX PAGE!!!!!!!!!!!! Will delete this file later, as backup, despite git. -->
 <!DOCTYPE html>
 <html>
 

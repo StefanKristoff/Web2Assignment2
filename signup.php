@@ -3,7 +3,7 @@ require_once 'config.inc.php';
 require_once "includes/header.inc.php";
 require_once "includes/hamburger.inc.php";
 require_once "includes/userlogin-helper.inc.php";
-require_once "includes/userlogin-helper.inc.php";
+require_once "includes/user-helper.inc.php";
 require_once "db-functions.inc.php";
 
 session_start();
@@ -30,8 +30,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $confirm = $_POST['confirmpassword'];
     } else {
         // insert into db stuff here
-        insertUserLogin(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $_POST['email'], password_hash($_POST['password'], PASSWORD_BCRYPT, ['cost' => 12]), date('Y-m-d H:i:s'));
-        header("location: index-logged-in.php");
+        $loginid = insertUserLogin(
+            setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS),
+            $_POST['email'],
+            password_hash($_POST['password'], PASSWORD_BCRYPT, ['cost' => 12]),
+            date('Y-m-d H:i:s'),
+            $_POST['first'],
+            $_POST['last'],
+            $_POST['city'],
+            $_POST['country']
+        );
+
+        $_SESSION["userid"] = $_POST['email'];
+        $_SESSION["active"] = true;
+        header("location: index.php");
     }
 }
 

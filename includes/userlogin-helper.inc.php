@@ -35,7 +35,7 @@ function getUserLoginByUser($connection, $user)
     }
 }
 
-function insertUserLogin($connection, $user, $pass, $datejoin)
+function insertUserLogin($connection, $user, $pass, $datejoin, $first, $last, $city, $country)
 {
     try {
         $connection->beginTransaction();
@@ -43,8 +43,24 @@ function insertUserLogin($connection, $user, $pass, $datejoin)
         $sql = "INSERT INTO userslogin (UserName, Password, DateJoined, DateLastModified) VALUES (?,?,?,?)";
         $statement = $connection->prepare($sql);
         $statement->execute(array($user, $pass, $datejoin, $datejoin));
+
+        $id = $connection->lastInsertId();
+        $sqluser = "INSERT INTO users (UserID, FirstName, LastName, City, Country, Email) VALUES (?,?,?,?,?,?)";
+        $statement = $connection->prepare($sqluser);
+        $statement->execute(array($id, $first, $last, $city, $country, $user));
         $connection->commit();
+
     } catch (Exception $e) {
         echo $e->getMessage();
+    }
+}
+
+function getLastUserId($connection) {
+    try {
+        $sql = 'SELECT max(UserID) FROM userslogin';
+        $result = runQuery($connection, $sql);
+        return $result;
+    } catch (PDOException $e) {
+        die($e->getMessage());
     }
 }
