@@ -84,10 +84,10 @@ if (!$active) {
                 <div class='innerNested'>
 
                     <div>
-                        <a class="btn" href="http://localhost/Web2Assignment2/login.php"><button type='button'>Login</button></a>
+                        <a class="btn" href="https://uplifted-scout-261201.appspot.com/login.php"><button type='button'>Login</button></a>
                     </div>
                     <div>
-                        <a class="btn" href="http://localhost/Web2Assignment2/signup.php"><button type='button'>Join</button></a>
+                        <a class="btn" href="https://uplifted-scout-261201.appspot.com/signup.php"><button type='button'>Join</button></a>
                     </div>
                     <form method="get" action='browser.php'>
                         <input type="text" value='' name="ImgName" placeholder="SEARCH BOX FOR PHOTOS...">
@@ -102,10 +102,10 @@ if (!$active) {
 <?php
 } else {
     // LOGGED IN
-    require_once 'db-functions.inc.php';
+    require_once 'includes/db-functions.inc.php';
     require_once 'config.inc.php';
     require_once 'includes/user-helper.inc.php';
-    require_once 'api-cities-helper.inc.php';
+    require_once 'includes/api-cities-helper.inc.php';
 
     $imagelist = [];
     $recommended = [];
@@ -121,7 +121,7 @@ if (!$active) {
         $clean = array_unique($ids);
     }
     foreach ($clean as $id) {
-        $singleImage = getImageByIDCodes(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $id);
+        $singleImage = getImageByIDCodes(setConnectionInfo(DBCONNECTION, DBUSER, DBPASS), $id);
         //Basic format is >>> array_push(array_name, value1, value2...)
         foreach ($singleImage as $i) {
             array_push($imagelist, $i);
@@ -133,8 +133,8 @@ if (!$active) {
 
     if (isset($_SESSION['userid'])) {
         require_once 'includes/user-helper.inc.php';
-        $user = getUserDataByEmail(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $_SESSION['userid']);
-        $allimg = getUserImg(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $user[0]['UserID']);
+        $user = getUserDataByEmail(setConnectionInfo(DBCONNECTION, DBUSER, DBPASS), $_SESSION['userid']);
+        $allimg = getUserImg(setConnectionInfo(DBCONNECTION, DBUSER, DBPASS), $user[0]['UserID']);
 
         foreach ($allimg as $img) {
             if ($img['UserID'] == 0) { } else if ($img['UserID'] == $user[0]['UserID']) {
@@ -143,7 +143,7 @@ if (!$active) {
         }
     }
 
-    $user = getUserDataByEmail(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $userEmail);
+    $user = getUserDataByEmail(setConnectionInfo(DBCONNECTION, DBUSER, DBPASS), $userEmail);
     ?>
 
     <head>

@@ -4,7 +4,7 @@ header('Access-Control-Allow-Origin: *');
 require_once 'includes/travel-config.inc.php';
 require_once 'includes/service-utilities.inc.php';
 
-require_once 'includes/api-countries-helper.inc.php'; 
+require_once 'includes/includes/api-countries-helper.inc.php'; 
 require_once 'includes/api-cities-helper.inc.php';
 require_once 'includes/db-functions.inc.php';
 // header('Content-Type: application/json');
@@ -13,8 +13,8 @@ require_once 'includes/db-functions.inc.php';
 
 
 if (isset($_GET['CountryCodeISO'])) {
-    $cities = getCitiesById(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $_GET['CountryCodeISO']);
+    $cities = getCitiesById(setConnectionInfo(DBCONNECTION, DBUSER, DBPASS), $_GET['CountryCodeISO']);
 } else {
-    $cities = getAllCities(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
+    $cities = getAllCities(setConnectionInfo(DBCONNECTION, DBUSER, DBPASS));
 }
 echo json_encode($cities, JSON_PRETTY_PRINT + JSON_NUMERIC_CHECK);

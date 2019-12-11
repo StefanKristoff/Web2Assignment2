@@ -1,5 +1,5 @@
 <?php
-require_once 'db-functions.inc.php';
+require_once 'includes/db-functions.inc.php';
 require_once 'config.inc.php';
 
 
@@ -35,7 +35,7 @@ function getCountriesById($connection, $id) {
 
 function getCountryWithImages($connection){
   try{
-      $sql = getCountrySQL() . ' INNER JOIN imagedetails ON countries.ISO = imagedetails.CountryCodeISO GROUP BY CountryName';
+      $sql = getCountrySQL() . ' INNER JOIN imagedetails ON countries.ISO = imagedetails.CountryCodeISO GROUP BY countries.ISO ORDER BY CountryName';
       $result = runQuery($connection, $sql, null);
       return $result;
 

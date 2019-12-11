@@ -1,7 +1,7 @@
 <?php
 include('includes/header.inc.php');
-require_once 'api-countries-helper.inc.php';
-require_once 'api-cities-helper.inc.php';
+require_once 'includes/api-countries-helper.inc.php';
+require_once 'includes/api-cities-helper.inc.php';
 require_once 'language.php';
 ?>
 
@@ -20,14 +20,14 @@ require_once 'language.php';
 <?php
 if (isset($_GET['iso'])) {
     $iso = $_GET["iso"];
-    $sCountry = getCountriesById(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $_GET['iso']);
-    $sCity = getCitiesById(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $_GET['iso']);
-    $img = getCountryImg(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $_GET['iso']);
+    $sCountry = getCountriesById(setConnectionInfo(DBCONNECTION, DBUSER, DBPASS), $_GET['iso']);
+    $sCity = getCitiesById(setConnectionInfo(DBCONNECTION, DBUSER, DBPASS), $_GET['iso']);
+    $img = getCountryImg(setConnectionInfo(DBCONNECTION, DBUSER, DBPASS), $_GET['iso']);
 } else {
     $iso = '';
 }
-$lang = getLang(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
-$allCountry = getAllCountries(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
+$lang = getLang(setConnectionInfo(DBCONNECTION, DBUSER, DBPASS));
+$allCountry = getAllCountries(setConnectionInfo(DBCONNECTION, DBUSER, DBPASS));
 ?>
 
 <body>
@@ -126,7 +126,7 @@ $allCountry = getAllCountries(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
                         if ($iso != '') {
                             foreach ($sCity as $c) {
                                 ?>
-                                <li><a href="http://localhost/Web2Assignment2/single-city.php?cityCode=<?= $c["CityCode"] ?>"><?php echo $c["AsciiName"] ?></a></li>
+                                <li><a href="https://uplifted-scout-261201.appspot.com/single-city.php?cityCode=<?= $c["CityCode"] ?>"><?php echo $c["AsciiName"] ?></a></li>
                         <?php
                             }
                         }
@@ -140,7 +140,7 @@ $allCountry = getAllCountries(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
                         if ($iso != '') {
                             foreach ($img as $i) {
                                 ?>
-                                <img src="images/case-travel-master/images/medium800/<?= $i['Path'] ?>" alt="<?= $i['Title'] ?>" height="100px" width="100px">
+                                <img src="images/case-travel-master/images/medium800/<?= strtolower($i['Path']) ?>" alt="<?= $i['Title'] ?>" height="100px" width="100px">
                         <?php
                             }
                         }

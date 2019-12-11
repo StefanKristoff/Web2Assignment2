@@ -6,7 +6,7 @@ require_once "includes/userlogin-helper.inc.php";
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $user = getUserLoginByUser(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $_POST['email']);
+    $user = getUserLoginByUser(setConnectionInfo(DBCONNECTION, DBUSER, DBPASS), $_POST['email']);
 
     if ($user) {
         if (password_verify($_POST['password'], $user[0]['Password']) && strtolower($_POST['email']) == strtolower($user[0]['UserName'])) {

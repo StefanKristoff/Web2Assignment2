@@ -58,7 +58,7 @@ function createRecommendedImages($imagelist, $clean)
 
 function citySelectedFilter($selectedFilter, $recommended, $clean)
 {
-    $cityImg = getCityImg(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $selectedFilter);
+    $cityImg = getCityImg(setConnectionInfo(DBCONNECTION, DBUSER, DBPASS), $selectedFilter);
     foreach ($cityImg as $i) {
         if (!in_array($i['ImageID'], $clean)) {
             array_push($recommended, $i);
@@ -69,7 +69,7 @@ function citySelectedFilter($selectedFilter, $recommended, $clean)
 
 function countrySelectedFilter($selectedFilter, $recommended, $clean)
 {
-    $countryImg = getCountryImg(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $selectedFilter);
+    $countryImg = getCountryImg(setConnectionInfo(DBCONNECTION, DBUSER, DBPASS), $selectedFilter);
     //Basic format is >>> array_push(array_name, value1, value2...)
     foreach ($countryImg as $i) {
         if (!in_array($i['ImageID'], $clean)) {
@@ -81,7 +81,7 @@ function countrySelectedFilter($selectedFilter, $recommended, $clean)
 
 function userSelectedFilter($selectedFilter, $recommended, $clean)
 {
-    $userImg = getUserImg(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $selectedFilter);
+    $userImg = getUserImg(setConnectionInfo(DBCONNECTION, DBUSER, DBPASS), $selectedFilter);
     //Basic format is >>> array_push(array_name, value1, value2...)
     foreach ($userImg as $i) {
         if (!in_array($i['ImageID'], $clean)) {
@@ -94,7 +94,7 @@ function userSelectedFilter($selectedFilter, $recommended, $clean)
 function fixTooManyTooLittlePhotos($recommended, $imagelist)
 {
     if (count($recommended) < 12) {
-        $singleImage = getAllImage(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
+        $singleImage = getAllImage(setConnectionInfo(DBCONNECTION, DBUSER, DBPASS));
         //Basic format is >>> array_push(array_name, value1, value2...)
         $i = 1;
         while (count($recommended) < 12) {

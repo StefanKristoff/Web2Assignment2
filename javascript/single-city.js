@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     // The url for the city data
-    const cityEndpoint = 'http://localhost/web2Assignment2/api-cities.php';
-    const imgAPI = 'http://localhost/web2Assignment2/api-imageDetails.php';
+    const cityEndpoint = 'https://uplifted-scout-261201.appspot.com/api-cities.php';
+    const imgAPI = 'https://uplifted-scout-261201.appspot.com/api-imageDetails.php';
 
     // Retrieve local Storage
     let cities = retrieveCityStorage();
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let option = document.createElement('li');
             let link = document.createElement('a');
             link.textContent = city.AsciiName;
-            link.href = "http://localhost/Web2Assignment2/single-city.php?cityCode=" + city.CityCode;
+            link.href = "https://uplifted-scout-261201.appspot.com/single-city.php?cityCode=" + city.CityCode;
             option.appendChild(link);
             suggestions.appendChild(option);
         })
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 let list = document.createElement('li');
                 let link = document.createElement('a');
                 link.textContent = m.AsciiName;
-                link.href = "http://localhost/Web2Assignment2/single-city.php?cityCode=" + m.CityCode;
+                link.href = "https://uplifted-scout-261201.appspot.com/single-city.php?cityCode=" + m.CityCode;
                 list.appendChild(link);
                 li.appendChild(list);
             });
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let rList = document.createElement('li');
             let rLink = document.createElement('a');
             rLink.textContent = c.AsciiName;
-            rLink.href = "http://localhost/Web2Assignment2/single-city.php?cityCode=" + c.CityCode;
+            rLink.href = "https://uplifted-scout-261201.appspot.com/single-city.php?cityCode=" + c.CityCode;
             rList.appendChild(rLink);
             resetCity.appendChild(rList);
 
@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let clist = document.createElement('li');
             let clink = document.createElement('a');
             clink.textContent = i.AsciiName;
-            clink.href = "http://localhost/Web2Assignment2/single-city.php?cityCode=" + i.CityCode;
+            clink.href = "https://uplifted-scout-261201.appspot.com/single-city.php?cityCode=" + i.CityCode;
             clist.appendChild(clink);
             list.appendChild(clist);
 

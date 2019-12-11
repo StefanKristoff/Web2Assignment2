@@ -1,5 +1,5 @@
 <?php
-require_once 'db-functions.inc.php';
+require_once 'includes/db-functions.inc.php';
 require_once 'config.inc.php';
 
 function getCitySQL()
@@ -47,7 +47,7 @@ function getCityById($connection, $id)
 
 function getCityWithImagesSQL($connection){
     try{
-        $sql = getCitySQL() . ' INNER JOIN imagedetails ON cities.CityCode = imagedetails.CityCode GROUP BY cities.AsciiName';
+        $sql = getCitySQL() . ' INNER JOIN imagedetails ON cities.CityCode = imagedetails.CityCode GROUP BY cities.CityCode ORDER BY cities.AsciiName';
         $result = runQuery($connection, $sql, null);
         return $result;
 

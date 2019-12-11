@@ -1,12 +1,12 @@
 <?php
 include('includes/header.inc.php');
-require_once 'api-cities-helper.inc.php';
+require_once 'includes/api-cities-helper.inc.php';
 
 
 if (isset($_GET['cityCode'])) {
     $cityCode = $_GET["cityCode"];
-    $city = getCityById(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $cityCode);
-    $imagelist = getCityImg(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $cityCode);
+    $city = getCityById(setConnectionInfo(DBCONNECTION, DBUSER, DBPASS), $cityCode);
+    $imagelist = getCityImg(setConnectionInfo(DBCONNECTION, DBUSER, DBPASS), $cityCode);
     $lat = $city[0]['Latitude'];
     $long = $city[0]['Longitude'];
 } else {

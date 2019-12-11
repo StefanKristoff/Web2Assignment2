@@ -1,10 +1,10 @@
 <?php
 session_start();
 include('includes/header.inc.php');
-require_once 'api-cities-helper.inc.php';
+require_once 'includes/api-cities-helper.inc.php';
 require_once 'config.inc.php';
 
-$pdo = setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS);
+$pdo = setConnectionInfo(DBCONNECTION, DBUSER, DBPASS);
 $info = [];
 $imagelist = [];
 

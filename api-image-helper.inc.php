@@ -1,5 +1,5 @@
 <?php
-require_once 'db-functions.inc.php';
+require_once 'includes/db-functions.inc.php';
 require_once 'config.inc.php';
 
 function getImageSQL()

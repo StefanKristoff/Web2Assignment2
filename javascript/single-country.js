@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     // URL for APIs containing information
-    const countryAPI = 'http://localhost/Web2Assignment2/api-countries.php';
-    const imagedetailAPI = 'http://localhost/Web2Assignment2/api-imageDetails.php';
+    const countryAPI = 'https://uplifted-scout-261201.appspot.com/api-countries.php';
+    const imagedetailAPI = 'https://uplifted-scout-261201.appspot.com/api-imageDetails.php';
     //Retrieve local storage
     let countries = retrieveCountryStorage();
     let images = retrieveImageStorage();
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let link = document.createElement('a');
 
             link.textContent = country.CountryName;
-            link.href = "http://localhost/Web2Assignment2/single-country.php?iso=" + country.ISO;
+            link.href = "https://uplifted-scout-261201.appspot.com/single-country.php?iso=" + country.ISO;
 
             option.appendChild(link);
             suggestions.appendChild(option);
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 let newList = document.createElement('li');
                 let link1 = document.createElement('a');
                 link1.textContent = pic.CountryName;
-                link1.href = "http://localhost/Web2Assignment2/single-country.php?iso=" + pic.ISO;
+                link1.href = "https://uplifted-scout-261201.appspot.com/single-country.php?iso=" + pic.ISO;
                 newList.appendChild(link1);
                 list.appendChild(newList);
             })
@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 let opt = document.createElement('li');
                 let link2 = document.createElement('a');
                 link2.textContent = country.CountryName;
-                link2.href = "http://localhost/Web2Assignment2/single-country.php?iso=" + country.ISO;
+                link2.href = "https://uplifted-scout-261201.appspot.com/single-country.php?iso=" + country.ISO;
                 opt.appendChild(link2);
                 conList.appendChild(opt);
             })
@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let countryWithImg = document.createElement("li");
             let link4 = document.createElement('a');
             link4.textContent = c.CountryName;
-            link4.href = "http://localhost/Web2Assignment2/single-country.php?iso=" + c.ISO;
+            link4.href = "https://uplifted-scout-261201.appspot.com/single-country.php?iso=" + c.ISO;
             countryWithImg.appendChild(link4);
             filterCountryImg.appendChild(countryWithImg);
         }
@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let resetList = document.createElement("li");
             let link3 = document.createElement('a');
             link3.textContent = c.CountryName;
-            link3.href = "http://localhost/Web2Assignment2/single-country.php?iso=" + c.ISO;
+            link3.href = "https://uplifted-scout-261201.appspot.com/single-country.php?iso=" + c.ISO;
             resetList.appendChild(link3);
             resetCountry.appendChild(resetList);
         }

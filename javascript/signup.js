@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let cities = [];
 
     //Get countries
-    const countryAPI = 'http://localhost/Web2Assignment2/api-countries.php';
+    const countryAPI = 'https://uplifted-scout-261201.appspot.com/api-countries.php';
 
     countries = retrieveCountryStorage();
     if (countries.length < 1) {
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //  CITIES
 
     // // Fetch the cities from the endPoint
-    const cityEndpoint = 'http://localhost/web2Assignment2/api-cities.php'
+    const cityEndpoint = 'https://uplifted-scout-261201.appspot.com/api-cities.php'
 
     cities = retrieveCityStorage();
     if (cities.length < 1) {

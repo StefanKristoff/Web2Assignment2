@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once 'api-cities-helper.inc.php';
-require_once 'api-countries-helper.inc.php';
+require_once 'includes/api-cities-helper.inc.php';
+require_once 'includes/api-countries-helper.inc.php';
 require_once 'config.inc.php';
 
 // check to see if the FAVORITE buttion is pushed and if so add the id of that image into the session
@@ -38,7 +38,7 @@ function createFilters(){
     echo "<form method='get' action='browser.php'>";
         echo "<select name='cities' id='cities' placeHolder='Filter By...'>";
             echo "<option value=''>City</option>";
-            $cityImg = getCityWithImagesSQL(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
+            $cityImg = getCityWithImagesSQL(setConnectionInfo(DBCONNECTION, DBUSER, DBPASS));
             foreach($cityImg as $ci){
                 echo "<option value='{$ci['CityCode']}'> {$ci['AsciiName']} </option>";
             }
@@ -48,7 +48,7 @@ function createFilters(){
     
         echo "<select name='countries' id='countries' placeHolder='Filter By...'>";
             echo "<option value=''>Country</option>";
-            $countryImg = getCountryWithImages(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
+            $countryImg = getCountryWithImages(setConnectionInfo(DBCONNECTION, DBUSER, DBPASS));
 
             foreach($countryImg as $co){ 
                 echo "<option value='{$co['ISO']}'> {$co['CountryName']} </option>";

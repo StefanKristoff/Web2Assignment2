@@ -3,7 +3,7 @@ require_once 'config.inc.php';
 require_once "includes/header.inc.php";
 require_once "includes/userlogin-helper.inc.php";
 require_once "includes/user-helper.inc.php";
-require_once "db-functions.inc.php";
+require_once "includes/db-functions.inc.php";
 
 session_start();
 $first = "";
@@ -16,7 +16,7 @@ $confirm = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $user = getUserLoginByUser(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $_POST['email']);
+    $user = getUserLoginByUser(setConnectionInfo(DBCONNECTION, DBUSER, DBPASS), $_POST['email']);
 
     if ($user) {
         $error = "Email already exists";
@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // insert into db stuff here
         $loginid = insertUserLogin(
-            setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS),
+            setConnectionInfo(DBCONNECTION, DBUSER, DBPASS),
             $_POST['email'],
             password_hash($_POST['password'], PASSWORD_BCRYPT, ['cost' => 12]),
             date('Y-m-d H:i:s'),
