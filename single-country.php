@@ -127,7 +127,7 @@ $allCountry = getAllCountries(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
                         if ($iso != '') {
                             foreach ($sCity as $c) {
                                 ?>
-                                <li><a href="http://localhost/Web2Assignment2/single-city.php?<?= $c["CityCode"] ?>"><?php echo $c["AsciiName"] ?></a></li>
+                                <li><a href="http://localhost/Web2Assignment2/single-city.php?cityCode=<?= $c["CityCode"] ?>"><?php echo $c["AsciiName"] ?></a></li>
                         <?php
                             }
                         }
