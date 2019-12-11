@@ -15,10 +15,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //Get countries
     function fetchCountries() {
-        let search = countryAPI;
-
         if (countries.length < 1) {
-            fetch(search)
+            fetch(countryAPI)
                 .then(response => response.json())
                 .then(data => {
                     for (let c of data) {
@@ -34,10 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //gets images
     function fetchImages() {
-        let search = imagedetailAPI;
-
         if (images.length < 1) {
-            fetch(search)
+            fetch(imagedetailAPI)
                 .then(response => response.json())
                 .then(data => {
                     for (let i of data) {
@@ -168,7 +164,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
         });
-        console.log(countriesWithImages);
 
         for (let c of countriesWithImages) {
             let countryWithImg = document.createElement("li");

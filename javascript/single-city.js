@@ -1,16 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     // The url for the city data
-    const cityEndpoint = 'http://localhost/web2Assignment2/api-cities.php'
+    const cityEndpoint = 'http://localhost/web2Assignment2/api-cities.php';
+    const imgAPI = 'http://localhost/web2Assignment2/api-imageDetails.php';
 
     // Retrieve local Storage
     let cities = retrieveCityStorage();
+    let img = retrieveImgStorage();
 
     // Fetch from Url and call function
     fetchCities();
+    fetchImg();
 
     //Populates city list
     populateCity();
+
     // // Fetch the cities from the endPoint
     function fetchCities() {
         if (cities.length < 1) {
@@ -27,14 +31,39 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    //fetches images
+    function fetchImg() {
+        if (img.length < 1) {
+            fetch(imgAPI)
+                .then(response => response.json())
+                .then(data => {
+                    for (let d of data) {
+                        img.push(d);
+                    }
+                    updateImgStorage();
+                })
+                .catch(error => console.error(error))
+        }
+    }
 
-    // CITY Storage
+    // update local storage
     function updateCityStorage() {
         localStorage.setItem("cities", JSON.stringify(cities));
     }
+    function updateImgStorage() {
+        localStorage.setItem("img", JSON.stringify(img));
+    }
+
+
     function retrieveCityStorage() {
         return JSON.parse(localStorage.getItem("cities")) || [];
     }
+    function retrieveImgStorage() {
+        return JSON.parse(localStorage.getItem("img")) || [];
+    }
+
+
+    //Sorts and populates the list of cities
     function populateCity() {
         const suggestions = document.querySelector(".filteredCity");
         suggestions.innerHTML = "";
