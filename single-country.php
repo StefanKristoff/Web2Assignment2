@@ -27,6 +27,19 @@ if (isset($_GET['iso'])) {
 }
 $lang = getLang(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
 $allCountry = getAllCountries(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
+
+function createCountryImg($img)
+{
+    if (count($img) > 0) {
+        foreach ($img as $i) {
+            $imageId = $i['ImageID'];
+            $path = strtolower($i['Path']);
+            echo "<li><a href='single-photo.php?id={$imageId}'><img height='100px' width='100px' src='images\case-travel-master\images\square150\\$path'></a></li>";
+        }
+    } else {
+        echo "<p>No Favourited Photos Found.</p>";
+    }
+}
 ?>
 
 <body>
@@ -140,9 +153,7 @@ $allCountry = getAllCountries(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
                         <?php
                         if ($iso != '') {
                             foreach ($img as $i) {
-                                ?>
-                                <img src="images/case-travel-master/images/medium800/<?= $i['Path'] ?>" alt="<?= $i['Title'] ?>" height="100px" width="100px">
-                        <?php
+                                createCountryImg($img);
                             }
                         }
                         ?>
