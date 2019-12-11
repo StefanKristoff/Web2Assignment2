@@ -1,6 +1,5 @@
 <?php
 include('includes/header.inc.php');
-include('includes/hamburger.inc.php');
 require_once 'api-cities-helper.inc.php';
 
 
@@ -41,6 +40,7 @@ function createCityImages($imagelist)
     <title>Single City</title>
     <link rel="stylesheet" href="css\stylesheet.css">
     <link rel="stylesheet" href="css\city-stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="module" src="javascript\get-countries.js"></script>
     <script type="module" src="javascript\single-city.js"></script>
 </head>
@@ -49,10 +49,9 @@ function createCityImages($imagelist)
     <div class='grid-container'>
 
         <main class='main'>
-            <?php
-            createHeader();
-            createHamburger();
-            ?>
+            <?php createHeader(); ?>
+            <?php include('includes/hamburger.inc.php'); ?>
+
             <div class='box a card'>
 
                 <h3>City Filter</h3>
@@ -105,10 +104,10 @@ function createCityImages($imagelist)
                 </div>
                 <div class='box d card'>
                     <h3>City Map</h3>
-                        <div id='map'>
-                            <img src="https://maps.googleapis.com/maps/api/staticmap?center=<?=$lat?>,<?=$long?>&zoom=12&size=600x600&maptype=roadmap
+                    <div id='map'>
+                        <img src="https://maps.googleapis.com/maps/api/staticmap?center=<?= $lat ?>,<?= $long ?>&zoom=12&size=600x600&maptype=roadmap
                                 &key=AIzaSyAN-iHgrz6nMd7h7OzV3Y5XCHLm7e1doP0" />
-                        </div>
+                    </div>
                 </div>
                 <div class='box e card'>
                     <h3>City Photos</h3>

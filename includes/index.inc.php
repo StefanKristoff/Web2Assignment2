@@ -98,21 +98,14 @@ function fixTooManyTooLittlePhotos($recommended, $imagelist)
         //Basic format is >>> array_push(array_name, value1, value2...)
         $i = 1;
         while (count($recommended) < 12) {
-            // $new = $singleImage[max(array_keys($singleImage)) - $i];
             $new = array_rand($singleImage);
             $new = $singleImage[$new];
-            // print_r($singleImage);
-            // print_r($new);
-            // array_push($recommended, $singleImage[max(array_keys($singleImage)) - $i]);
             foreach ($recommended as $key => $value) {
                 if ($value['ImageID'] == $new['ImageID']) {
-                    print_r('Value: ' . $value['ImageID']);
-                    print_r('New: ' . $new['ImageID']);
                     unset($recommended[$key]);
                 }
                 foreach ($imagelist as $i) {
                     if ($i['ImageID'] == $new['ImageID']) {
-                        // unset($recommended[$key]);
                         $new = array_rand($singleImage);
                         $new = $singleImage[$new];
                     }

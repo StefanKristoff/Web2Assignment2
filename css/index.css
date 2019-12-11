@@ -37,9 +37,9 @@ form{
 
 }
 
-/* img{
+img{
     grid-column: 1 / span 2;
-} */
+}
 
 .hero-img{
     display: grid;
@@ -69,3 +69,4 @@ h3{
         position: relative;
     }
 }
+
