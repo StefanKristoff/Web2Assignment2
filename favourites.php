@@ -23,11 +23,11 @@ if(isset($_SESSION['add'])){
 if(isset($_POST['remove'])){
     unset($_SESSION['add']);
 }
-if(isset($_GET['removeBtn']) && $_GET['removeBtn'] !== null){ // got this from https://stackoverflow.com/questions/2231332/how-to-remove-a-variable-from-a-php-session-array
+elseif(isset($_GET['removeBtn'])){ // got this from https://stackoverflow.com/questions/2231332/how-to-remove-a-variable-from-a-php-session-array
     unset($_GET['removeBtn']);
     $key = array_search($_GET['imgId'], $_SESSION['add']);//checks to see of the Id exists in session add, if it oes it stores it in the varable key
-    
-    if($key!==false){ // as long as the key isnt false, it removes the found id and re-pushes the new array back to the oridinal array to update it
+    // as long as the key isnt false, it removes the found id and re-pushes the new array back to the oridinal array to update it
+    if($key!==false){ 
         unset($_SESSION['add'][$key]);
         $_SESSION['add'] = array_values($_SESSION['add']);
     }
@@ -78,7 +78,7 @@ function errorMessage(){
                             <figcaption> <?= strtoupper($titleWant); ?></figcaption>
                             <!-- Link favorite photos to single photo, passing ImageID to s -->
                             <a href='single-photo.php?id=<?= $imgId ?>'> <img height='250px' width='270px' src='images\case-travel-master\images\medium800\<?= strtolower($jpgWant); ?>'> </a>
-                            <form method="get" action="favourites.php">
+                            <form method="get">
                                 <input type='hidden' id='imgId' name='imgId' value='<?= $imgId ?>'>
                                 <input type='submit' name='removeBtn' value='Remove'>
                             </form>

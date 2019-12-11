@@ -37,10 +37,7 @@ label {
 div{
     padding: 10px;
 }
-input{
-    /* grid-column: 2 / 3; */
 
-}
 
 h3{
     text-align: center;
@@ -53,5 +50,8 @@ h3{
     h3{
         grid-column: 1 / 4;
         grid-row: auto;
+    }
+    .formitem {
+        display: inline;
     }
 }
