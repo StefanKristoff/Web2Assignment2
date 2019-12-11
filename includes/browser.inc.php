@@ -20,6 +20,7 @@ if (isset($_POST['favorite'])){
 // creating the list of Images in the broswer page
 function createResultRow($photo, $title, $imgID) {
     echo "<div class='resultrow card'>";
+    $photo = strtolower($photo);
     echo "<img src='images/case-travel-master/images/medium800/$photo' width='100px' height='100px'/>";
     echo "<p>$title</p>";
 

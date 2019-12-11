@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    console.log("Hihihi");
 
     // The url for the city data
     const cityEndpoint = 'https://uplifted-scout-261201.appspot.com/api-cities.php';

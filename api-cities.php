@@ -1,10 +1,10 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
 header('Access-Control-Allow-Origin: *');
-require_once 'includes/travel-config.inc.php';
+// require_once 'includes/travel-config.inc.php';
 require_once 'includes/service-utilities.inc.php';
 
-require_once 'includes/includes/api-countries-helper.inc.php'; 
+require_once 'includes/api-countries-helper.inc.php'; 
 require_once 'includes/api-cities-helper.inc.php';
 require_once 'includes/db-functions.inc.php';
 // header('Content-Type: application/json');

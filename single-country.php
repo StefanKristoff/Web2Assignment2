@@ -28,6 +28,21 @@ if (isset($_GET['iso'])) {
 }
 $lang = getLang(setConnectionInfo(DBCONNECTION, DBUSER, DBPASS));
 $allCountry = getAllCountries(setConnectionInfo(DBCONNECTION, DBUSER, DBPASS));
+// $lang = getLang(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
+// $allCountry = getAllCountries(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
+
+function createCountryImg($img)
+{
+    if (count($img) > 0) {
+        foreach ($img as $i) {
+            $imageId = $i['ImageID'];
+            $path = strtolower($i['Path']);
+            echo "<a href='single-photo.php?id={$imageId}'><img height='100px' width='100px' src='images\case-travel-master\images\square150\\$path'></a>";
+        }
+    } else {
+        echo "<p>No Favourited Photos Found.</p>";
+    }
+}
 ?>
 
 <body>
@@ -67,13 +82,12 @@ $allCountry = getAllCountries(setConnectionInfo(DBCONNECTION, DBUSER, DBPASS));
 
             <section>
                 <div class='box c card'>
-                    <h3>Country Details</h3>
                     <ul id="countryDetails">
                         <?php
                         if ($iso != '') {
                             foreach ($sCountry as $s) {
                                 ?>
-                                <li><?php echo $s["CountryName"] ?></li>
+                                <h2 id="countryName"><?php echo $s["CountryName"] ?></h2>
                                 <li>Area: <?php echo $s["Area"] ?></li>
                                 <li>Population: <?php echo $s["Population"] ?></li>
                                 <li>Capital: <?php echo $s["Capital"] ?></li>
@@ -135,17 +149,15 @@ $allCountry = getAllCountries(setConnectionInfo(DBCONNECTION, DBUSER, DBPASS));
                 </div>
                 <div class='box e card'>
                     <h3>Country Photos</h3>
-                    <ul id="pictureList">
+                    <div id="pictureList">
                         <?php
                         if ($iso != '') {
                             foreach ($img as $i) {
-                                ?>
-                                <img src="images/case-travel-master/images/medium800/<?= strtolower($i['Path']) ?>" alt="<?= $i['Title'] ?>" height="100px" width="100px">
-                        <?php
+                                createCountryImg($img);
                             }
                         }
                         ?>
-                    </ul>
+                    </div>
                 </div>
             </section>
 
