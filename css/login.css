@@ -1,0 +1,57 @@
+.hamburgerNav{
+    margin: 1rem 0 1rem 0;
+}
+body{
+    height: 100%;
+    background-image: url("../images/pic2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+header{
+    grid-column: 1 / 4;
+}
+
+.loginform {
+    grid-column: 2;
+    background: rgba(255, 255, 255, .5);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.formitem {
+    display: flex;
+}
+
+label {
+    width: 100px;
+    /* grid-column: 1 / 2; */
+}
+
+div{
+    padding: 10px;
+}
+
+
+h3{
+    text-align: center;
+    grid-column: 1 / 4;
+    font-size: 150%;
+}
+
+@media only screen and (max-width: 680px) {
+
+    h3{
+        grid-column: 1 / 4;
+        grid-row: auto;
+    }
+    .formitem {
+        display: inline;
+    }
+}

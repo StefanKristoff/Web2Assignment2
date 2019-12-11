@@ -13,10 +13,8 @@ require_once 'includes/db-functions.inc.php';
 
 
 if (isset($_GET['CountryCodeISO'])) {
-        $cities = getCitiesById(setConnectionInfo(DBCONNECTION, DBUSER, DBPASS), $_GET['CountryCodeISO']);
-    } else {
-        $cities = getAllCities(setConnectionInfo(DBCONNECTION, DBUSER, DBPASS));
-
+    $cities = getCitiesById(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $_GET['CountryCodeISO']);
+} else {
+    $cities = getAllCities(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
 }
-echo $cities;
-?>
+echo json_encode($cities, JSON_PRETTY_PRINT + JSON_NUMERIC_CHECK);

@@ -1,165 +1,172 @@
 document.addEventListener("DOMContentLoaded", function () {
-    //fetch URL for the city data
-    // const cityEndpoint = 'http://localhost/web2Assignment2/api-cities.php'
-    const cityEndpoint = 'https://uplifted-scout-261201.appspot.com/api-cities.php';
-    let cities = retieveCityStorage();
-    let citiesWithImages = retrieveCityWithImagesStorage();
-    console.log("Hihi");
 
-    // Fetch from url and call function
+    // The url for the city data
+    const cityEndpoint = 'http://localhost/web2Assignment2/api-cities.php';
+    const imgAPI = 'http://localhost/web2Assignment2/api-imageDetails.php';
+
+    // Retrieve local Storage
+    let cities = retrieveCityStorage();
+    let img = retrieveImgStorage();
+
+    // Fetch from Url and call function
     fetchCities();
-    fetchCitiesWithImage();
+    fetchImg();
 
-    // Calls to create country list, create listener, etc
-    setCityOnClickListener();
-    setCityHasImagesListener();
+    //Populates city list
+    populateCity();
 
-    //More event listener
-    document.querySelector("#resetCityFilter").addEventListener("click", resetCityFilters);
-    document.querySelector("#citySearch").addEventListener("keyup", displayCityMatches);
-
-    function updateCityStorage() {
-        localStorage.setItem("cities", JSON.stringify(cities));
-    }
-
-    function retieveCityStorage() {
-        return JSON.parse(localStorage.getItem(" ")) || [];
-    }
-
-    function updateCityWithImageStorage() {
-        localStorage.setItem("citiesWithImages", JSON.stringify(citiesWithImages));
-    }
-    function retrieveCityWithImagesStorage() {
-        return JSON.parse(localStorage.getItem("citiesWithImages")) || [];
-    }
-
-    // Fetch the cities from the endPoint
+    // // Fetch the cities from the endPoint
     function fetchCities() {
-        let search = cityEndpoint + "?id=ALL";
-
         if (cities.length < 1) {
-            fetch(search)
+            fetch(cityEndpoint)
                 .then(response => response.json())
                 .then(data => {
                     for (let c of data) {
                         cities.push(c);
                     }
+                    populateCity();
                     updateCityStorage();
                 })
                 .catch(error => console.error(error));
         }
     }
 
-    function fetchCitiesWithImage() {
-        if (citiesWithImages.length < 1) {
-            fetch(cityEndpoint)
+    //fetches images
+    function fetchImg() {
+        if (img.length < 1) {
+            fetch(imgAPI)
                 .then(response => response.json())
                 .then(data => {
-                    for (let c of data) {
-                        citiesWithImages.push(c)
+                    for (let d of data) {
+                        img.push(d);
                     }
-                    updateCityWithImageStorage();
+                    updateImgStorage();
                 })
                 .catch(error => console.error(error))
         }
     }
 
-    function setCityOnClickListener() {
-        const list = document.querySelector("#citylist");
-        list.addEventListener("click", e => {
-            if (e.target && e.target.nodeName == "LI") {
-                pupulateCityDetails(e.target.textContent);
-                populateCityListImages(e.target.textContent);
-            }
-        });
+    // update local storage
+    function updateCityStorage() {
+        localStorage.setItem("cities", JSON.stringify(cities));
+    }
+    function updateImgStorage() {
+        localStorage.setItem("img", JSON.stringify(img));
     }
 
-    function populateCityList(countryName) {
-        emptyCityList();
-        let countrySelected = countries.find(c => c.name == countryName);
-        selectedCountry = countryName;
 
-        const suggested = document.querySelector("#b");
+    function retrieveCityStorage() {
+        return JSON.parse(localStorage.getItem("cities")) || [];
+    }
+    function retrieveImgStorage() {
+        return JSON.parse(localStorage.getItem("img")) || [];
+    }
 
-        suggested.innerHTML = "";
 
-        selectedCities = cities.filter(obj => {
-            const regex = new RegExp(countrySelected.iso, "gi");
-            return obj.iso.match(regex);
-        })
-
-        selectedCities = selectedCities.sort((a, b) => {
-            return a.name < b.name ? -1 : 1;
-        })
-
-        selectedCities.forEach(city => {
-            var option = document.createElement('li');
-            option.textContent = city.name;
-            suggestions.appendChild(option);
+    //Sorts and populates the list of cities
+    function populateCity() {
+        const suggestions = document.querySelector(".filteredCity");
+        suggestions.innerHTML = "";
+        cities.sort((a, b) => {
+            if (a.name < b.name) {
+                return -1;
+            } else if (a.name > b.name) {
+                return 1;
+            }
+            else {
+                return 0;
+            }
         });
 
-        if (selectedCities.length == 0) {
-            suggestions.textContent = "NO cities found";
+        cities.forEach(city => {
+            let option = document.createElement('li');
+            let link = document.createElement('a');
+            link.textContent = city.AsciiName;
+            link.href = "http://localhost/Web2Assignment2/single-city.php?cityCode=" + city.CityCode;
+            option.appendChild(link);
+            suggestions.appendChild(option);
+        })
+    }
+
+    //Filter through the countries 
+    const search = document.querySelector('.search');
+    const sug = document.querySelector('#filterCity');
+    const li = document.querySelector(".filteredCity");
+
+    search.addEventListener('keyup', cityFilter);
+    function cityFilter() {
+        if (this.value.length >= 0) {
+            sug.innerHTML = "";
+            li.innerHTML = "";
+            const match = findMatch(this.value, cities);
+            match.forEach(m => {
+                let list = document.createElement('li');
+                let link = document.createElement('a');
+                link.textContent = m.AsciiName;
+                link.href = "http://localhost/Web2Assignment2/single-city.php?cityCode=" + m.CityCode;
+                list.appendChild(link);
+                li.appendChild(list);
+            });
         }
     }
 
-    function populateCityListImages() {
-        const suggestions = document.querySelector("#filteredCity");
-        emptyCityList();
-        let countrySelected = countries.find(c => c.name == countryName);
-        selectedCountry = countryName;
-
-        let imageCities = citiesWithImages.filter(obj => {
-            const regex = new RegExp(countrySelected.iso, "gi");
-            return obj.iso.match(regex);
-        });
-
-
-        imageCities = imageCities.sort((a, b) => {
-            return a.name < b.name ? -1 : 1;
-        })
-
-        imageCities.forEach(city => {
-            var option = document.createElement('li');
-            option.textContent = city.name;
-            suggestions.appendChild(option);
-        });
-    }
-    // Shows cities that have name matching what is typed by users
-    function displayCityMatches() {
-        const suggestions = document.querySelector("#filteredCity");
-        const cityMatches = findCityNameMatches(this.value, selectedCities);
-
-        suggestions.innerHTML = "";
-
-        cityMatches.forEach(city => {
-            var option = document.createElement('li');
-            option.textContent = city.name;
-            suggestions.appendChild(option);
+    function findMatch(m, c) {
+        return c.filter(obj => {
+            const cRegex = new RegExp(m, 'gi');
+            return obj.AsciiName.match(cRegex);
         });
     }
 
-    // Sets the click listener for the "Only have Images" button for cities
-    function setCityHasImagesListener() {
-        const btn = document.querySelector("#cityHasImages");
-        btn.addEventListener("click", function () {
-            let text = document.querySelector(".city .search");
-            text.textContent = "";
-            text.value = "";
-            populateCityListHasImages(selectedCountry);
+    //Resets the city page
+    const resetDataId = document.querySelector('#resetCity');
+    const resetBut = document.querySelector('.resetButton');
+    const resetCity = document.querySelector('.filteredCity');
+    const resetDetails = document.querySelector('#countryDetails');
+    const resetMap = document.querySelector('#map');
+    const imgList = document.querySelector('#pictureList');
+    resetBut.addEventListener('click', resetPage);
+    function resetPage() {
+        resetDataId.innerHTML = "";
+        resetCity.innerHTML = "";
+        resetMap.innerHTML = "";
+        resetDetails.innerHTML = "";
+        imgList.innerHTML = "";
+
+        cities.forEach(c => {
+            let rList = document.createElement('li');
+            let rLink = document.createElement('a');
+            rLink.textContent = c.AsciiName;
+            rLink.href = "http://localhost/Web2Assignment2/single-city.php?cityCode=" + c.CityCode;
+            rList.appendChild(rLink);
+            resetCity.appendChild(rList);
+
         });
     }
 
-    // Resets the filters so no input is given
-    function resetCityFilters() {
-        let text = document.querySelector(".city .search");
-        text.textContent = "";
-        text.value = "";
-        populateCityList(selectedCountry);
-    }
+    //Filters through the img array and prints the cities that have images
+    const cityImg = document.querySelector('#cityPic');
+    const imgbutton = document.querySelector('.cityImg');
+    const list = document.querySelector('.filteredCity');
+    imgbutton.addEventListener('click', imgFilterCity);
+    function imgFilterCity() {
+        list.innerHTML = "";
+        cityImg.innerHTML = "";
+        let imgCity = cities.filter(c => {
+            for (let images of img) {
+                if (images.CityCode == c.CityCode) {
+                    return c;
+                }
+            }
+        });
 
-    function emptyCityList() {
-        document.querySelector("#filteredCity").innerHTML = "";
-    }
+        imgCity.forEach(i => {
+            let clist = document.createElement('li');
+            let clink = document.createElement('a');
+            clink.textContent = i.AsciiName;
+            clink.href = "http://localhost/Web2Assignment2/single-city.php?cityCode=" + i.CityCode;
+            clist.appendChild(clink);
+            list.appendChild(clist);
 
-})
+        });
+    }
+});

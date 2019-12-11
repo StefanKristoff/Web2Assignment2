@@ -1,5 +1,5 @@
 .grid-container {
-    background-color: lightgray;
+    background: none;
 }
 
 /* Desktop */
@@ -8,14 +8,16 @@
     display: grid;
     grid-gap: 15px;
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    background-color: white;
+    /* grid-template-rows: 1fr 1fr 1fr 1fr 1fr; */
     padding: 15px;
+    background: rgba(255, 255, 255, .5);
+    border-radius: 1rem;
 }
 
 body {
-    background-color: lawngreen;
-    margin: 10px;
+    background-image: url("../images/pic2.jpg");
+    background-repeat: none;
+    background-size: contain;
 }
 
 header {
@@ -28,13 +30,13 @@ section {
     grid-template-columns: 60% 40%;
     grid-template-rows: repeat(4, 200px);
     grid-column: 2 / span 1;
-    grid-row: 2 / span 4;
-    background-color: darkgrey;
+    grid-row: 3 / span 4;
+    background: none;
     padding: 5px;
 }
 
 .box {
-    background-color: lightgrey;
+    background: rgba(255, 255, 255, .5);
     color: black;
     padding: 10px;
     margin: 10px;
@@ -42,45 +44,47 @@ section {
 
 .a {
     grid-column: 1 / span 1;
-    grid-row: 2 / span 1;
+    grid-row: 3 / span 1;
     overflow: auto;
-    text-align: center;
+    text-align: left;
 }
 
 .b {
     grid-column: 1 / span 1;
-    grid-row: 3 / span 3;
+    grid-row: 4 / span 3;
     text-align: center;
-    overflow: auto;
+    overflow: left;
 }
 
 .c {
     grid-column: 1 / span 1;
     grid-row: 1 / span 2;
     overflow: auto;
-    text-align: center;
+    text-align: left;
 }
 
 .d {
     grid-column: 1 / span 1;
     grid-row: 3 / span 2;
     overflow: auto;
-    text-align: center;
+    text-align: left;
 }
 
 .e {
     grid-column: 2;
     grid-row: 1 / span 4;
     overflow: auto;
+    text-align: left;
 }
 
 li {
     list-style-type: none;
 }
 
-ul {
+.b ul {
     overflow: scroll;
     height: 600px;
+    text-align: left;
 }
 
 /* mobile */
