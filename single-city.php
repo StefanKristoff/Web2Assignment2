@@ -10,13 +10,8 @@ if (isset($_GET['cityCode'])) {
     $lat = $city[0]['Latitude'];
     $long = $city[0]['Longitude'];
 } else {
-    $cityCode = "None";
+    $cityCode = '';
 }
-// $lang = getLang(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
-// $allCountry = getAllCountries(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
-
-
-
 
 function createCityImages($imagelist)
 {
@@ -24,7 +19,6 @@ function createCityImages($imagelist)
         foreach ($imagelist as $i) {
             $imgId = $i['ImageID'];
             $jpg = strtolower($i['Path']);
-            // $title = $i['Title'];
             echo "<li><a href='single-photo.php?id={$imgId}'><img height='150px' width='150px' src='images\case-travel-master\images\square150\\$jpg'></a></li>";
         }
     } else {
@@ -42,7 +36,7 @@ function createCityImages($imagelist)
     <link rel="stylesheet" href="css\city-stylesheet.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="module" src="javascript\get-countries.js"></script>
-    <script type="module" src="javascript\single-city.js"></script>
+    <script src="javascript/single-city.js"></script>
 </head>
 
 <body>
@@ -56,10 +50,12 @@ function createCityImages($imagelist)
 
                 <h3>City Filter</h3>
                 <p>
-                    <input type="text" id="citySearch" class="search" placeholder="Search Cities" list="filteredCity">
+                    <input type="text" class="search" placeholder="Search Cities" list="filterCity">
+                    <datalist id="filterCity"></datalist>
                 </p>
-                <button type="button" class="filterBtn" id="cityHasImages" list="filteredCity">Only have Images</button>
-                <button type="button" class="filterBtn" id="resetCityFilter" list="filteredCity">Reset Filters</button>
+                <button type="button" class="cityImg" list="cityImg">Only have Images</button>
+                <button type="button" class="resetButton" list="reset">Reset Filters</button>
+                <datalist id="resetCity"></datalist>
 
             </div>
 
@@ -70,12 +66,12 @@ function createCityImages($imagelist)
 
             <section>
                 <div class='box c card'>
-                    <h2 id="cityName"><?php echo $city[0]["AsciiName"] ?></h2>
                     <ul id="countryDetails">
                         <?php
                         if ($cityCode != '') {
                             foreach ($city as $c) {
                                 ?>
+                                <h2 id="cityName"><?php echo $city[0]["AsciiName"] ?></h2>
                                 <li>TimeZone: <?php echo $c["TimeZone"] ?></li>
                                 <li>Population: <?php echo $c["Population"] ?></li>
                                 <li>Latitude: <?php echo $c["Latitude"] ?></li>
@@ -87,33 +83,27 @@ function createCityImages($imagelist)
                         }
                         ?>
                     </ul>
-                    <!-- <section>
-                        <div>
-                            <label class="popLabel"></label>
-                            <span id="cityPopulation"></span>
-                        </div>
-                        <div>
-                            <label class="eleLabel"> </label>
-                            <span id="cityElevation"></span>
-                        </div>
-                        <div>
-                            <label class="timeLabel"> </label>
-                            <span id="cityTimeZone"></span>
-                        </div>
-                    </section> -->
                 </div>
                 <div class='box d card'>
                     <h3>City Map</h3>
                     <div id='map'>
-                        <img src="https://maps.googleapis.com/maps/api/staticmap?center=<?= $lat ?>,<?= $long ?>&zoom=12&size=600x600&maptype=roadmap
+                        <?php
+                        if ($cityCode != '') {
+                            ?>
+                            <img src="https://maps.googleapis.com/maps/api/staticmap?center=<?= $lat ?>,<?= $long ?>&zoom=12&size=600x600&maptype=roadmap
                                 &key=AIzaSyAN-iHgrz6nMd7h7OzV3Y5XCHLm7e1doP0" />
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
                 <div class='box e card'>
                     <h3>City Photos</h3>
                     <ul id="pictureList">
                         <?php
-                        createCityImages($imagelist);
+                        if ($cityCode != '') {
+                            createCityImages($imagelist);
+                        }
                         ?>
                     </ul>
                 </div>

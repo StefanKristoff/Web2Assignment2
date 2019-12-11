@@ -15,10 +15,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //Get countries
     function fetchCountries() {
-        let search = countryAPI;
-
         if (countries.length < 1) {
-            fetch(search)
+            fetch(countryAPI)
                 .then(response => response.json())
                 .then(data => {
                     for (let c of data) {
@@ -34,15 +32,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //gets images
     function fetchImages() {
-        let search = imagedetailAPI;
-
         if (images.length < 1) {
-            fetch(search)
+            fetch(imagedetailAPI)
                 .then(response => response.json())
                 .then(data => {
                     for (let i of data) {
                         images.push(i);
                     }
+                    updateImageStorage();
                 })
                 .catch(error => console.error(error))
         }
@@ -167,9 +164,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
         });
-        console.log(countriesWithImages);
 
-        for(let c of countriesWithImages){
+        for (let c of countriesWithImages) {
             let countryWithImg = document.createElement("li");
             let link4 = document.createElement('a');
             link4.textContent = c.CountryName;
@@ -189,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function () {
     resetButton.addEventListener('click', function () {
         resetCountry.innerHTML = "";
         resetDataId.innerHTML = "";
-        resetCity.textContent = "";
+        resetCity.textContent = "";s
         resetList.textContent = "";
         resetPic.textContent = "";
 
