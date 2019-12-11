@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     for (let i of data) {
                         images.push(i);
                     }
+                    updateImageStorage();
                 })
                 .catch(error => console.error(error))
         }
@@ -169,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         console.log(countriesWithImages);
 
-        for(let c of countriesWithImages){
+        for (let c of countriesWithImages) {
             let countryWithImg = document.createElement("li");
             let link4 = document.createElement('a');
             link4.textContent = c.CountryName;

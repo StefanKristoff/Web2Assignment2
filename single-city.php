@@ -11,7 +11,7 @@ if (isset($_GET['cityCode'])) {
     $lat = $city[0]['Latitude'];
     $long = $city[0]['Longitude'];
 } else {
-    $cityCode = "None";
+    $cityCode = '';
 }
 
 function createCityImages($imagelist)
@@ -35,8 +35,7 @@ function createCityImages($imagelist)
     <title>Single City</title>
     <link rel="stylesheet" href="css\stylesheet.css">
     <link rel="stylesheet" href="css\city-stylesheet.css">
-    <script type="module" src="javascript\get-countries.js"></script>
-    <script type="module" src="javascript\single-city.js"></script>
+    <script src="javascript/single-city.js"></script>
 </head>
 
 <body>
@@ -51,10 +50,12 @@ function createCityImages($imagelist)
 
                 <h3>City Filter</h3>
                 <p>
-                    <input type="text" id="citySearch" class="search" placeholder="Search Cities" list="filteredCity">
+                    <input type="text" class="search" placeholder="Search Cities" list="filterCity">
+                    <datalist id="filterCity"></datalist>
                 </p>
-                <button type="button" class="filterBtn" id="cityHasImages" list="filteredCity">Only have Images</button>
-                <button type="button" class="filterBtn" id="resetCityFilter" list="filteredCity">Reset Filters</button>
+                <button type="button" class="cityImg" list="cityImg">Only have Images</button>
+                <button type="button" class="reset" list="reset">Reset Filters</button>
+                <datalist id="reset"></datalist>
 
             </div>
 
@@ -65,12 +66,12 @@ function createCityImages($imagelist)
 
             <section>
                 <div class='box c card'>
-                    <h2 id="cityName"><?php echo $city[0]["AsciiName"] ?></h2>
                     <ul id="countryDetails">
                         <?php
                         if ($cityCode != '') {
                             foreach ($city as $c) {
                                 ?>
+                                <h2 id="cityName"><?php echo $city[0]["AsciiName"] ?></h2>
                                 <li>TimeZone: <?php echo $c["TimeZone"] ?></li>
                                 <li>Population: <?php echo $c["Population"] ?></li>
                                 <li>Latitude: <?php echo $c["Latitude"] ?></li>
@@ -85,10 +86,10 @@ function createCityImages($imagelist)
                 </div>
                 <div class='box d card'>
                     <h3>City Map</h3>
-                        <div id='map'>
-                            <img src="https://maps.googleapis.com/maps/api/staticmap?center=<?=$lat?>,<?=$long?>&zoom=12&size=600x600&maptype=roadmap
+                    <div id='map'>
+                        <img src="https://maps.googleapis.com/maps/api/staticmap?center=<?= $lat ?>,<?= $long ?>&zoom=12&size=600x600&maptype=roadmap
                                 &key=AIzaSyAN-iHgrz6nMd7h7OzV3Y5XCHLm7e1doP0" />
-                        </div>
+                    </div>
                 </div>
                 <div class='box e card'>
                     <h3>City Photos</h3>
