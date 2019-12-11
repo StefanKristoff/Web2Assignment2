@@ -133,8 +133,8 @@ document.addEventListener("DOMContentLoaded", function () {
         imgList.innerHTML = "";
 
         cities.forEach(c => {
-            let rList = document.querySelector('li');
-            let rLink = document.querySelector('a');
+            let rList = document.createElement('li');
+            let rLink = document.createElement('a');
             rLink.textContent = c.AsciiName;
             rLink.href = "http://localhost/Web2Assignment2/single-city.php?cityCode=" + c.CityCode;
             rList.appendChild(rLink);
@@ -143,4 +143,30 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    //Filters through the img array and prints the cities that have images
+    const cityImg = document.querySelector('#cityPic');
+    const imgbutton = document.querySelector('.cityImg');
+    const list = document.querySelector('.filteredCity');
+    imgbutton.addEventListener('click', imgFilterCity);
+    function imgFilterCity() {
+        list.innerHTML = "";
+        cityImg.innerHTML = "";
+        let imgCity = cities.filter(c => {
+            for (let images of img) {
+                if (images.CityCode == c.CityCode) {
+                    return c;
+                }
+            }
+        });
+
+        imgCity.forEach(i => {
+            let clist = document.createElement('li');
+            let clink = document.createElement('a');
+            clink.textContent = i.AsciiName;
+            clink.href = "http://localhost/Web2Assignment2/single-city.php?cityCode=" + i.CityCode;
+            clist.appendChild(clink);
+            list.appendChild(clist);
+
+        });
+    }
 });

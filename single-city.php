@@ -54,6 +54,8 @@ function createCityImages($imagelist)
                     <datalist id="filterCity"></datalist>
                 </p>
                 <button type="button" class="cityImg" list="cityImg">Only have Images</button>
+                <dataList id="cityPic"></dataList>
+
                 <button type="button" class="resetButton" list="reset">Reset Filters</button>
                 <datalist id="resetCity"></datalist>
 
