@@ -9,12 +9,10 @@ body {
 }
 
 /* Desktop */
-
 .main {
     display: grid;
     grid-gap: 15px;
     grid-template-columns: 1fr 2fr;
-    /* grid-template-rows: 1fr 1fr 1fr 1fr 1fr; */
     padding: 15px;
     border-radius: 1rem;
     background: rgba(255, 255, 255, .5);
@@ -83,15 +81,28 @@ section {
 @media only screen and (max-width: 680px) {
     main {
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr 1fr 1fr;
+        /* grid-template-rows: 1fr 1fr 1fr 1fr; */
     }
     .a {
         grid-column: 1 / 3;
-        grid-row: 2 / 3;
+        grid-row: 3;
+        height: 250px;
     }
     .b {
         grid-column: 1 / 3;
-        grid-row: 3 / 4;
+        height: 200px;
+    }
+    .c {
+        grid-column: 1 / 3;
+        /* grid-row: 5 ; */
+    }
+    . {
+        grid-column: 1 / 3;
+        /* grid-row: 6; */
+    }
+    .e {
+        grid-column: 1 / 3;
+        /* grid-row: 7; */
     }
     section {
         grid-template-rows: 200px 200px 200px;
