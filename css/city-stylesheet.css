@@ -22,8 +22,7 @@ body {
 
 section {
     display: grid;
-    grid-template-columns: 60% 40%;
-    /* grid-template-rows: repeat(4, 200px); */
+    grid-template-columns: auto auto;
     grid-column: 2 / span 1;
     grid-row: 3 / span 4;
     background: none;
@@ -93,7 +92,9 @@ li {
     list-style-type: none;
     text-align-last: left;
 }
-
+#cityName {
+    text-align: center;
+}
 
 /* mobile */
 

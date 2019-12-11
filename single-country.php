@@ -34,7 +34,7 @@ function createCountryImg($img)
         foreach ($img as $i) {
             $imageId = $i['ImageID'];
             $path = strtolower($i['Path']);
-            echo "<li><a href='single-photo.php?id={$imageId}'><img height='100px' width='100px' src='images\case-travel-master\images\square150\\$path'></a></li>";
+            echo "<a href='single-photo.php?id={$imageId}'><img height='100px' width='100px' src='images\case-travel-master\images\square150\\$path'></a>";
         }
     } else {
         echo "<p>No Favourited Photos Found.</p>";
@@ -79,13 +79,12 @@ function createCountryImg($img)
 
             <section>
                 <div class='box c card'>
-                    <h3>Country Details</h3>
                     <ul id="countryDetails">
                         <?php
                         if ($iso != '') {
                             foreach ($sCountry as $s) {
                                 ?>
-                                <li><?php echo $s["CountryName"] ?></li>
+                                <h2 id="countryName"><?php echo $s["CountryName"] ?></h2>
                                 <li>Area: <?php echo $s["Area"] ?></li>
                                 <li>Population: <?php echo $s["Population"] ?></li>
                                 <li>Capital: <?php echo $s["Capital"] ?></li>
@@ -147,7 +146,7 @@ function createCountryImg($img)
                 </div>
                 <div class='box e card'>
                     <h3>Country Photos</h3>
-                    <ul id="pictureList">
+                    <div id="pictureList">
                         <?php
                         if ($iso != '') {
                             foreach ($img as $i) {
@@ -155,7 +154,7 @@ function createCountryImg($img)
                             }
                         }
                         ?>
-                    </ul>
+                    </div>
                 </div>
             </section>
 

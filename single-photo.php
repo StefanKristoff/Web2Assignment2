@@ -87,7 +87,7 @@ if (isset($_POST['singlefavorite'])) { //chedk
 
                     <div id="descriptionsTab">
                         <!-- Buttons for image description, details and the map -->
-                        <button class="itemTab" id="tabDescription">Descripttion</button>
+                        <button class="itemTab" id="tabDescription">Description</button>
                         <button class="itemTab" id="tabDetails">Details</button>
                         <button class="itemTab" id="tabMap">Map</button>
                         <!-- THE DESCRIPTION BOX -->
