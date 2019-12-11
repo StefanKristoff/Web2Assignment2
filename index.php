@@ -1,6 +1,5 @@
 <?php
 require_once "includes/header.inc.php";
-require_once "includes/hamburger.inc.php";
 
 session_start();
 $active = false;
@@ -20,9 +19,7 @@ function createUploadedImages($uploaded)
             $imgId = $u['ImageID'];
             $jpg = strtolower($u['Path']);
             // $title = $u['Title'];
-            // $string = "<div><a href='single-photo.php?id=$imgId'> <img height='150px' width='150px' src='images\case-travel-master\images\square150\". $jpg ."'></a></div>";
             echo "<div><a href='single-photo.php?id={$imgId}'> <img height='150px' width='150px' src='images\case-travel-master\images\square150\\$jpg'></a></div>";
-            // echo $string;
         }
     } else {
         echo '<p>No Uploaded Photos Found.</p>';
@@ -44,7 +41,8 @@ function createFavouritedImages($imagelist)
 }
 
 
-function drawRecommendedPhotos($recommended) {
+function drawRecommendedPhotos($recommended)
+{
     foreach ($recommended as $i) {
         $imgId = $i['ImageID'];
         $jpg = strtolower($i['Path']);
@@ -69,6 +67,7 @@ if (!$active) {
 
 
         <title>Main</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css\stylesheet.css">
         <link rel="stylesheet" href="css\index.css">
         <script rel="text/javascript" src="javascript\index.js"></script>
@@ -76,10 +75,8 @@ if (!$active) {
 
     <body>
         <main class='grid-container'>
-            <?php
-                createHeader();
-                createHamburger();
-                ?>
+            <?php createHeader(); ?>
+            <?php include('includes/hamburger.inc.php'); ?>
 
 
             <section class='nested hero-img'>
@@ -96,7 +93,7 @@ if (!$active) {
                         <input type="text" value='' name="ImgName" placeholder="SEARCH BOX FOR PHOTOS...">
                         <button type='submit' name='submit' value=''>FIND</button>
                     </form>
-                    
+
                 </div>
             </section>
 
@@ -146,23 +143,20 @@ if (!$active) {
         }
     }
 
-    // }
-
     $user = getUserDataByEmail(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $userEmail);
     ?>
 
     <head>
-        <title> Home Page Log In</title>
+        <title> Home Page Logged In</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css\stylesheet.css">
         <link rel="stylesheet" href="css\logged-in.css">
     </head>
 
     <body>
         <main class='grid-container'>
-            <?php
-                createHeader();
-                createHamburger();
-                ?>
+            <?php createHeader(); ?>
+            <?php include('includes/hamburger.inc.php'); ?>
             <section class='nested'>
                 <div class='userInfo card'>
                     <h3>User Info</h3>
@@ -187,16 +181,16 @@ if (!$active) {
                     <h3>Favorite Images</h3>
                     <div class='favNested'>
                         <?php
-                        createFavouritedImages($imagelist);
-                        ?>
+                            createFavouritedImages($imagelist);
+                            ?>
                     </div>
                 </div>
                 <div class='img card'>
                     <h3>Images You May Like</h3>
                     <div class='imgNested'>
                         <?php
-                        drawRecommendedPhotos($recommended);
-                        ?>
+                            drawRecommendedPhotos($recommended);
+                            ?>
                     </div>
                 </div>
             </section>

@@ -23,7 +23,7 @@ body {
 section {
     display: grid;
     grid-template-columns: 60% 40%;
-    grid-template-rows: repeat(4, 200px);
+    /* grid-template-rows: repeat(4, 200px); */
     grid-column: 2 / span 1;
     grid-row: 3 / span 4;
     background: none;
@@ -54,15 +54,16 @@ section {
 
 .c {
     grid-column: 1 / span 1;
-    grid-row: 1 / span 2;
+    grid-row: 1 / span 1;
     overflow: auto;
     text-align: center;
 }
 
 .d {
     grid-column: 1 / span 1;
-    grid-row: 3 / span 2;
-    overflow: auto;
+    grid-row: 2 / span 3;
+    /* overflow: auto; */
+    height: auto;
     text-align: center;
 }
 
@@ -70,6 +71,22 @@ section {
     grid-column: 2;
     grid-row: 1 / span 4;
     overflow: auto;
+}
+
+#pictureList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#pictureList li {
+    float:left;
+    grid-column: span 1;
+    
+    width:150px;
+}
+
+li {
+    list-style-type: none;
 }
 
 .filteredCity{

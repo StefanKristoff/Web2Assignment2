@@ -1,6 +1,5 @@
 <?php
 include('includes/header.inc.php');
-include('includes/hamburger.inc.php');
 require_once 'includes/browser.inc.php';
 require_once 'config.inc.php';
 
@@ -59,6 +58,7 @@ function showImages($images){
 
 <head>
     <title>Browse Photos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css\stylesheet.css">
     <link rel="stylesheet" href="css\browser.css">
 </head>
@@ -67,8 +67,9 @@ function showImages($images){
     <main class='grid-container'>
         <?php 
         createHeader(); 
-        createHamburger();
+        // createHamburger();
         ?>
+        <?php include('includes/hamburger.inc.php'); ?>
         <div class='box a card'>
             <h3>Photo Filter</h3>
             <?= createFilters()?>

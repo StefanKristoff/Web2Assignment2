@@ -1,6 +1,5 @@
 <?php
 include('includes/header.inc.php');
-include('includes/hamburger.inc.php');
 require_once 'api-countries-helper.inc.php';
 require_once 'api-cities-helper.inc.php';
 require_once 'language.php';
@@ -11,6 +10,7 @@ require_once 'language.php';
 
 <head>
     <title>Single Country</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css\stylesheet.css">
     <link rel="stylesheet" href="css\country-stylesheet.css">
     <script src="javascript/single-country.js"></script>
@@ -46,10 +46,8 @@ function createCountryImg($img)
     <div class='grid-container'>
 
         <main class='main'>
-            <?php
-            createHeader();
-            createHamburger();
-            ?>
+            <?php createHeader(); ?>
+            <?php include('includes/hamburger.inc.php'); ?>
             <div class='box a card'>
                 <h3>Country Filter</h3>
                 <fieldset>

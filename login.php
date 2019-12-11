@@ -1,7 +1,6 @@
 <?php
 require_once 'config.inc.php';
 require_once "includes/header.inc.php";
-require_once "includes/hamburger.inc.php";
 require_once "includes/userlogin-helper.inc.php";
 
 session_start();
@@ -30,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> Home Page Log In</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css\stylesheet.css">
     <link rel="stylesheet" href="css\login.css">
     <script rel="text/javascript" src="javascript\index.js"></script>
@@ -37,10 +37,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <main class='grid-container'>
-        <?php
-        createHeader();
-        createHamburger();
-        ?>
+        <?php createHeader(); ?>
+        <?php include('includes/hamburger.inc.php'); ?>
 
         <h3>LOGIN</h3>
         <form class='loginform' action='login.php' method='post' id='loginform'>
