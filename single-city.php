@@ -13,11 +13,6 @@ if (isset($_GET['cityCode'])) {
 } else {
     $cityCode = "None";
 }
-// $lang = getLang(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
-// $allCountry = getAllCountries(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
-
-
-
 
 function createCityImages($imagelist)
 {
@@ -25,7 +20,6 @@ function createCityImages($imagelist)
         foreach ($imagelist as $i) {
             $imgId = $i['ImageID'];
             $jpg = strtolower($i['Path']);
-            // $title = $i['Title'];
             echo "<li><a href='single-photo.php?id={$imgId}'><img height='150px' width='150px' src='images\case-travel-master\images\square150\\$jpg'></a></li>";
         }
     } else {
@@ -88,20 +82,6 @@ function createCityImages($imagelist)
                         }
                         ?>
                     </ul>
-                    <!-- <section>
-                        <div>
-                            <label class="popLabel"></label>
-                            <span id="cityPopulation"></span>
-                        </div>
-                        <div>
-                            <label class="eleLabel"> </label>
-                            <span id="cityElevation"></span>
-                        </div>
-                        <div>
-                            <label class="timeLabel"> </label>
-                            <span id="cityTimeZone"></span>
-                        </div>
-                    </section> -->
                 </div>
                 <div class='box d card'>
                     <h3>City Map</h3>
