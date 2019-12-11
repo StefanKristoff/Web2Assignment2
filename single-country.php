@@ -1,6 +1,5 @@
 <?php
 include('includes/header.inc.php');
-include('includes/hamburger.inc.php');
 require_once 'api-countries-helper.inc.php';
 require_once 'api-cities-helper.inc.php';
 require_once 'language.php';
@@ -11,6 +10,7 @@ require_once 'language.php';
 
 <head>
     <title>Single Country</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css\stylesheet.css">
     <link rel="stylesheet" href="css\country-stylesheet.css">
     <script src="javascript/single-country.js"></script>
@@ -27,16 +27,27 @@ if (isset($_GET['iso'])) {
 }
 $lang = getLang(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
 $allCountry = getAllCountries(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
+
+function createCountryImg($img)
+{
+    if (count($img) > 0) {
+        foreach ($img as $i) {
+            $imageId = $i['ImageID'];
+            $path = strtolower($i['Path']);
+            echo "<li><a href='single-photo.php?id={$imageId}'><img height='100px' width='100px' src='images\case-travel-master\images\square150\\$path'></a></li>";
+        }
+    } else {
+        echo "<p>No Favourited Photos Found.</p>";
+    }
+}
 ?>
 
 <body>
     <div class='grid-container'>
 
         <main class='main'>
-            <?php
-            createHeader();
-            createHamburger();
-            ?>
+            <?php createHeader(); ?>
+            <?php include('includes/hamburger.inc.php'); ?>
             <div class='box a card'>
                 <h3>Country Filter</h3>
                 <fieldset>
@@ -140,9 +151,7 @@ $allCountry = getAllCountries(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
                         <?php
                         if ($iso != '') {
                             foreach ($img as $i) {
-                                ?>
-                                <img src="images/case-travel-master/images/medium800/<?= $i['Path'] ?>" alt="<?= $i['Title'] ?>" height="100px" width="100px">
-                        <?php
+                                createCountryImg($img);
                             }
                         }
                         ?>
