@@ -83,17 +83,6 @@ header {
     overflow: auto;
 }
 
-/* Somthing NEW for sinbgle tabs in single photes for the map, details and description of the photo */
-/* #tabBoxDescription{
-    display: none;
-}
-#tabBoxDetails{
-    display: none;
-}
-#tabBoxMap{
-    display: none;
-
-} */
 #exifCredit{
     text-align: left;
 }
