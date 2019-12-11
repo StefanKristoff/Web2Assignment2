@@ -82,3 +82,19 @@ img {
     text-align: center;
     box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.22);
 }
+
+@media only screen and (max-width: 680px) {
+
+    .hamburgerNav a{
+        display: block;
+        float: none;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+    img{
+        width: 100%;
+    }
+
+}
