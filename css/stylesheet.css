@@ -93,4 +93,8 @@ img {
         padding: 14px 16px;
         text-decoration: none;
     }
+    img{
+        width: 100%;
+    }
+
 }
