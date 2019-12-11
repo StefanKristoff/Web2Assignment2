@@ -90,6 +90,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //Resets the city page
     const resetDataId = document.querySelector('#resetCity');
-    const resetBut = document.querySelector('.reset'):
+    const resetBut = document.querySelector('.resetButton');
+    const resetCity = document.querySelector('.filteredCity');
+    const resetDetails = document.querySelector('#countryDetails');
+    const resetMap = document.querySelector('#map');
+    const imgList = document.querySelector('#pictureList');
+    resetBut.addEventListener('click', resetPage);
+    function resetPage() {
+        resetDataId.innerHTML = "";
+        resetCity.innerHTML = "";
+        resetMap.innerHTML = "";
+        resetDetails.innerHTML = "";
+        imgList.innerHTML = "";
 
-})
+        cities.forEach(c => {
+            let rList = document.querySelector('li');
+            let rLink = document.querySelector('a');
+            rLink.textContent = c.AsciiName;
+            rLink.href = "http://localhost/Web2Assignment2/single-city.php?cityCode=" + c.CityCode;
+            rList.appendChild(rLink);
+            resetCity.appendChild(rList);
+
+        });
+    }
+
+});

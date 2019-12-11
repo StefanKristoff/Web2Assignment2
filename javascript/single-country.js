@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", function () {
     resetButton.addEventListener('click', function () {
         resetCountry.innerHTML = "";
         resetDataId.innerHTML = "";
-        resetCity.textContent = "";
+        resetCity.textContent = "";s
         resetList.textContent = "";
         resetPic.textContent = "";
 

@@ -54,8 +54,8 @@ function createCityImages($imagelist)
                     <datalist id="filterCity"></datalist>
                 </p>
                 <button type="button" class="cityImg" list="cityImg">Only have Images</button>
-                <button type="button" class="reset" list="reset">Reset Filters</button>
-                <datalist id="reset"></datalist>
+                <button type="button" class="resetButton" list="reset">Reset Filters</button>
+                <datalist id="resetCity"></datalist>
 
             </div>
 
@@ -87,15 +87,23 @@ function createCityImages($imagelist)
                 <div class='box d card'>
                     <h3>City Map</h3>
                     <div id='map'>
-                        <img src="https://maps.googleapis.com/maps/api/staticmap?center=<?= $lat ?>,<?= $long ?>&zoom=12&size=600x600&maptype=roadmap
+                        <?php
+                        if ($cityCode != '') {
+                            ?>
+                            <img src="https://maps.googleapis.com/maps/api/staticmap?center=<?= $lat ?>,<?= $long ?>&zoom=12&size=600x600&maptype=roadmap
                                 &key=AIzaSyAN-iHgrz6nMd7h7OzV3Y5XCHLm7e1doP0" />
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
                 <div class='box e card'>
                     <h3>City Photos</h3>
                     <ul id="pictureList">
                         <?php
-                        createCityImages($imagelist);
+                        if ($cityCode != '') {
+                            createCityImages($imagelist);
+                        }
                         ?>
                     </ul>
                 </div>
