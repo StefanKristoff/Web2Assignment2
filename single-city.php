@@ -1,6 +1,37 @@
 <?php
 include('includes/header.inc.php');
 include('includes/hamburger.inc.php');
+require_once 'api-cities-helper.inc.php';
+
+
+if (isset($_GET['cityCode'])) {
+    $cityCode = $_GET["cityCode"];
+    $city = getCityById(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $cityCode);
+    $imagelist = getCityImg(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS), $cityCode);
+    $lat = $city[0]['Latitude'];
+    $long = $city[0]['Longitude'];
+} else {
+    $cityCode = "None";
+}
+// $lang = getLang(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
+// $allCountry = getAllCountries(setConnectionInfo(DBCONNSTRING, DBUSER, DBPASS));
+
+
+
+
+function createCityImages($imagelist)
+{
+    if (count($imagelist) > 0) {
+        foreach ($imagelist as $i) {
+            $imgId = $i['ImageID'];
+            $jpg = strtolower($i['Path']);
+            // $title = $i['Title'];
+            echo "<li><a href='single-photo.php?id={$imgId}'><img height='150px' width='150px' src='images\case-travel-master\images\square150\\$jpg'></a></li>";
+        }
+    } else {
+        echo "<p>No Favourited Photos Found.</p>";
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -40,10 +71,26 @@ include('includes/hamburger.inc.php');
 
             <section>
                 <div class='box c card'>
-                    <h2 id="cityName"></h2>
-                    <section>
+                    <h2 id="cityName"><?php echo $city[0]["AsciiName"] ?></h2>
+                    <ul id="countryDetails">
+                        <?php
+                        if ($cityCode != '') {
+                            foreach ($city as $c) {
+                                ?>
+                                <li>TimeZone: <?php echo $c["TimeZone"] ?></li>
+                                <li>Population: <?php echo $c["Population"] ?></li>
+                                <li>Latitude: <?php echo $c["Latitude"] ?></li>
+                                <li>Longitude: <?php echo $c["Longitude"] ?></li>
+                                <li>Elevation: <?php echo $c["Elevation"] ?></li>
+
+                        <?php
+                            }
+                        }
+                        ?>
+                    </ul>
+                    <!-- <section>
                         <div>
-                            <label class="popLabel"> </label>
+                            <label class="popLabel"></label>
                             <span id="cityPopulation"></span>
                         </div>
                         <div>
@@ -54,13 +101,22 @@ include('includes/hamburger.inc.php');
                             <label class="timeLabel"> </label>
                             <span id="cityTimeZone"></span>
                         </div>
-                    </section>
+                    </section> -->
                 </div>
                 <div class='box d card'>
                     <h3>City Map</h3>
+                        <div id='map'>
+                            <img src="https://maps.googleapis.com/maps/api/staticmap?center=<?=$lat?>,<?=$long?>&zoom=12&size=600x600&maptype=roadmap
+                                &key=AIzaSyAN-iHgrz6nMd7h7OzV3Y5XCHLm7e1doP0" />
+                        </div>
                 </div>
                 <div class='box e card'>
                     <h3>City Photos</h3>
+                    <ul id="pictureList">
+                        <?php
+                        createCityImages($imagelist);
+                        ?>
+                    </ul>
                 </div>
             </section>
 

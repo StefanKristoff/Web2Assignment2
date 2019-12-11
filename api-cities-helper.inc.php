@@ -34,6 +34,17 @@ function getCitiesById($connection, $id)
     }
 }
 
+function getCityById($connection, $id)
+{
+    try {
+        $sql = getCitySQL() . ' WHERE CityCode=? ';
+        $result = runQUery($connection, $sql, $id);
+        return $result;
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
+
 function getCityWithImagesSQL($connection){
     try{
         $sql = getCitySQL() . ' INNER JOIN imagedetails ON cities.CityCode = imagedetails.CityCode GROUP BY cities.AsciiName';
